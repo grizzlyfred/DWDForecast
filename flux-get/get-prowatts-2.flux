@@ -4,7 +4,7 @@ import "math"
 
 option location = timezone.location(name: "Europe/Berlin")
 
-startpoint = date.add(d: 0d, to: today()    )
+startpoint = date.add(d: 2d, to: today()    )
 midnight   = date.add(d: 1d, to: startpoint )
 
 data = from(bucket: "forecast")
