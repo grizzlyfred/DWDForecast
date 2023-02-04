@@ -2,1430 +2,1192 @@
 data =
     array.from(
         rows: [
-            
             {
-                _time: "2023-02-04T15:00:00Z",
+                _time: 2023-02-04T15:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 160.0,
-            },
-            {
-                _time: "2023-02-04T16:00:00Z",
+            },{
+                _time: 2023-02-04T16:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 10.0,
-            },
-            {
-                _time: "2023-02-04T17:00:00Z",
+            },{
+                _time: 2023-02-04T17:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-04T18:00:00Z",
+            },{
+                _time: 2023-02-04T18:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-04T19:00:00Z",
+            },{
+                _time: 2023-02-04T19:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-04T20:00:00Z",
+            },{
+                _time: 2023-02-04T20:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-04T21:00:00Z",
+            },{
+                _time: 2023-02-04T21:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-04T22:00:00Z",
+            },{
+                _time: 2023-02-04T22:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T00:00:00Z",
+            },{
+                _time: 2023-02-05T00:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T01:00:00Z",
+            },{
+                _time: 2023-02-05T01:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T02:00:00Z",
+            },{
+                _time: 2023-02-05T02:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T03:00:00Z",
+            },{
+                _time: 2023-02-05T03:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T04:00:00Z",
+            },{
+                _time: 2023-02-05T04:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T05:00:00Z",
+            },{
+                _time: 2023-02-05T05:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T06:00:00Z",
+            },{
+                _time: 2023-02-05T06:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T07:00:00Z",
+            },{
+                _time: 2023-02-05T07:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 90.0,
-            },
-            {
-                _time: "2023-02-05T08:00:00Z",
+            },{
+                _time: 2023-02-05T08:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 270.0,
-            },
-            {
-                _time: "2023-02-05T09:00:00Z",
+            },{
+                _time: 2023-02-05T09:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 440.0,
-            },
-            {
-                _time: "2023-02-05T10:00:00Z",
+            },{
+                _time: 2023-02-05T10:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 490.0,
-            },
-            {
-                _time: "2023-02-05T11:00:00Z",
+            },{
+                _time: 2023-02-05T11:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 470.0,
-            },
-            {
-                _time: "2023-02-05T12:00:00Z",
+            },{
+                _time: 2023-02-05T12:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 440.0,
-            },
-            {
-                _time: "2023-02-05T13:00:00Z",
+            },{
+                _time: 2023-02-05T13:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 340.0,
-            },
-            {
-                _time: "2023-02-05T14:00:00Z",
+            },{
+                _time: 2023-02-05T14:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 230.0,
-            },
-            {
-                _time: "2023-02-05T15:00:00Z",
+            },{
+                _time: 2023-02-05T15:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 90.0,
-            },
-            {
-                _time: "2023-02-05T16:00:00Z",
+            },{
+                _time: 2023-02-05T16:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T17:00:00Z",
+            },{
+                _time: 2023-02-05T17:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T18:00:00Z",
+            },{
+                _time: 2023-02-05T18:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T19:00:00Z",
+            },{
+                _time: 2023-02-05T19:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T20:00:00Z",
+            },{
+                _time: 2023-02-05T20:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T21:00:00Z",
+            },{
+                _time: 2023-02-05T21:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-05T22:00:00Z",
+            },{
+                _time: 2023-02-05T22:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T00:00:00Z",
+            },{
+                _time: 2023-02-06T00:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T01:00:00Z",
+            },{
+                _time: 2023-02-06T01:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T02:00:00Z",
+            },{
+                _time: 2023-02-06T02:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T03:00:00Z",
+            },{
+                _time: 2023-02-06T03:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T04:00:00Z",
+            },{
+                _time: 2023-02-06T04:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T05:00:00Z",
+            },{
+                _time: 2023-02-06T05:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T06:00:00Z",
+            },{
+                _time: 2023-02-06T06:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T07:00:00Z",
+            },{
+                _time: 2023-02-06T07:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 70.0,
-            },
-            {
-                _time: "2023-02-06T08:00:00Z",
+            },{
+                _time: 2023-02-06T08:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 260.0,
-            },
-            {
-                _time: "2023-02-06T09:00:00Z",
+            },{
+                _time: 2023-02-06T09:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 440.0,
-            },
-            {
-                _time: "2023-02-06T10:00:00Z",
+            },{
+                _time: 2023-02-06T10:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 610.0,
-            },
-            {
-                _time: "2023-02-06T11:00:00Z",
+            },{
+                _time: 2023-02-06T11:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 650.0,
-            },
-            {
-                _time: "2023-02-06T12:00:00Z",
+            },{
+                _time: 2023-02-06T12:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 610.0,
-            },
-            {
-                _time: "2023-02-06T13:00:00Z",
+            },{
+                _time: 2023-02-06T13:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 500.0,
-            },
-            {
-                _time: "2023-02-06T14:00:00Z",
+            },{
+                _time: 2023-02-06T14:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 360.0,
-            },
-            {
-                _time: "2023-02-06T15:00:00Z",
+            },{
+                _time: 2023-02-06T15:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 150.0,
-            },
-            {
-                _time: "2023-02-06T16:00:00Z",
+            },{
+                _time: 2023-02-06T16:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 20.0,
-            },
-            {
-                _time: "2023-02-06T17:00:00Z",
+            },{
+                _time: 2023-02-06T17:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T18:00:00Z",
+            },{
+                _time: 2023-02-06T18:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T19:00:00Z",
+            },{
+                _time: 2023-02-06T19:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T20:00:00Z",
+            },{
+                _time: 2023-02-06T20:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T21:00:00Z",
+            },{
+                _time: 2023-02-06T21:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-06T22:00:00Z",
+            },{
+                _time: 2023-02-06T22:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-07T00:00:00Z",
+            },{
+                _time: 2023-02-07T00:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-07T01:00:00Z",
+            },{
+                _time: 2023-02-07T01:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-07T02:00:00Z",
+            },{
+                _time: 2023-02-07T02:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-07T03:00:00Z",
+            },{
+                _time: 2023-02-07T03:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-07T04:00:00Z",
+            },{
+                _time: 2023-02-07T04:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-07T05:00:00Z",
+            },{
+                _time: 2023-02-07T05:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-07T06:00:00Z",
+            },{
+                _time: 2023-02-07T06:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 10.0,
-            },
-            {
-                _time: "2023-02-07T07:00:00Z",
+            },{
+                _time: 2023-02-07T07:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 200.0,
-            },
-            {
-                _time: "2023-02-07T08:00:00Z",
+            },{
+                _time: 2023-02-07T08:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 590.0,
-            },
-            {
-                _time: "2023-02-07T09:00:00Z",
+            },{
+                _time: 2023-02-07T09:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1000.0,
-            },
-            {
-                _time: "2023-02-07T10:00:00Z",
+            },{
+                _time: 2023-02-07T10:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1300.0,
-            },
-            {
-                _time: "2023-02-07T11:00:00Z",
+            },{
+                _time: 2023-02-07T11:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1480.0,
-            },
-            {
-                _time: "2023-02-07T12:00:00Z",
+            },{
+                _time: 2023-02-07T12:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1420.0,
-            },
-            {
-                _time: "2023-02-07T13:00:00Z",
+            },{
+                _time: 2023-02-07T13:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1170.0,
-            },
-            {
-                _time: "2023-02-07T14:00:00Z",
+            },{
+                _time: 2023-02-07T14:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 770.0,
-            },
-            {
-                _time: "2023-02-07T15:00:00Z",
+            },{
+                _time: 2023-02-07T15:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 290.0,
-            },
-            {
-                _time: "2023-02-07T16:00:00Z",
+            },{
+                _time: 2023-02-07T16:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 30.0,
-            },
-            {
-                _time: "2023-02-07T17:00:00Z",
+            },{
+                _time: 2023-02-07T17:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-07T18:00:00Z",
+            },{
+                _time: 2023-02-07T18:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-07T19:00:00Z",
+            },{
+                _time: 2023-02-07T19:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-07T20:00:00Z",
+            },{
+                _time: 2023-02-07T20:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-07T21:00:00Z",
+            },{
+                _time: 2023-02-07T21:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-07T22:00:00Z",
+            },{
+                _time: 2023-02-07T22:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-08T00:00:00Z",
+            },{
+                _time: 2023-02-08T00:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-08T01:00:00Z",
+            },{
+                _time: 2023-02-08T01:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-08T02:00:00Z",
+            },{
+                _time: 2023-02-08T02:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-08T03:00:00Z",
+            },{
+                _time: 2023-02-08T03:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-08T04:00:00Z",
+            },{
+                _time: 2023-02-08T04:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-08T05:00:00Z",
+            },{
+                _time: 2023-02-08T05:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-08T06:00:00Z",
+            },{
+                _time: 2023-02-08T06:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 10.0,
-            },
-            {
-                _time: "2023-02-08T07:00:00Z",
+            },{
+                _time: 2023-02-08T07:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 200.0,
-            },
-            {
-                _time: "2023-02-08T08:00:00Z",
+            },{
+                _time: 2023-02-08T08:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 560.0,
-            },
-            {
-                _time: "2023-02-08T09:00:00Z",
+            },{
+                _time: 2023-02-08T09:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 960.0,
-            },
-            {
-                _time: "2023-02-08T10:00:00Z",
+            },{
+                _time: 2023-02-08T10:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1260.0,
-            },
-            {
-                _time: "2023-02-08T11:00:00Z",
+            },{
+                _time: 2023-02-08T11:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1330.0,
-            },
-            {
-                _time: "2023-02-08T12:00:00Z",
+            },{
+                _time: 2023-02-08T12:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1290.0,
-            },
-            {
-                _time: "2023-02-08T13:00:00Z",
+            },{
+                _time: 2023-02-08T13:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1100.0,
-            },
-            {
-                _time: "2023-02-08T14:00:00Z",
+            },{
+                _time: 2023-02-08T14:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 760.0,
-            },
-            {
-                _time: "2023-02-08T15:00:00Z",
+            },{
+                _time: 2023-02-08T15:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 290.0,
-            },
-            {
-                _time: "2023-02-08T16:00:00Z",
+            },{
+                _time: 2023-02-08T16:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 30.0,
-            },
-            {
-                _time: "2023-02-08T17:00:00Z",
+            },{
+                _time: 2023-02-08T17:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-08T18:00:00Z",
+            },{
+                _time: 2023-02-08T18:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-08T19:00:00Z",
+            },{
+                _time: 2023-02-08T19:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-08T20:00:00Z",
+            },{
+                _time: 2023-02-08T20:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-08T21:00:00Z",
+            },{
+                _time: 2023-02-08T21:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-08T22:00:00Z",
+            },{
+                _time: 2023-02-08T22:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-09T00:00:00Z",
+            },{
+                _time: 2023-02-09T00:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-09T01:00:00Z",
+            },{
+                _time: 2023-02-09T01:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-09T02:00:00Z",
+            },{
+                _time: 2023-02-09T02:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-09T03:00:00Z",
+            },{
+                _time: 2023-02-09T03:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-09T04:00:00Z",
+            },{
+                _time: 2023-02-09T04:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-09T05:00:00Z",
+            },{
+                _time: 2023-02-09T05:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-09T06:00:00Z",
+            },{
+                _time: 2023-02-09T06:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 10.0,
-            },
-            {
-                _time: "2023-02-09T07:00:00Z",
+            },{
+                _time: 2023-02-09T07:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 160.0,
-            },
-            {
-                _time: "2023-02-09T08:00:00Z",
+            },{
+                _time: 2023-02-09T08:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 460.0,
-            },
-            {
-                _time: "2023-02-09T09:00:00Z",
+            },{
+                _time: 2023-02-09T09:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 800.0,
-            },
-            {
-                _time: "2023-02-09T10:00:00Z",
+            },{
+                _time: 2023-02-09T10:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1050.0,
-            },
-            {
-                _time: "2023-02-09T11:00:00Z",
+            },{
+                _time: 2023-02-09T11:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1150.0,
-            },
-            {
-                _time: "2023-02-09T12:00:00Z",
+            },{
+                _time: 2023-02-09T12:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1150.0,
-            },
-            {
-                _time: "2023-02-09T13:00:00Z",
+            },{
+                _time: 2023-02-09T13:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 970.0,
-            },
-            {
-                _time: "2023-02-09T14:00:00Z",
+            },{
+                _time: 2023-02-09T14:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 660.0,
-            },
-            {
-                _time: "2023-02-09T15:00:00Z",
+            },{
+                _time: 2023-02-09T15:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 270.0,
-            },
-            {
-                _time: "2023-02-09T16:00:00Z",
+            },{
+                _time: 2023-02-09T16:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 30.0,
-            },
-            {
-                _time: "2023-02-09T17:00:00Z",
+            },{
+                _time: 2023-02-09T17:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-09T18:00:00Z",
+            },{
+                _time: 2023-02-09T18:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-09T19:00:00Z",
+            },{
+                _time: 2023-02-09T19:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-09T20:00:00Z",
+            },{
+                _time: 2023-02-09T20:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-09T21:00:00Z",
+            },{
+                _time: 2023-02-09T21:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-09T22:00:00Z",
+            },{
+                _time: 2023-02-09T22:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-10T00:00:00Z",
+            },{
+                _time: 2023-02-10T00:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-10T01:00:00Z",
+            },{
+                _time: 2023-02-10T01:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-10T02:00:00Z",
+            },{
+                _time: 2023-02-10T02:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-10T03:00:00Z",
+            },{
+                _time: 2023-02-10T03:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-10T04:00:00Z",
+            },{
+                _time: 2023-02-10T04:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-10T05:00:00Z",
+            },{
+                _time: 2023-02-10T05:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-10T06:00:00Z",
+            },{
+                _time: 2023-02-10T06:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 20.0,
-            },
-            {
-                _time: "2023-02-10T07:00:00Z",
+            },{
+                _time: 2023-02-10T07:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 180.0,
-            },
-            {
-                _time: "2023-02-10T08:00:00Z",
+            },{
+                _time: 2023-02-10T08:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 490.0,
-            },
-            {
-                _time: "2023-02-10T09:00:00Z",
+            },{
+                _time: 2023-02-10T09:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 810.0,
-            },
-            {
-                _time: "2023-02-10T10:00:00Z",
+            },{
+                _time: 2023-02-10T10:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1090.0,
-            },
-            {
-                _time: "2023-02-10T11:00:00Z",
+            },{
+                _time: 2023-02-10T11:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1080.0,
-            },
-            {
-                _time: "2023-02-10T12:00:00Z",
+            },{
+                _time: 2023-02-10T12:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1110.0,
-            },
-            {
-                _time: "2023-02-10T13:00:00Z",
+            },{
+                _time: 2023-02-10T13:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 920.0,
-            },
-            {
-                _time: "2023-02-10T14:00:00Z",
+            },{
+                _time: 2023-02-10T14:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 630.0,
-            },
-            {
-                _time: "2023-02-10T15:00:00Z",
+            },{
+                _time: 2023-02-10T15:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 260.0,
-            },
-            {
-                _time: "2023-02-10T16:00:00Z",
+            },{
+                _time: 2023-02-10T16:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 40.0,
-            },
-            {
-                _time: "2023-02-10T17:00:00Z",
+            },{
+                _time: 2023-02-10T17:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-10T18:00:00Z",
+            },{
+                _time: 2023-02-10T18:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-10T19:00:00Z",
+            },{
+                _time: 2023-02-10T19:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-10T20:00:00Z",
+            },{
+                _time: 2023-02-10T20:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-10T21:00:00Z",
+            },{
+                _time: 2023-02-10T21:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-10T22:00:00Z",
+            },{
+                _time: 2023-02-10T22:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-11T00:00:00Z",
+            },{
+                _time: 2023-02-11T00:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-11T01:00:00Z",
+            },{
+                _time: 2023-02-11T01:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-11T02:00:00Z",
+            },{
+                _time: 2023-02-11T02:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-11T03:00:00Z",
+            },{
+                _time: 2023-02-11T03:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-11T04:00:00Z",
+            },{
+                _time: 2023-02-11T04:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-11T05:00:00Z",
+            },{
+                _time: 2023-02-11T05:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-11T06:00:00Z",
+            },{
+                _time: 2023-02-11T06:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 20.0,
-            },
-            {
-                _time: "2023-02-11T07:00:00Z",
+            },{
+                _time: 2023-02-11T07:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 170.0,
-            },
-            {
-                _time: "2023-02-11T08:00:00Z",
+            },{
+                _time: 2023-02-11T08:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 470.0,
-            },
-            {
-                _time: "2023-02-11T09:00:00Z",
+            },{
+                _time: 2023-02-11T09:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 780.0,
-            },
-            {
-                _time: "2023-02-11T10:00:00Z",
+            },{
+                _time: 2023-02-11T10:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1050.0,
-            },
-            {
-                _time: "2023-02-11T11:00:00Z",
+            },{
+                _time: 2023-02-11T11:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1060.0,
-            },
-            {
-                _time: "2023-02-11T12:00:00Z",
+            },{
+                _time: 2023-02-11T12:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1010.0,
-            },
-            {
-                _time: "2023-02-11T13:00:00Z",
+            },{
+                _time: 2023-02-11T13:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 860.0,
-            },
-            {
-                _time: "2023-02-11T14:00:00Z",
+            },{
+                _time: 2023-02-11T14:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 600.0,
-            },
-            {
-                _time: "2023-02-11T15:00:00Z",
+            },{
+                _time: 2023-02-11T15:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 270.0,
-            },
-            {
-                _time: "2023-02-11T16:00:00Z",
+            },{
+                _time: 2023-02-11T16:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 40.0,
-            },
-            {
-                _time: "2023-02-11T17:00:00Z",
+            },{
+                _time: 2023-02-11T17:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-11T18:00:00Z",
+            },{
+                _time: 2023-02-11T18:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-11T19:00:00Z",
+            },{
+                _time: 2023-02-11T19:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-11T20:00:00Z",
+            },{
+                _time: 2023-02-11T20:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-11T21:00:00Z",
+            },{
+                _time: 2023-02-11T21:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-11T22:00:00Z",
+            },{
+                _time: 2023-02-11T22:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-12T00:00:00Z",
+            },{
+                _time: 2023-02-12T00:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-12T01:00:00Z",
+            },{
+                _time: 2023-02-12T01:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-12T02:00:00Z",
+            },{
+                _time: 2023-02-12T02:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-12T03:00:00Z",
+            },{
+                _time: 2023-02-12T03:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-12T04:00:00Z",
+            },{
+                _time: 2023-02-12T04:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-12T05:00:00Z",
+            },{
+                _time: 2023-02-12T05:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-12T06:00:00Z",
+            },{
+                _time: 2023-02-12T06:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 10.0,
-            },
-            {
-                _time: "2023-02-12T07:00:00Z",
+            },{
+                _time: 2023-02-12T07:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 150.0,
-            },
-            {
-                _time: "2023-02-12T08:00:00Z",
+            },{
+                _time: 2023-02-12T08:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 430.0,
-            },
-            {
-                _time: "2023-02-12T09:00:00Z",
+            },{
+                _time: 2023-02-12T09:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 720.0,
-            },
-            {
-                _time: "2023-02-12T10:00:00Z",
+            },{
+                _time: 2023-02-12T10:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 940.0,
-            },
-            {
-                _time: "2023-02-12T11:00:00Z",
+            },{
+                _time: 2023-02-12T11:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1060.0,
-            },
-            {
-                _time: "2023-02-12T12:00:00Z",
+            },{
+                _time: 2023-02-12T12:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1000.0,
-            },
-            {
-                _time: "2023-02-12T13:00:00Z",
+            },{
+                _time: 2023-02-12T13:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 850.0,
-            },
-            {
-                _time: "2023-02-12T14:00:00Z",
+            },{
+                _time: 2023-02-12T14:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 600.0,
-            },
-            {
-                _time: "2023-02-12T15:00:00Z",
+            },{
+                _time: 2023-02-12T15:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 270.0,
-            },
-            {
-                _time: "2023-02-12T16:00:00Z",
+            },{
+                _time: 2023-02-12T16:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 50.0,
-            },
-            {
-                _time: "2023-02-12T17:00:00Z",
+            },{
+                _time: 2023-02-12T17:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-12T18:00:00Z",
+            },{
+                _time: 2023-02-12T18:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-12T19:00:00Z",
+            },{
+                _time: 2023-02-12T19:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-12T20:00:00Z",
+            },{
+                _time: 2023-02-12T20:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-12T21:00:00Z",
+            },{
+                _time: 2023-02-12T21:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-12T22:00:00Z",
+            },{
+                _time: 2023-02-12T22:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-13T00:00:00Z",
+            },{
+                _time: 2023-02-13T00:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-13T01:00:00Z",
+            },{
+                _time: 2023-02-13T01:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-13T02:00:00Z",
+            },{
+                _time: 2023-02-13T02:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-13T03:00:00Z",
+            },{
+                _time: 2023-02-13T03:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-13T04:00:00Z",
+            },{
+                _time: 2023-02-13T04:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-13T05:00:00Z",
+            },{
+                _time: 2023-02-13T05:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-13T06:00:00Z",
+            },{
+                _time: 2023-02-13T06:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 10.0,
-            },
-            {
-                _time: "2023-02-13T07:00:00Z",
+            },{
+                _time: 2023-02-13T07:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 150.0,
-            },
-            {
-                _time: "2023-02-13T08:00:00Z",
+            },{
+                _time: 2023-02-13T08:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 400.0,
-            },
-            {
-                _time: "2023-02-13T09:00:00Z",
+            },{
+                _time: 2023-02-13T09:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 670.0,
-            },
-            {
-                _time: "2023-02-13T10:00:00Z",
+            },{
+                _time: 2023-02-13T10:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 840.0,
-            },
-            {
-                _time: "2023-02-13T11:00:00Z",
+            },{
+                _time: 2023-02-13T11:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 970.0,
-            },
-            {
-                _time: "2023-02-13T12:00:00Z",
+            },{
+                _time: 2023-02-13T12:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 960.0,
-            },
-            {
-                _time: "2023-02-13T13:00:00Z",
+            },{
+                _time: 2023-02-13T13:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 800.0,
-            },
-            {
-                _time: "2023-02-13T14:00:00Z",
+            },{
+                _time: 2023-02-13T14:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 580.0,
-            },
-            {
-                _time: "2023-02-13T15:00:00Z",
+            },{
+                _time: 2023-02-13T15:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 270.0,
-            },
-            {
-                _time: "2023-02-13T16:00:00Z",
+            },{
+                _time: 2023-02-13T16:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 50.0,
-            },
-            {
-                _time: "2023-02-13T17:00:00Z",
+            },{
+                _time: 2023-02-13T17:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-13T18:00:00Z",
+            },{
+                _time: 2023-02-13T18:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-13T19:00:00Z",
+            },{
+                _time: 2023-02-13T19:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-13T20:00:00Z",
+            },{
+                _time: 2023-02-13T20:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-13T21:00:00Z",
+            },{
+                _time: 2023-02-13T21:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-13T22:00:00Z",
+            },{
+                _time: 2023-02-13T22:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-14T00:00:00Z",
+            },{
+                _time: 2023-02-14T00:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-14T01:00:00Z",
+            },{
+                _time: 2023-02-14T01:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-14T02:00:00Z",
+            },{
+                _time: 2023-02-14T02:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-14T03:00:00Z",
+            },{
+                _time: 2023-02-14T03:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-14T04:00:00Z",
+            },{
+                _time: 2023-02-14T04:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-14T05:00:00Z",
+            },{
+                _time: 2023-02-14T05:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
-            },
-            {
-                _time: "2023-02-14T06:00:00Z",
+            },{
+                _time: 2023-02-14T06:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 10.0,
-            },
-            {
-                _time: "2023-02-14T07:00:00Z",
+            },{
+                _time: 2023-02-14T07:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 150.0,
-            },
-            {
-                _time: "2023-02-14T08:00:00Z",
+            },{
+                _time: 2023-02-14T08:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 410.0,
-            },
-            {
-                _time: "2023-02-14T09:00:00Z",
+            },{
+                _time: 2023-02-14T09:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 670.0,
-            },
-            {
-                _time: "2023-02-14T10:00:00Z",
+            },{
+                _time: 2023-02-14T10:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 880.0,
-            },
-            {
-                _time: "2023-02-14T11:00:00Z",
+            },{
+                _time: 2023-02-14T11:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 1010.0,
-            },
-            {
-                _time: "2023-02-14T12:00:00Z",
+            },{
+                _time: 2023-02-14T12:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 900.0,
-            },
-            {
-                _time: "2023-02-14T13:00:00Z",
+            },{
+                _time: 2023-02-14T13:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 760.0,
-            },
-            {
-                _time: "2023-02-14T14:00:00Z",
+            },{
+                _time: 2023-02-14T14:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 580.0,
-            },
-            {
-                _time: "2023-02-14T15:00:00Z",
+            },{
+                _time: 2023-02-14T15:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 280.0,
-            },
-            {
-                _time: "2023-02-14T16:00:00Z",
+            },{
+                _time: 2023-02-14T16:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 50.0,
-            },
-            {
-                _time: "2023-02-14T17:00:00Z",
+            },{
+                _time: 2023-02-14T17:00:00Z,
+                _measurement: "Rad1h"
+                _field: "_value",
+                _value: 0.0,
+            },{
+                _time: 2023-02-14T18:00:00Z,
+                _measurement: "Rad1h"
+                _field: "_value",
+                _value: 0.0,
+            },{
+                _time: 2023-02-14T19:00:00Z,
+                _measurement: "Rad1h"
+                _field: "_value",
+                _value: 0.0,
+            },{
+                _time: 2023-02-14T20:00:00Z,
+                _measurement: "Rad1h"
+                _field: "_value",
+                _value: 0.0,
+            },{
+                _time: 2023-02-14T21:00:00Z,
                 _measurement: "Rad1h"
                 _field: "_value",
                 _value: 0.0,
             },
-            {
-                _time: "2023-02-14T18:00:00Z",
-                _measurement: "Rad1h"
-                _field: "_value",
-                _value: 0.0,
-            },
-            {
-                _time: "2023-02-14T19:00:00Z",
-                _measurement: "Rad1h"
-                _field: "_value",
-                _value: 0.0,
-            },
-            {
-                _time: "2023-02-14T20:00:00Z",
-                _measurement: "Rad1h"
-                _field: "_value",
-                _value: 0.0,
-            },
-            {
-                _time: "2023-02-14T21:00:00Z",
-                _measurement: "Rad1h"
-                _field: "_value",
-                _value: 0.0,
-            },
-            
         ],
     )
 

@@ -2,1430 +2,1192 @@
 data =
     array.from(
         rows: [
-            
             {
-                _time: "2023-02-04T15:00:00Z",
+                _time: 2023-02-04T15:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 3.7061206610032142,
-            },
-            {
-                _time: "2023-02-04T16:00:00Z",
+            },{
+                _time: 2023-02-04T16:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 0.6941325413127009,
-            },
-            {
-                _time: "2023-02-04T17:00:00Z",
+            },{
+                _time: 2023-02-04T17:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.28,
-            },
-            {
-                _time: "2023-02-04T18:00:00Z",
+            },{
+                _time: 2023-02-04T18:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.18,
-            },
-            {
-                _time: "2023-02-04T19:00:00Z",
+            },{
+                _time: 2023-02-04T19:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.08,
-            },
-            {
-                _time: "2023-02-04T20:00:00Z",
+            },{
+                _time: 2023-02-04T20:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.48,
-            },
-            {
-                _time: "2023-02-04T21:00:00Z",
+            },{
+                _time: 2023-02-04T21:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.08,
-            },
-            {
-                _time: "2023-02-04T22:00:00Z",
+            },{
+                _time: 2023-02-04T22:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.58,
-            },
-            {
-                _time: "2023-02-05T00:00:00Z",
+            },{
+                _time: 2023-02-05T00:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.38,
-            },
-            {
-                _time: "2023-02-05T01:00:00Z",
+            },{
+                _time: 2023-02-05T01:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.48,
-            },
-            {
-                _time: "2023-02-05T02:00:00Z",
+            },{
+                _time: 2023-02-05T02:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.38,
-            },
-            {
-                _time: "2023-02-05T03:00:00Z",
+            },{
+                _time: 2023-02-05T03:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.68,
-            },
-            {
-                _time: "2023-02-05T04:00:00Z",
+            },{
+                _time: 2023-02-05T04:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.68,
-            },
-            {
-                _time: "2023-02-05T05:00:00Z",
+            },{
+                _time: 2023-02-05T05:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.58,
-            },
-            {
-                _time: "2023-02-05T06:00:00Z",
+            },{
+                _time: 2023-02-05T06:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.38,
-            },
-            {
-                _time: "2023-02-05T07:00:00Z",
+            },{
+                _time: 2023-02-05T07:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.99512483391476,
-            },
-            {
-                _time: "2023-02-05T08:00:00Z",
+            },{
+                _time: 2023-02-05T08:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.2325211004117948,
-            },
-            {
-                _time: "2023-02-05T09:00:00Z",
+            },{
+                _time: 2023-02-05T09:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.745632989034069,
-            },
-            {
-                _time: "2023-02-05T10:00:00Z",
+            },{
+                _time: 2023-02-05T10:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 2.819943119492214,
-            },
-            {
-                _time: "2023-02-05T11:00:00Z",
+            },{
+                _time: 2023-02-05T11:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 3.0703072969221354,
-            },
-            {
-                _time: "2023-02-05T12:00:00Z",
+            },{
+                _time: 2023-02-05T12:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 3.145632989034069,
-            },
-            {
-                _time: "2023-02-05T13:00:00Z",
+            },{
+                _time: 2023-02-05T13:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 2.394806987788298,
-            },
-            {
-                _time: "2023-02-05T14:00:00Z",
+            },{
+                _time: 2023-02-05T14:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.617483533859596,
-            },
-            {
-                _time: "2023-02-05T15:00:00Z",
+            },{
+                _time: 2023-02-05T15:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 0.18719287181430813,
-            },
-            {
-                _time: "2023-02-05T16:00:00Z",
+            },{
+                _time: 2023-02-05T16:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.88,
-            },
-            {
-                _time: "2023-02-05T17:00:00Z",
+            },{
+                _time: 2023-02-05T17:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.78,
-            },
-            {
-                _time: "2023-02-05T18:00:00Z",
+            },{
+                _time: 2023-02-05T18:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.78,
-            },
-            {
-                _time: "2023-02-05T19:00:00Z",
+            },{
+                _time: 2023-02-05T19:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.68,
-            },
-            {
-                _time: "2023-02-05T20:00:00Z",
+            },{
+                _time: 2023-02-05T20:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.58,
-            },
-            {
-                _time: "2023-02-05T21:00:00Z",
+            },{
+                _time: 2023-02-05T21:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.48,
-            },
-            {
-                _time: "2023-02-05T22:00:00Z",
+            },{
+                _time: 2023-02-05T22:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.58,
-            },
-            {
-                _time: "2023-02-06T00:00:00Z",
+            },{
+                _time: 2023-02-06T00:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.88,
-            },
-            {
-                _time: "2023-02-06T01:00:00Z",
+            },{
+                _time: 2023-02-06T01:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.98,
-            },
-            {
-                _time: "2023-02-06T02:00:00Z",
+            },{
+                _time: 2023-02-06T02:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.98,
-            },
-            {
-                _time: "2023-02-06T03:00:00Z",
+            },{
+                _time: 2023-02-06T03:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.18,
-            },
-            {
-                _time: "2023-02-06T04:00:00Z",
+            },{
+                _time: 2023-02-06T04:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.28,
-            },
-            {
-                _time: "2023-02-06T05:00:00Z",
+            },{
+                _time: 2023-02-06T05:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.38,
-            },
-            {
-                _time: "2023-02-06T06:00:00Z",
+            },{
+                _time: 2023-02-06T06:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.18,
-            },
-            {
-                _time: "2023-02-06T07:00:00Z",
+            },{
+                _time: 2023-02-06T07:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.36177316394916437,
-            },
-            {
-                _time: "2023-02-06T08:00:00Z",
+            },{
+                _time: 2023-02-06T08:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.4377757818580656,
-            },
-            {
-                _time: "2023-02-06T09:00:00Z",
+            },{
+                _time: 2023-02-06T09:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 2.9671132855920828,
-            },
-            {
-                _time: "2023-02-06T10:00:00Z",
+            },{
+                _time: 2023-02-06T10:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 4.668608125044603,
-            },
-            {
-                _time: "2023-02-06T11:00:00Z",
+            },{
+                _time: 2023-02-06T11:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 4.92353346778909,
-            },
-            {
-                _time: "2023-02-06T12:00:00Z",
+            },{
+                _time: 2023-02-06T12:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 5.049696608907817,
-            },
-            {
-                _time: "2023-02-06T13:00:00Z",
+            },{
+                _time: 2023-02-06T13:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 4.201498190264486,
-            },
-            {
-                _time: "2023-02-06T14:00:00Z",
+            },{
+                _time: 2023-02-06T14:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 3.061320168094916,
-            },
-            {
-                _time: "2023-02-06T15:00:00Z",
+            },{
+                _time: 2023-02-06T15:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.3443325986038788,
-            },
-            {
-                _time: "2023-02-06T16:00:00Z",
+            },{
+                _time: 2023-02-06T16:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.2434223201861495,
-            },
-            {
-                _time: "2023-02-06T17:00:00Z",
+            },{
+                _time: 2023-02-06T17:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.28,
-            },
-            {
-                _time: "2023-02-06T18:00:00Z",
+            },{
+                _time: 2023-02-06T18:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.48,
-            },
-            {
-                _time: "2023-02-06T19:00:00Z",
+            },{
+                _time: 2023-02-06T19:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.08,
-            },
-            {
-                _time: "2023-02-06T20:00:00Z",
+            },{
+                _time: 2023-02-06T20:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.68,
-            },
-            {
-                _time: "2023-02-06T21:00:00Z",
+            },{
+                _time: 2023-02-06T21:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.28,
-            },
-            {
-                _time: "2023-02-06T22:00:00Z",
+            },{
+                _time: 2023-02-06T22:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.08,
-            },
-            {
-                _time: "2023-02-07T00:00:00Z",
+            },{
+                _time: 2023-02-07T00:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.58,
-            },
-            {
-                _time: "2023-02-07T01:00:00Z",
+            },{
+                _time: 2023-02-07T01:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -6.18,
-            },
-            {
-                _time: "2023-02-07T02:00:00Z",
+            },{
+                _time: 2023-02-07T02:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -6.68,
-            },
-            {
-                _time: "2023-02-07T03:00:00Z",
+            },{
+                _time: 2023-02-07T03:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -7.08,
-            },
-            {
-                _time: "2023-02-07T04:00:00Z",
+            },{
+                _time: 2023-02-07T04:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -7.58,
-            },
-            {
-                _time: "2023-02-07T05:00:00Z",
+            },{
+                _time: 2023-02-07T05:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -7.98,
-            },
-            {
-                _time: "2023-02-07T06:00:00Z",
+            },{
+                _time: 2023-02-07T06:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -7.707862207293728,
-            },
-            {
-                _time: "2023-02-07T07:00:00Z",
+            },{
+                _time: 2023-02-07T07:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.642814144445779,
-            },
-            {
-                _time: "2023-02-07T08:00:00Z",
+            },{
+                _time: 2023-02-07T08:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.7723431428960053,
-            },
-            {
-                _time: "2023-02-07T09:00:00Z",
+            },{
+                _time: 2023-02-07T09:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 3.7010782108278626,
-            },
-            {
-                _time: "2023-02-07T10:00:00Z",
+            },{
+                _time: 2023-02-07T10:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 8.014108687245027,
-            },
-            {
-                _time: "2023-02-07T11:00:00Z",
+            },{
+                _time: 2023-02-07T11:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 11.395243942386555,
-            },
-            {
-                _time: "2023-02-07T12:00:00Z",
+            },{
+                _time: 2023-02-07T12:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 11.318078333604715,
-            },
-            {
-                _time: "2023-02-07T13:00:00Z",
+            },{
+                _time: 2023-02-07T13:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 8.93321763547683,
-            },
-            {
-                _time: "2023-02-07T14:00:00Z",
+            },{
+                _time: 2023-02-07T14:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 5.8000844741516415,
-            },
-            {
-                _time: "2023-02-07T15:00:00Z",
+            },{
+                _time: 2023-02-07T15:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.554790922495427,
-            },
-            {
-                _time: "2023-02-07T16:00:00Z",
+            },{
+                _time: 2023-02-07T16:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.669504387328059,
-            },
-            {
-                _time: "2023-02-07T17:00:00Z",
+            },{
+                _time: 2023-02-07T17:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.98,
-            },
-            {
-                _time: "2023-02-07T18:00:00Z",
+            },{
+                _time: 2023-02-07T18:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.98,
-            },
-            {
-                _time: "2023-02-07T19:00:00Z",
+            },{
+                _time: 2023-02-07T19:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.98,
-            },
-            {
-                _time: "2023-02-07T20:00:00Z",
+            },{
+                _time: 2023-02-07T20:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.38,
-            },
-            {
-                _time: "2023-02-07T21:00:00Z",
+            },{
+                _time: 2023-02-07T21:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.78,
-            },
-            {
-                _time: "2023-02-07T22:00:00Z",
+            },{
+                _time: 2023-02-07T22:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -6.08,
-            },
-            {
-                _time: "2023-02-08T00:00:00Z",
+            },{
+                _time: 2023-02-08T00:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -7.18,
-            },
-            {
-                _time: "2023-02-08T01:00:00Z",
+            },{
+                _time: 2023-02-08T01:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -7.18,
-            },
-            {
-                _time: "2023-02-08T02:00:00Z",
+            },{
+                _time: 2023-02-08T02:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -7.28,
-            },
-            {
-                _time: "2023-02-08T03:00:00Z",
+            },{
+                _time: 2023-02-08T03:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -7.48,
-            },
-            {
-                _time: "2023-02-08T04:00:00Z",
+            },{
+                _time: 2023-02-08T04:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -7.88,
-            },
-            {
-                _time: "2023-02-08T05:00:00Z",
+            },{
+                _time: 2023-02-08T05:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -7.88,
-            },
-            {
-                _time: "2023-02-08T06:00:00Z",
+            },{
+                _time: 2023-02-08T06:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -7.30983479577602,
-            },
-            {
-                _time: "2023-02-08T07:00:00Z",
+            },{
+                _time: 2023-02-08T07:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.182115499942177,
-            },
-            {
-                _time: "2023-02-08T08:00:00Z",
+            },{
+                _time: 2023-02-08T08:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.1932381053238799,
-            },
-            {
-                _time: "2023-02-08T09:00:00Z",
+            },{
+                _time: 2023-02-08T09:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 3.1542006167552747,
-            },
-            {
-                _time: "2023-02-08T10:00:00Z",
+            },{
+                _time: 2023-02-08T10:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 6.929617177400447,
-            },
-            {
-                _time: "2023-02-08T11:00:00Z",
+            },{
+                _time: 2023-02-08T11:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 8.729358950347079,
-            },
-            {
-                _time: "2023-02-08T12:00:00Z",
+            },{
+                _time: 2023-02-08T12:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 9.049635397966236,
-            },
-            {
-                _time: "2023-02-08T13:00:00Z",
+            },{
+                _time: 2023-02-08T13:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 7.45534020577392,
-            },
-            {
-                _time: "2023-02-08T14:00:00Z",
+            },{
+                _time: 2023-02-08T14:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 5.094835921667739,
-            },
-            {
-                _time: "2023-02-08T15:00:00Z",
+            },{
+                _time: 2023-02-08T15:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.4003763573008323,
-            },
-            {
-                _time: "2023-02-08T16:00:00Z",
+            },{
+                _time: 2023-02-08T16:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.275133480279224,
-            },
-            {
-                _time: "2023-02-08T17:00:00Z",
+            },{
+                _time: 2023-02-08T17:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.48,
-            },
-            {
-                _time: "2023-02-08T18:00:00Z",
+            },{
+                _time: 2023-02-08T18:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.38,
-            },
-            {
-                _time: "2023-02-08T19:00:00Z",
+            },{
+                _time: 2023-02-08T19:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.88,
-            },
-            {
-                _time: "2023-02-08T20:00:00Z",
+            },{
+                _time: 2023-02-08T20:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.58,
-            },
-            {
-                _time: "2023-02-08T21:00:00Z",
+            },{
+                _time: 2023-02-08T21:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.98,
-            },
-            {
-                _time: "2023-02-08T22:00:00Z",
+            },{
+                _time: 2023-02-08T22:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.08,
-            },
-            {
-                _time: "2023-02-09T00:00:00Z",
+            },{
+                _time: 2023-02-09T00:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.88,
-            },
-            {
-                _time: "2023-02-09T01:00:00Z",
+            },{
+                _time: 2023-02-09T01:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -6.18,
-            },
-            {
-                _time: "2023-02-09T02:00:00Z",
+            },{
+                _time: 2023-02-09T02:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -6.58,
-            },
-            {
-                _time: "2023-02-09T03:00:00Z",
+            },{
+                _time: 2023-02-09T03:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -6.98,
-            },
-            {
-                _time: "2023-02-09T04:00:00Z",
+            },{
+                _time: 2023-02-09T04:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -6.98,
-            },
-            {
-                _time: "2023-02-09T05:00:00Z",
+            },{
+                _time: 2023-02-09T05:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -7.18,
-            },
-            {
-                _time: "2023-02-09T06:00:00Z",
+            },{
+                _time: 2023-02-09T06:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -6.907862207293729,
-            },
-            {
-                _time: "2023-02-09T07:00:00Z",
+            },{
+                _time: 2023-02-09T07:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.8293626415133355,
-            },
-            {
-                _time: "2023-02-09T08:00:00Z",
+            },{
+                _time: 2023-02-09T08:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.4810804835182287,
-            },
-            {
-                _time: "2023-02-09T09:00:00Z",
+            },{
+                _time: 2023-02-09T09:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 2.4464719059446733,
-            },
-            {
-                _time: "2023-02-09T10:00:00Z",
+            },{
+                _time: 2023-02-09T10:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 5.531054166914071,
-            },
-            {
-                _time: "2023-02-09T11:00:00Z",
+            },{
+                _time: 2023-02-09T11:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 7.4755377878328835,
-            },
-            {
-                _time: "2023-02-09T12:00:00Z",
+            },{
+                _time: 2023-02-09T12:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 8.215387131045727,
-            },
-            {
-                _time: "2023-02-09T13:00:00Z",
+            },{
+                _time: 2023-02-09T13:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 6.919899964099743,
-            },
-            {
-                _time: "2023-02-09T14:00:00Z",
+            },{
+                _time: 2023-02-09T14:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 4.569601869404473,
-            },
-            {
-                _time: "2023-02-09T15:00:00Z",
+            },{
+                _time: 2023-02-09T15:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.7144605140474667,
-            },
-            {
-                _time: "2023-02-09T16:00:00Z",
+            },{
+                _time: 2023-02-09T16:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.0695043873280592,
-            },
-            {
-                _time: "2023-02-09T17:00:00Z",
+            },{
+                _time: 2023-02-09T17:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.48,
-            },
-            {
-                _time: "2023-02-09T18:00:00Z",
+            },{
+                _time: 2023-02-09T18:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.18,
-            },
-            {
-                _time: "2023-02-09T19:00:00Z",
+            },{
+                _time: 2023-02-09T19:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.88,
-            },
-            {
-                _time: "2023-02-09T20:00:00Z",
+            },{
+                _time: 2023-02-09T20:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.18,
-            },
-            {
-                _time: "2023-02-09T21:00:00Z",
+            },{
+                _time: 2023-02-09T21:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.58,
-            },
-            {
-                _time: "2023-02-09T22:00:00Z",
+            },{
+                _time: 2023-02-09T22:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.78,
-            },
-            {
-                _time: "2023-02-10T00:00:00Z",
+            },{
+                _time: 2023-02-10T00:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.28,
-            },
-            {
-                _time: "2023-02-10T01:00:00Z",
+            },{
+                _time: 2023-02-10T01:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.58,
-            },
-            {
-                _time: "2023-02-10T02:00:00Z",
+            },{
+                _time: 2023-02-10T02:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.88,
-            },
-            {
-                _time: "2023-02-10T03:00:00Z",
+            },{
+                _time: 2023-02-10T03:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.98,
-            },
-            {
-                _time: "2023-02-10T04:00:00Z",
+            },{
+                _time: 2023-02-10T04:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -6.68,
-            },
-            {
-                _time: "2023-02-10T05:00:00Z",
+            },{
+                _time: 2023-02-10T05:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -6.38,
-            },
-            {
-                _time: "2023-02-10T06:00:00Z",
+            },{
+                _time: 2023-02-10T06:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -6.035724414587456,
-            },
-            {
-                _time: "2023-02-10T07:00:00Z",
+            },{
+                _time: 2023-02-10T07:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.0502556992246666,
-            },
-            {
-                _time: "2023-02-10T08:00:00Z",
+            },{
+                _time: 2023-02-10T08:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.37871803457774444,
-            },
-            {
-                _time: "2023-02-10T09:00:00Z",
+            },{
+                _time: 2023-02-10T09:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 3.3717010408568093,
-            },
-            {
-                _time: "2023-02-10T10:00:00Z",
+            },{
+                _time: 2023-02-10T10:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 6.624679847014024,
-            },
-            {
-                _time: "2023-02-10T11:00:00Z",
+            },{
+                _time: 2023-02-10T11:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 7.638455483490717,
-            },
-            {
-                _time: "2023-02-10T12:00:00Z",
+            },{
+                _time: 2023-02-10T12:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 8.553807983108767,
-            },
-            {
-                _time: "2023-02-10T13:00:00Z",
+            },{
+                _time: 2023-02-10T13:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 7.360437198393862,
-            },
-            {
-                _time: "2023-02-10T14:00:00Z",
+            },{
+                _time: 2023-02-10T14:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 5.086593032515211,
-            },
-            {
-                _time: "2023-02-10T15:00:00Z",
+            },{
+                _time: 2023-02-10T15:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.8442953098234867,
-            },
-            {
-                _time: "2023-02-10T16:00:00Z",
+            },{
+                _time: 2023-02-10T16:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.799339183104079,
-            },
-            {
-                _time: "2023-02-10T17:00:00Z",
+            },{
+                _time: 2023-02-10T17:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.98,
-            },
-            {
-                _time: "2023-02-10T18:00:00Z",
+            },{
+                _time: 2023-02-10T18:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.88,
-            },
-            {
-                _time: "2023-02-10T19:00:00Z",
+            },{
+                _time: 2023-02-10T19:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.18,
-            },
-            {
-                _time: "2023-02-10T20:00:00Z",
+            },{
+                _time: 2023-02-10T20:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.58,
-            },
-            {
-                _time: "2023-02-10T21:00:00Z",
+            },{
+                _time: 2023-02-10T21:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.98,
-            },
-            {
-                _time: "2023-02-10T22:00:00Z",
+            },{
+                _time: 2023-02-10T22:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.18,
-            },
-            {
-                _time: "2023-02-11T00:00:00Z",
+            },{
+                _time: 2023-02-11T00:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.48,
-            },
-            {
-                _time: "2023-02-11T01:00:00Z",
+            },{
+                _time: 2023-02-11T01:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.88,
-            },
-            {
-                _time: "2023-02-11T02:00:00Z",
+            },{
+                _time: 2023-02-11T02:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.18,
-            },
-            {
-                _time: "2023-02-11T03:00:00Z",
+            },{
+                _time: 2023-02-11T03:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.18,
-            },
-            {
-                _time: "2023-02-11T04:00:00Z",
+            },{
+                _time: 2023-02-11T04:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -5.08,
-            },
-            {
-                _time: "2023-02-11T05:00:00Z",
+            },{
+                _time: 2023-02-11T05:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.98,
-            },
-            {
-                _time: "2023-02-11T06:00:00Z",
+            },{
+                _time: 2023-02-11T06:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -4.6357244145874565,
-            },
-            {
-                _time: "2023-02-11T07:00:00Z",
+            },{
+                _time: 2023-02-11T07:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.7576876873392884,
-            },
-            {
-                _time: "2023-02-11T08:00:00Z",
+            },{
+                _time: 2023-02-11T08:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 0.9796713062220347,
-            },
-            {
-                _time: "2023-02-11T09:00:00Z",
+            },{
+                _time: 2023-02-11T09:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 4.910363319415262,
-            },
-            {
-                _time: "2023-02-11T10:00:00Z",
+            },{
+                _time: 2023-02-11T10:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 8.330823174789861,
-            },
-            {
-                _time: "2023-02-11T11:00:00Z",
+            },{
+                _time: 2023-02-11T11:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 9.796380985204749,
-            },
-            {
-                _time: "2023-02-11T12:00:00Z",
+            },{
+                _time: 2023-02-11T12:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 9.68014268597948,
-            },
-            {
-                _time: "2023-02-11T13:00:00Z",
+            },{
+                _time: 2023-02-11T13:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 9.095204543298912,
-            },
-            {
-                _time: "2023-02-11T14:00:00Z",
+            },{
+                _time: 2023-02-11T14:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 6.869806262545859,
-            },
-            {
-                _time: "2023-02-11T15:00:00Z",
+            },{
+                _time: 2023-02-11T15:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 3.9144605140474664,
-            },
-            {
-                _time: "2023-02-11T16:00:00Z",
+            },{
+                _time: 2023-02-11T16:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.300660816895921,
-            },
-            {
-                _time: "2023-02-11T17:00:00Z",
+            },{
+                _time: 2023-02-11T17:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.18,
-            },
-            {
-                _time: "2023-02-11T18:00:00Z",
+            },{
+                _time: 2023-02-11T18:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.18,
-            },
-            {
-                _time: "2023-02-11T19:00:00Z",
+            },{
+                _time: 2023-02-11T19:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.58,
-            },
-            {
-                _time: "2023-02-11T20:00:00Z",
+            },{
+                _time: 2023-02-11T20:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.88,
-            },
-            {
-                _time: "2023-02-11T21:00:00Z",
+            },{
+                _time: 2023-02-11T21:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.08,
-            },
-            {
-                _time: "2023-02-11T22:00:00Z",
+            },{
+                _time: 2023-02-11T22:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.28,
-            },
-            {
-                _time: "2023-02-12T00:00:00Z",
+            },{
+                _time: 2023-02-12T00:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.58,
-            },
-            {
-                _time: "2023-02-12T01:00:00Z",
+            },{
+                _time: 2023-02-12T01:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.68,
-            },
-            {
-                _time: "2023-02-12T02:00:00Z",
+            },{
+                _time: 2023-02-12T02:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.68,
-            },
-            {
-                _time: "2023-02-12T03:00:00Z",
+            },{
+                _time: 2023-02-12T03:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.18,
-            },
-            {
-                _time: "2023-02-12T04:00:00Z",
+            },{
+                _time: 2023-02-12T04:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.28,
-            },
-            {
-                _time: "2023-02-12T05:00:00Z",
+            },{
+                _time: 2023-02-12T05:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -3.28,
-            },
-            {
-                _time: "2023-02-12T06:00:00Z",
+            },{
+                _time: 2023-02-12T06:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.807862207293728,
-            },
-            {
-                _time: "2023-02-12T07:00:00Z",
+            },{
+                _time: 2023-02-12T07:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.401071982059114,
-            },
-            {
-                _time: "2023-02-12T08:00:00Z",
+            },{
+                _time: 2023-02-12T08:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.5120145689231004,
-            },
-            {
-                _time: "2023-02-12T09:00:00Z",
+            },{
+                _time: 2023-02-12T09:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 5.40155263885966,
-            },
-            {
-                _time: "2023-02-12T10:00:00Z",
+            },{
+                _time: 2023-02-12T10:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 7.8224609160377945,
-            },
-            {
-                _time: "2023-02-12T11:00:00Z",
+            },{
+                _time: 2023-02-12T11:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 9.701667492320608,
-            },
-            {
-                _time: "2023-02-12T12:00:00Z",
+            },{
+                _time: 2023-02-12T12:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 9.914998037603755,
-            },
-            {
-                _time: "2023-02-12T13:00:00Z",
+            },{
+                _time: 2023-02-12T13:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 9.12913655455863,
-            },
-            {
-                _time: "2023-02-12T14:00:00Z",
+            },{
+                _time: 2023-02-12T14:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 7.169788053224088,
-            },
-            {
-                _time: "2023-02-12T15:00:00Z",
+            },{
+                _time: 2023-02-12T15:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 4.363798677486981,
-            },
-            {
-                _time: "2023-02-12T16:00:00Z",
+            },{
+                _time: 2023-02-12T16:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.5614441995346264,
-            },
-            {
-                _time: "2023-02-12T17:00:00Z",
+            },{
+                _time: 2023-02-12T17:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 0.32,
-            },
-            {
-                _time: "2023-02-12T18:00:00Z",
+            },{
+                _time: 2023-02-12T18:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.58,
-            },
-            {
-                _time: "2023-02-12T19:00:00Z",
+            },{
+                _time: 2023-02-12T19:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.68,
-            },
-            {
-                _time: "2023-02-12T20:00:00Z",
+            },{
+                _time: 2023-02-12T20:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.78,
-            },
-            {
-                _time: "2023-02-12T21:00:00Z",
+            },{
+                _time: 2023-02-12T21:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.98,
-            },
-            {
-                _time: "2023-02-12T22:00:00Z",
+            },{
+                _time: 2023-02-12T22:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.28,
-            },
-            {
-                _time: "2023-02-13T00:00:00Z",
+            },{
+                _time: 2023-02-13T00:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.38,
-            },
-            {
-                _time: "2023-02-13T01:00:00Z",
+            },{
+                _time: 2023-02-13T01:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.48,
-            },
-            {
-                _time: "2023-02-13T02:00:00Z",
+            },{
+                _time: 2023-02-13T02:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.78,
-            },
-            {
-                _time: "2023-02-13T03:00:00Z",
+            },{
+                _time: 2023-02-13T03:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.78,
-            },
-            {
-                _time: "2023-02-13T04:00:00Z",
+            },{
+                _time: 2023-02-13T04:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.88,
-            },
-            {
-                _time: "2023-02-13T05:00:00Z",
+            },{
+                _time: 2023-02-13T05:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.88,
-            },
-            {
-                _time: "2023-02-13T06:00:00Z",
+            },{
+                _time: 2023-02-13T06:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.707862207293728,
-            },
-            {
-                _time: "2023-02-13T07:00:00Z",
+            },{
+                _time: 2023-02-13T07:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.3305761718753486,
-            },
-            {
-                _time: "2023-02-13T08:00:00Z",
+            },{
+                _time: 2023-02-13T08:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.7048891628432816,
-            },
-            {
-                _time: "2023-02-13T09:00:00Z",
+            },{
+                _time: 2023-02-13T09:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 4.636046426917116,
-            },
-            {
-                _time: "2023-02-13T10:00:00Z",
+            },{
+                _time: 2023-02-13T10:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 7.663043114589484,
-            },
-            {
-                _time: "2023-02-13T11:00:00Z",
+            },{
+                _time: 2023-02-13T11:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 9.143103890595889,
-            },
-            {
-                _time: "2023-02-13T12:00:00Z",
+            },{
+                _time: 2023-02-13T12:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 9.779151082659663,
-            },
-            {
-                _time: "2023-02-13T13:00:00Z",
+            },{
+                _time: 2023-02-13T13:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 8.752410303698438,
-            },
-            {
-                _time: "2023-02-13T14:00:00Z",
+            },{
+                _time: 2023-02-13T14:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 7.1298971287421224,
-            },
-            {
-                _time: "2023-02-13T15:00:00Z",
+            },{
+                _time: 2023-02-13T15:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 4.663798677486981,
-            },
-            {
-                _time: "2023-02-13T16:00:00Z",
+            },{
+                _time: 2023-02-13T16:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 2.161444199534626,
-            },
-            {
-                _time: "2023-02-13T17:00:00Z",
+            },{
+                _time: 2023-02-13T17:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 0.72,
-            },
-            {
-                _time: "2023-02-13T18:00:00Z",
+            },{
+                _time: 2023-02-13T18:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 0.12,
-            },
-            {
-                _time: "2023-02-13T19:00:00Z",
+            },{
+                _time: 2023-02-13T19:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.48,
-            },
-            {
-                _time: "2023-02-13T20:00:00Z",
+            },{
+                _time: 2023-02-13T20:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.18,
-            },
-            {
-                _time: "2023-02-13T21:00:00Z",
+            },{
+                _time: 2023-02-13T21:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.28,
-            },
-            {
-                _time: "2023-02-13T22:00:00Z",
+            },{
+                _time: 2023-02-13T22:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.48,
-            },
-            {
-                _time: "2023-02-14T00:00:00Z",
+            },{
+                _time: 2023-02-14T00:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.78,
-            },
-            {
-                _time: "2023-02-14T01:00:00Z",
+            },{
+                _time: 2023-02-14T01:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.08,
-            },
-            {
-                _time: "2023-02-14T02:00:00Z",
+            },{
+                _time: 2023-02-14T02:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.28,
-            },
-            {
-                _time: "2023-02-14T03:00:00Z",
+            },{
+                _time: 2023-02-14T03:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -2.48,
-            },
-            {
-                _time: "2023-02-14T04:00:00Z",
+            },{
+                _time: 2023-02-14T04:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.68,
-            },
-            {
-                _time: "2023-02-14T05:00:00Z",
+            },{
+                _time: 2023-02-14T05:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.68,
-            },
-            {
-                _time: "2023-02-14T06:00:00Z",
+            },{
+                _time: 2023-02-14T06:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -1.3098347957760195,
-            },
-            {
-                _time: "2023-02-14T07:00:00Z",
+            },{
+                _time: 2023-02-14T07:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 0.2694226094239292,
-            },
-            {
-                _time: "2023-02-14T08:00:00Z",
+            },{
+                _time: 2023-02-14T08:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 2.9739457373341365,
-            },
-            {
-                _time: "2023-02-14T09:00:00Z",
+            },{
+                _time: 2023-02-14T09:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 6.036022762702407,
-            },
-            {
-                _time: "2023-02-14T10:00:00Z",
+            },{
+                _time: 2023-02-14T10:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 8.166563532547165,
-            },
-            {
-                _time: "2023-02-14T11:00:00Z",
+            },{
+                _time: 2023-02-14T11:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 9.596229727153228,
-            },
-            {
-                _time: "2023-02-14T12:00:00Z",
+            },{
+                _time: 2023-02-14T12:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 9.594852894632297,
-            },
-            {
-                _time: "2023-02-14T13:00:00Z",
+            },{
+                _time: 2023-02-14T13:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 8.694667295776949,
-            },
-            {
-                _time: "2023-02-14T14:00:00Z",
+            },{
+                _time: 2023-02-14T14:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 7.22987987693062,
-            },
-            {
-                _time: "2023-02-14T15:00:00Z",
+            },{
+                _time: 2023-02-14T15:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 4.732087517393907,
-            },
-            {
-                _time: "2023-02-14T16:00:00Z",
+            },{
+                _time: 2023-02-14T16:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 1.6521666027776274,
-            },
-            {
-                _time: "2023-02-14T17:00:00Z",
+            },{
+                _time: 2023-02-14T17:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 0.52,
-            },
-            {
-                _time: "2023-02-14T18:00:00Z",
+            },{
+                _time: 2023-02-14T18:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: 0.02,
-            },
-            {
-                _time: "2023-02-14T19:00:00Z",
+            },{
+                _time: 2023-02-14T19:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.38,
-            },
-            {
-                _time: "2023-02-14T20:00:00Z",
+            },{
+                _time: 2023-02-14T20:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.68,
-            },
-            {
-                _time: "2023-02-14T21:00:00Z",
+            },{
+                _time: 2023-02-14T21:00:00Z,
                 _measurement: "CellTempSim"
                 _field: "_value",
                 _value: -0.88,
             },
-            
         ],
     )
 

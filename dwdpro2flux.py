@@ -56,14 +56,12 @@ class FluxMaker():
 data =
     array.from(
         rows: [
-            //loop
-            {
-                _time: "@ts@",
+            //loop{
+                _time: @ts@,
                 _measurement: "@k@"
                 _field: "_value",
                 _value: @v@,
             },//loop
-            
         ],
     )
 
