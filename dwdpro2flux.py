@@ -117,7 +117,7 @@ class FluxPusher():
             print (os.linesp.join(res.stdout.split("\n")))
             if res.returncode != 0:
                 print ("-"*50, "stderr")
-                print print (os.linesp.join(res.stderr.split("\n")))
+                print (os.linesp.join(res.stderr.split("\n")))
 
 if __name__ == "__main__":
     myFluxFcGet = FluxForeCastGetter()
