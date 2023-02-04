@@ -1,5 +1,5 @@
 #!/bin/python
-import csv, json
+import csv, json, os, subprocess
 
 class FluxForeCastGetter():
 
@@ -52,13 +52,14 @@ class FluxMaker():
     def __init__(self, data):
         self.data = data
 
-        self.tpl = """
+        self.tpl = \
+"""import "array"
 data =
     array.from(
-        rows: [
-            //loop{
+        rows: [//loop
+            {
                 _time: @ts@,
-                _measurement: "@k@"
+                _measurement: "@k@",
                 _field: "_value",
                 _value: @v@,
             },//loop
@@ -99,6 +100,25 @@ data
             with open(fn,"w") as stream:
                 stream.write(self.qs[measurement])
 
+class FluxPusher():
+    def __init__(self):
+
+        relpath = "flux-test"
+        print ("stf", os.listdir(relpath))
+        files = [ x for x in os.listdir(relpath) if os.path.isfile( os.path.join(relpath, x)) and x.endswith(".flux") ]
+
+        print ("found:", files)
+        for fluxfile in files:
+            uri = os.path.abspath( os.path.join(relpath, fluxfile) )
+            cmd = ("influx query --file " + uri).split(" ")
+            res = subprocess.run(cmd, shell=True, capture_output=True, check=True)
+            print ("="*50, fluxfile, "Exit:", res.returncode)
+            print (stdout)
+            if res.returncode != 0:
+                print ("-"*50, "stderr")
+                print (res.stderr)
+
 if __name__ == "__main__":
     myFluxFcGet = FluxForeCastGetter()
     myFluxes    = FluxMaker( myFluxFcGet.data)
+    myPusher    = FluxPusher()
