@@ -114,10 +114,10 @@ class FluxPusher():
             print ("="*50, os.linesep, cmd)
             res = subprocess.run(cmd, shell=True, capture_output=True, check=True)
             print ("="*50, fluxfile, "Exit:", res.returncode)
-            print (os.linesep.join(res.stdout.split("\n")))
+            print (res.stdout.decode("utf-8"))
             if res.returncode != 0:
                 print ("-"*50, "stderr")
-                print (os.linesep.join(res.stderr.split("\n")))
+                print (res.stderr.decode("utf-8"))
 
 if __name__ == "__main__":
     myFluxFcGet = FluxForeCastGetter()
