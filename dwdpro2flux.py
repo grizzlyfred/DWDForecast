@@ -60,7 +60,7 @@ data =
             {
                 _time: @ts@,
                 _measurement: "@k@",
-                _field: "_value",
+                _fie    ld: "value",
                 _value: @v@,
             },//loop
         ],
