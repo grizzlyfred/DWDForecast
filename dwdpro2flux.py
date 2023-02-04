@@ -15,7 +15,7 @@ class FluxForeCastGetter():
                 k = k.replace(" ", "T")
 
                 #Fixme: need to figure out if summertime or not
-                k = k.replace("+00:00", "+01:00")
+                k = k.replace("+00:00", "")
 
 
                 #print (row)
@@ -23,14 +23,26 @@ class FluxForeCastGetter():
                 if k in self.data:
                     print(k, row)
                     raise KeyError
-                self.data[k] = { x:float(y) for x,y in row.items() if x not in self.skip }
-                hour = int ( k.split("T")[-1][:2] )
+
+                date, time = k.split("T")
+
+                #Fixme: for now we skip, wouldnt work in australia ;-)
+                hour_int  = int ( time[:2] ) -1
+                if hour_int <0: continue
+                hour = str(hour_int).rjust(2, "0")
+                #otherwise ts gets not parsed no idea if need to set flux timezone
+                k = date + "T" + hour + time[2:] + "Z"
+
+                self.data[k] = {x: float(y) for x, y in row.items() if x not in self.skip}
+
                 beam = self.data[k]["Rad1h"]
                 if beam <= 0.01:
-                    if hour %2 == 0:
+                    if hour_int %2 == 0:
                         self.data[k]["ACSim"] = -0.01
                     else:
                         self.data[k]["ACSim"] =  0.01
+
+
 
         self.jsons = json.dumps(self.data, indent=2)
         print (self.jsons)
@@ -46,7 +58,7 @@ data =
         rows: [
             //loop
             {
-                _time: @ts@,
+                _time: "@ts@",
                 _measurement: "@k@"
                 _field: "_value",
                 _value: @v@,
@@ -56,7 +68,7 @@ data =
     )
 
 data
-    |> to(bucket: "prognosis")
+    |> to(bucket: "forecast")
 """.split("//loop")
         self.pfx, self.snippet, self.sfx = self.tpl
 
@@ -85,7 +97,7 @@ data
 
             #self.qs[measurement] = self.qs[measurement][:-1]  # snip off last comma
             self.qs[measurement] += self.sfx
-            fn = "/tmp/to-"+measurement+".flux"
+            fn = "flux-test/to-"+measurement+".flux"
             with open(fn,"w") as stream:
                 stream.write(self.qs[measurement])
 
