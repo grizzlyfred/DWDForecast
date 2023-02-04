@@ -1,4 +1,4 @@
-#
+#!/bin/python
 #  Copyright (C) 2020  Kilian Knoll kilian.knoll@gmx.de
 #  
 #  This program is free software: you can redistribute it and/or modify
