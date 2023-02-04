@@ -1,7 +1,7 @@
 #!/bin/python
 import csv, json
 
-class FluxForeCastPusher():
+class FluxForeCastGetter():
 
     def __init__(self):
 
@@ -35,5 +35,60 @@ class FluxForeCastPusher():
         self.jsons = json.dumps(self.data, indent=2)
         print (self.jsons)
 
+## Build Flux Queries, maybe later switch to dedicated flux module...
+class FluxMaker():
+    def __init__(self, data):
+        self.data = data
+
+        self.tpl = """
+data =
+    array.from(
+        rows: [
+            //loop
+            {
+                _time: @ts@,
+                _measurement: "@k@"
+                _field: "_value",
+                _value: @v@,
+            },//loop
+            
+        ],
+    )
+
+data
+    |> to(bucket: "prognosis")
+""".split("//loop")
+        self.pfx, self.snippet, self.sfx = self.tpl
+
+        self.bycol = {}
+        self.colKeys = set()
+        for ts, row in self.data.items():
+            self.colKeys |= set( [ k for k in row.keys() ] )
+
+        for col in self.colKeys:
+            if col not in self.bycol: self.bycol[col] = {}
+            for ts in self.data.keys():
+                self.bycol[col][ts] = self.data[ts][col]
+
+        self.jsons = json.dumps( self.bycol, indent=2)
+        #print (self.jsons)
+        #raise NotImplementedError
+
+        self.qs = {}
+        for measurement, details in self.bycol.items():
+            self.qs[measurement] = self.pfx
+            for ts, val in details.items():
+                thisSnip = self.snippet
+                for tok, rep in { "ts":ts, "k":measurement, "v":str(val) }.items():
+                    thisSnip = thisSnip.replace("@"+tok+"@", rep)
+                self.qs[measurement] += thisSnip
+
+            #self.qs[measurement] = self.qs[measurement][:-1]  # snip off last comma
+            self.qs[measurement] += self.sfx
+            fn = "/tmp/to-"+measurement+".flux"
+            with open(fn,"w") as stream:
+                stream.write(self.qs[measurement])
+
 if __name__ == "__main__":
-    myFluxFCP = FluxForeCastPusher()
+    myFluxFcGet = FluxForeCastGetter()
+    myFluxes    = FluxMaker( myFluxFcGet.data)
