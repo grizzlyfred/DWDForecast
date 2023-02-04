@@ -677,7 +677,7 @@ class dwdforecast(threading.Thread):
                         logging.debug("%s" ,",dwdforecast : -Starting pvlib calculations ...17")
                         #modelchain provides DC data too - but no doc was found for the other values below
                         #i_sc        v_oc          i_mp        v_mp         p_mp           i_x          i_xx
-                        self.PandasDF['DCSim']= self.myModelChain.dc.p_mp
+                        self.PandasDF['DCSim']= self.myModelChain.results.dc.p_mp
                         logging.debug("%s" ,",dwdforecast : -ENDING pvlib calculations ...18")
                         # =============================================================================
                         # STARTING  Database Processing
