@@ -418,7 +418,7 @@ class dwdforecast(threading.Thread):
 
                     import os
                     self.file_nameUri = os.path.join(self.targetdir, self.file_name)
-                    self.out_fileUri = os.path.join(self.targetdir, self.out_file)
+                    self.out_fileUri = os.path.join(self.targetdir, self.out_fileName)
 
                     try:
                         time.sleep(10) #Assumption is - we see the file on the DWD server - but it has not yet been copied over
