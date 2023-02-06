@@ -113,8 +113,8 @@ data
 class FluxPusher():
     def __init__(self):
         rt = "/home/witti/dwd.git"
-        rp = "/flux-test/"
-        self.pushUri = os.path.join(rt, rp)
+        rp = "flux-test"
+        self.pushUri = os.path.abspath( os.path.join(rt, rp) )
         print ("stf", os.listdir(pushUri))
         files = [ x for x in os.listdir(self.pushUri) if os.path.isfile( os.path.join(pushUri, x)) and x.endswith(".flux") ]
 
