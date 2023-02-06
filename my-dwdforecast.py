@@ -169,7 +169,7 @@ class dwdforecast(threading.Thread):
         try:
             print ("Starting dwdforecast init ...")   
             self.config = configparser.ConfigParser()
-            self.config.read('configuration.ini')
+            self.config.read('/home/witti/dwd.git/configuration.ini')
             self.config.sections()
             self.mystation = (self.config.get('DWD', 'DWDStation', raw=True))
             self.urlpath = (self.config.get('DWD', 'DWDStationURL', raw=True))
@@ -412,7 +412,7 @@ class dwdforecast(threading.Thread):
                     self.lasttimecheck = self.mynewtime 
                     self.file_name = "temp1.gz"
                     self.out_file = "temp2.gz"
-                    self.targetdir ="./"
+                    self.targetdir ="/home/witti/dwd.git"
                     try:
                         time.sleep(10)                                          #Assumption is - we see the file on the DWD server - but it has not yet been copied over
                         # Download the file from `url` and save it locally under `self.file_name`:
@@ -680,7 +680,7 @@ class dwdforecast(threading.Thread):
                         self.PandasDF['DCSim']= self.myModelChain.results.dc.p_mp
                         logging.debug("%s" ,",dwdforecast : -ENDING pvlib calculations ...18")
                         # =============================================================================
-                        # STARTING  Database Processing
+                        # STARTING  CSV Processing
                         # =============================================================================                        
                         if (self.CSVOutput ==1):
                             try:
