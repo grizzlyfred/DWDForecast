@@ -166,10 +166,12 @@ def loggerdate():
 # Main class that holds the required information 
 class dwdforecast(threading.Thread):
     def __init__ (self, myqueue):
+
+        self.configUri = '/home/witti/dwd.git/configuration.ini'
         try:
             print ("Starting dwdforecast init ...")   
             self.config = configparser.ConfigParser()
-            self.config.read('/home/witti/dwd.git/configuration.ini')
+            self.config.read(self.configUri)
             self.config.sections()
             self.mystation = (self.config.get('DWD', 'DWDStation', raw=True))
             self.urlpath = (self.config.get('DWD', 'DWDStationURL', raw=True))
@@ -219,7 +221,7 @@ class dwdforecast(threading.Thread):
                     print ("Unable to connect to database", ErrorDBConnect)
         except Exception as ErrorConfigParse:
             logging.error("%s %s",",GetURLForLatest Error getting data from the internet:", ErrorConfigParse)
-            print ("Hit error during configparse ", ErrorConfigParse)
+            print ("Hit error during configparse from", self.configUri, ErrorConfigParse)
         self.mypvliblocation   = Location(latitude  = self.mylatitude, 
                            longitude = self.mylongitude,
                            tz        = 'UTC',               # Inputdata from DWD is in UTC - hence passing the same timezone info to pvlib
@@ -753,13 +755,17 @@ class dwdforecast(threading.Thread):
                     
 
 if __name__ == "__main__":
+
+    configUri="/home/witti/dwd.git/configuration.ini"
+    debugUri="/home/witti/dwd.git/dwd_debug.txt"
+
     #Logging levels can be ERROR INFO DEBUG 
     #Please change to debug in case you find any issues and consult dwd_debug.txt for more details
-    logging.basicConfig(filename="dwd_debug.txt",level=logging.ERROR)
+    logging.basicConfig(filename=debugUri,level=logging.ERROR)
     #
     try:
         config = configparser.ConfigParser()
-        config.read('configuration.ini')
+        config.read(configUri)
         config.sections() 
         ProcessingConfiguration = (config.get('Processing', 'ProcessingConfiguration', raw=True))
     except Exception as ErrorReadconfig:
@@ -768,7 +774,6 @@ if __name__ == "__main__":
     Interaction = ProcessingConfiguration
     #
 
-    
     
     #-----------------------------------------------------------------
     # START Queue (To read dwd values and populate them to database):
