@@ -115,13 +115,13 @@ class FluxPusher():
         rt = "/home/witti/dwd.git"
         rp = "flux-test"
         self.pushUri = os.path.abspath( os.path.join(rt, rp) )
-        print ("stf", os.listdir(pushUri))
-        files = [ x for x in os.listdir(self.pushUri) if os.path.isfile( os.path.join(pushUri, x)) and x.endswith(".flux") ]
+        #print ("stf", os.listdir(self.pushUri))
+        files = [ x for x in os.listdir(self.pushUri) if os.path.isfile( os.path.join(self.pushUri, x)) and x.endswith(".flux") ]
 
         print ("found:", files)
         for fluxfile in files:
-            fluxUri = os.path.abspath( os.path.join(self.pushUri, fluxfile) )
-            cmd = ["influx query --file " + uri ]
+            self.fluxUri = os.path.abspath( os.path.join(self.pushUri, fluxfile) )
+            cmd = ["influx query --file " + self.fluxUri ]
             print ("="*50, os.linesep, cmd)
             res = subprocess.run(cmd, shell=True, capture_output=True, check=True)
             print ("="*50, fluxfile, "Exit:", res.returncode)
