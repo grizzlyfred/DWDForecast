@@ -104,7 +104,7 @@ data
             rt = "/home/witti/dwd.git"
             rp = "/flux-test/"
             fn = "to-"+measurement+".flux"
-            self.qUri = os.path.join(rt, rp, fn)
+            self.qUri = os.path.abspath( os.path.join(rt, rp, fn) )
             with open(self.qUri,"w") as stream:
                 stream.write(self.qs[measurement])
 
