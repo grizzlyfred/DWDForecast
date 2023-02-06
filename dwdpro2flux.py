@@ -105,6 +105,8 @@ data
             rp = "/flux-test/"
             fn = "to-"+measurement+".flux"
             self.qUri = os.path.abspath( os.path.join(rt, rp, fn) )
+            print (self.qUri)
+            raise NotImplementedError
             with open(self.qUri,"w") as stream:
                 stream.write(self.qs[measurement])
 
