@@ -441,7 +441,9 @@ class dwdforecast(threading.Thread):
                     # Parsing DWD File content
                     # =============================================================================   
                     logging.debug("%s %s" ,",dwdforecast : -Starting to parse the kml Data from ", Myzipfilename)
-                    self.tree = ET.parse(Myzipfilename) 
+
+                    self.myZipFileUri = os.path.join(self.targetdir, Myzipfilename)
+                    self.tree = ET.parse(self.myZipFileUri)
                     self.root = self.tree.getroot()
                     self.root.tag     
                     """      
