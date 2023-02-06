@@ -49,8 +49,8 @@ class FluxForeCastGetter():
 
 
 
-        self.jsons = json.dumps(self.data, indent=2)
-        print (self.jsons)
+        #self.jsons = json.dumps(self.data, indent=2)
+        #print (self.jsons)
 
 ## Build Flux Queries, maybe later switch to dedicated flux module...
 class FluxMaker():
