@@ -7,7 +7,12 @@ class FluxForeCastGetter():
 
         self.skip = ['', 'ghi', 'dni', 'dhi', 'mydatetime', 'myTZtimestamp', 'TTT', 'FF', "mytimestamp", 'DCSim']
         self.data = {}
-        with open("outputdwdforecast.csv") as stream:
+
+        self.rt = "/home/witti/dwd.git"
+        self.fn = "outputdwdforecast.csv"
+
+        self.sourceUri = os.path.join(self.rt, self.fn)
+        with open(self.sourceUri) as stream:
 
             reader = csv.DictReader(stream, delimiter=",")
             for row in reader:
@@ -96,20 +101,24 @@ data
 
             #self.qs[measurement] = self.qs[measurement][:-1]  # snip off last comma
             self.qs[measurement] += self.sfx
-            fn = "flux-test/to-"+measurement+".flux"
-            with open(fn,"w") as stream:
+            rt = "/home/witti/dwd.git"
+            rp = "/flux-test/"
+            fn = "to-"+measurement+".flux"
+            self.qUri = os.path.join(rt, rp, fn)
+            with open(self.qUri,"w") as stream:
                 stream.write(self.qs[measurement])
 
 class FluxPusher():
     def __init__(self):
-
-        relpath = "flux-test"
-        print ("stf", os.listdir(relpath))
-        files = [ x for x in os.listdir(relpath) if os.path.isfile( os.path.join(relpath, x)) and x.endswith(".flux") ]
+        rt = "/home/witti/dwd.git"
+        rp = "/flux-test/"
+        self.pushUri = os.paht.join(rt, rp)
+        print ("stf", os.listdir(pushUri))
+        files = [ x for x in os.listdir(self.pushUri) if os.path.isfile( os.path.join(pushUri, x)) and x.endswith(".flux") ]
 
         print ("found:", files)
         for fluxfile in files:
-            uri = os.path.abspath( os.path.join(relpath, fluxfile) )
+            fluxUri = os.path.abspath( os.path.join(self.pushUri, fluxfile) )
             cmd = ["influx query --file " + uri ]
             print ("="*50, os.linesep, cmd)
             res = subprocess.run(cmd, shell=True, capture_output=True, check=True)
