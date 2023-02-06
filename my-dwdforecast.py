@@ -415,15 +415,19 @@ class dwdforecast(threading.Thread):
                     self.file_name = "temp1.gz"
                     self.out_file = "temp2.gz"
                     self.targetdir ="/home/witti/dwd.git"
+
+                    self.file_nameUri = os.path.join(self.targetdir, self.file_name)
+                    self.out_fileUri = os.path.join(self.targetdir, self.out_file)
+
                     try:
-                        time.sleep(10)                                          #Assumption is - we see the file on the DWD server - but it has not yet been copied over
+                        time.sleep(10) #Assumption is - we see the file on the DWD server - but it has not yet been copied over
                         # Download the file from `url` and save it locally under `self.file_name`:
                         with urllib.request.urlopen(self.url) as self.response, open(self.file_name, 'wb') as self.out_file:
-                            shutil.copyfileobj(self.response, self.out_file)
-                            logging.debug("%s %s %s", ",subroutine dwdforecast shutil command execution : ", self.response, self.out_file)   
+                            shutil.copyfileobj(self.response, self.file_nameUri)
+                            logging.debug("%s %s %s", ",subroutine dwdforecast shutil command execution : ", self.response, self.out_fileUri)
                             
                         time.sleep(5)                                           #not sure if this gets rid of the access problems                  
-                        with zipfile.ZipFile(self.file_name,"r") as zip_ref:
+                        with zipfile.ZipFile(self.file_nameUri,"r") as zip_ref:
                             Myzipfilename = (zip_ref.namelist())
                             Myzipfilename = str(Myzipfilename[0])
                             logging.debug("%s %s" ,",dwdforecast : -Starting File extraction from DWD download :", Myzipfilename)
