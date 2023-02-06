@@ -416,6 +416,7 @@ class dwdforecast(threading.Thread):
                     self.out_file = "temp2.gz"
                     self.targetdir ="/home/witti/dwd.git"
 
+                    import os
                     self.file_nameUri = os.path.join(self.targetdir, self.file_name)
                     self.out_fileUri = os.path.join(self.targetdir, self.out_file)
 
