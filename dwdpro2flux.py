@@ -102,11 +102,11 @@ data
             #self.qs[measurement] = self.qs[measurement][:-1]  # snip off last comma
             self.qs[measurement] += self.sfx
             rt = "/home/witti/dwd.git"
-            rp = "/flux-test/"
+            rp = "flux-test"
             fn = "to-"+measurement+".flux"
             self.qUri = os.path.abspath( os.path.join(rt, rp, fn) )
-            print (self.qUri)
-            raise NotImplementedError
+            #print (self.qUri)
+            #raise NotImplementedError
             with open(self.qUri,"w") as stream:
                 stream.write(self.qs[measurement])
 
