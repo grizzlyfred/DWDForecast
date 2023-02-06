@@ -413,7 +413,7 @@ class dwdforecast(threading.Thread):
                     #print ("DWD Weather -  self.lasttimecheck was ", self.lasttimecheck)
                     self.lasttimecheck = self.mynewtime 
                     self.file_name = "temp1.gz"
-                    self.out_file = "temp2.gz"
+                    self.out_fileName = "temp2.gz"
                     self.targetdir ="/home/witti/dwd.git"
 
                     import os
@@ -423,8 +423,8 @@ class dwdforecast(threading.Thread):
                     try:
                         time.sleep(10) #Assumption is - we see the file on the DWD server - but it has not yet been copied over
                         # Download the file from `url` and save it locally under `self.file_name`:
-                        with urllib.request.urlopen(self.url) as self.response, open(self.file_name, 'wb') as self.out_file:
-                            shutil.copyfileobj(self.response, self.file_nameUri)
+                        with urllib.request.urlopen(self.url) as self.response, open(self.file_nameUri, 'wb') as self.out_file:
+                            shutil.copyfileobj(self.response, self.out_file)
                             logging.debug("%s %s %s", ",subroutine dwdforecast shutil command execution : ", self.response, self.out_fileUri)
                             
                         time.sleep(5)                                           #not sure if this gets rid of the access problems                  
