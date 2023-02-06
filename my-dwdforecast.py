@@ -482,7 +482,7 @@ class dwdforecast(threading.Thread):
                             #print ("meine location", self.mylocation)
                             self.myforecastdata = self.elem.find('kml:ExtendedData',self.ns)
                             for self.elem in self.myforecastdata: 
-                                print ("el:", self.elem)
+                                #print ("el:", self.elem)
                                 #We may get the following strings and are only interested in the right hand quoted property name WPcd1:
                                 #{'{https://opendata.dwd.de/weather/lib/pointforecast_dwd_extension_V1_0.xsd}elementName': 'WPcd1'}
                                 self.trash = str(self.elem.attrib)
@@ -496,7 +496,7 @@ class dwdforecast(threading.Thread):
                                 #TTT : Temperature 2m above ground [Kelvin]
                                 #PPPP : Pressure reduced    [Pa]
                                 #-------------------------------------------------------------
-                                print ("mosmix_el:", self.mosmix_element)
+                                #print ("mosmix_el:", self.mosmix_element)
                                 if ('FF' == self.mosmix_element):
                                     self.FF_temp = self.elem[0].text
                                     self.FF = list (self.FF_temp.split())
