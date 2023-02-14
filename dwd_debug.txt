@@ -1,2 +1,3 @@
 ERROR:root:,subroutine dwdforecast exception getting the data from server :  [Errno 13] Permission denied: 'temp1.gz'
 ERROR:root:,subroutine dwdforecast exception getting the data from server :  [Errno 13] Permission denied: 'temp1.gz'
+ERROR:root:,subroutine dwdforecast final exception :  could not convert string to float: '-'
