@@ -790,7 +790,7 @@ if __name__ == "__main__":
         print ("Please consult logging output dwd_debug.txt for more details ")
         print ("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         myQueue1 = queue.Queue()                                               
-        myThread1= dwdforecast(myQueue1)                          
+        myThread1= dwdfc(myQueue1)                          
         myThread1.start()                                                             
         while myQueue1.empty():                                                  
             print(" Waiting on DWD dwdforecastdata Queue results to tell it is started...")
