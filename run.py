@@ -1,9 +1,9 @@
 #!/bin/python
-import dwdpro2flux
-import my-dwdforecast
+from dwdpro2flux import * 
+from my_dwdforecast import dwdfc
 
 if __name__ == "__main__":
-    myForeCast  = dwdforecast()
+    myForeCast  = dwdfc()
     myFluxFcGet = FluxForeCastGetter()
     myFluxes    = FluxMaker( myFluxFcGet.data)
     myPusher    = FluxPusher()
