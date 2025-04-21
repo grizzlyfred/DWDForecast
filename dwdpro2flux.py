@@ -121,7 +121,7 @@ class FluxPusher():
         print ("found:", files)
         for fluxfile in files:
             self.fluxUri = os.path.abspath( os.path.join(self.pushUri, fluxfile) )
-            cmd = ["influx query --file " + self.fluxUri ]
+            cmd = ["influx query -o site --file " + self.fluxUri ]
             print ("="*50, os.linesep, cmd)
             res = subprocess.run(cmd, shell=True, capture_output=True, check=True)
             print ("="*50, fluxfile, "Exit:", res.returncode)

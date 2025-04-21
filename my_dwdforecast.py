@@ -269,7 +269,7 @@ class dwdfc(threading.Thread):
                 words =elements.split()
                 mytime = words[0] +"-" + words[1]
                 logging.debug("%s %s" ,",GetURLForLatest :DWD Filetimestamp found :", mytime)
-                mynewtime =time.mktime(datetime.datetime.strptime(mytime, "%d-%b-%Y-%H:%M").timetuple())
+                mynewtime =time.mktime(datetime.datetime.strptime(mytime, "%d-%b-%Y-%H:%M:%S").timetuple())
                 logging.debug("%s %s" ,",GetURLForLatest :DWD Filetimestamp found :", mynewtime)
                 #print ("From function GetURLForLatest -mynewtime", 2*mynewtime)
             
