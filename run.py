@@ -1,5 +1,5 @@
-#!/bin/python
-from dwdpro2flux import * 
+#!/usr/bin/env python3
+from dwdpro2flux import *
 from my_dwdforecast import dwdfc
 
 if __name__ == "__main__":

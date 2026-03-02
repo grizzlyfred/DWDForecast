@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/env python3
 #  Copyright (C) 2020  Kilian Knoll kilian.knoll@gmx.de
 #  
 #  This program is free software: you can redistribute it and/or modify
@@ -733,7 +733,7 @@ class dwdfc(threading.Thread):
                                         self.addsingleRow2DB(self.cur, self.DBTable, self.MyWeathervalues)
                                     if (self.Database_found_filetimestamp == 1):                           #Meaning we found the timestamp and need to update the specific row with new values
                                         logging.debug("%s %s" ,",dwdforecast : -Starting database updatesingleRowinDB -timestamp is : ",row['mydatetime'])
-                                        self.MyWeathervalues.update({'mydatetime':row['mydatetime'],'Rad1h':row['Rad1h'],'TTT':row['TTT'],'PPPP':row['PPPP'],'FF':row['FF'],'Rad1wh':row['Rad1wh'],'Rad1Energy':row['Rad1Energy'],'mytimestamp':row['mytimestamp'],'ACSim':row['ACSim'],'CellTempSim':row['CellTempSim'],'DCSim':row['DCSim']})
+                                        self.MyWeathervalues.update({'mydatetime':row['mydatetime'],'Rad1h':row['Rad1h'],'TTT':row['TTT'],'PPPP':row['PPPP'],'FF':row['FF],'Rad1wh':row['Rad1wh'],'Rad1Energy':row['Rad1Energy'],'mytimestamp':row['mytimestamp'],'ACSim':row['ACSim'],'CellTempSim':row['CellTempSim'],'DCSim':row['DCSim']})
                                         #self.updatesingleRowinDB(self.cur, "dwd",
                                         #self.updatesingleRowinDB(self.cur, "dwd", TTT, Rad1h, FF, PPPP, mytimestamp, Rad1Energy, ACSim, DCSim, CellTempSim)
                                         self.updatesingleRowinDB(self.cur, self.DBTable, row['TTT'], row['Rad1h'], row['FF'], row['PPPP'], row['mytimestamp'], row['Rad1Energy'], row['ACSim'], row['DCSim'], row['CellTempSim'], row['Rad1wh'])
@@ -840,5 +840,3 @@ if __name__ == "__main__":
         
  
  
-
-

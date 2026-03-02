@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/env python3
 import csv, json, os, subprocess
 
 class FluxForeCastGetter():
