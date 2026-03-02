@@ -29,8 +29,8 @@
 #https://www.dwd.de/DE/leistungen/met_verfahren_mosmix/mosmix_stationskatalog.cfg?view=nasPublication&nn=495490
 #
 # How to use this ?
-# 1) Find the station close by your geographic location:
-#   Go to the website below, zoom to your location - and click on "Mosmix Stationen anzeigen" 
+# 1) Find the station close to your geographic location:
+#   Go to the website below, zoom to your location - and click on "Mosmix Stationen anzeigen"
 #   Once you found the closest station, please change the station number to  the station number 
 #   https://wettwarn.de/mosmix/mosmix.html
 #   In my case, I picked Station P755 (which is close to Munich)
@@ -162,11 +162,11 @@ def loggerdate():
 
 # Main class that holds the required information 
 class dwdforecast(threading.Thread):
-    def __init__ (self, myqueue):
+    def __init__ (self, myqueue=None, config_path='configuration.ini'):
         try:
-            print ("Starting dwdforecast init ...")   
+            logging.info("Starting dwdforecast init ...")
             self.config = configparser.ConfigParser()
-            self.config.read('configuration.ini')
+            self.config.read(config_path)
             self.config.sections()
             self.mystation = (self.config.get('DWD', 'DWDStation', raw=True))
             self.urlpath = (self.config.get('DWD', 'DWDStationURL', raw=True))
@@ -183,9 +183,9 @@ class dwdforecast(threading.Thread):
             self.mymodule = (self.config.get('SolarSystem', 'ModuleName', raw=True))
             self.mysimplemultiplicationfactor = (self.config.getfloat('SolarSystem', 'SimpleMultiplicationFactor', raw=True))
             self.TemperatureOffset = (self.config.getfloat('SolarSystem', 'TemperatureOffset', raw=True))
-            self.mytimezone = (self.config.get('SolarSystem', 'MyTimezone', raw=True))
+            # Use UTC by default, allow config override
+            self.mytimezone = self.config.get('SolarSystem', 'MyTimezone', fallback='UTC')
             self.sleeptime = (self.config.getint('Processing', 'Sleeptime', raw=True))
-            
             self.PrintOutput = (self.config.getint('Output', 'PrintOutput', raw=True))
             self.CSVOutput = (self.config.getint('Output', 'CSVOutput', raw=True))
             self.DBOutput = (self.config.getint('Output', 'DBOutput', raw=True))
@@ -196,54 +196,32 @@ class dwdforecast(threading.Thread):
             self.DBName = (self.config.get('Output', 'DBName', raw=True))
             self.DBPort = (self.config.getint('Output', 'DBPort', raw=True))
             self.DBTable = (self.config.get('Output', 'DBTable', raw=True))
-            
-            
             self.mytemperature_model_parameters = TEMPERATURE_MODEL_PARAMETERS['sapm'][self.mytemperature_model]
             self.sandia_modules = pvlib.pvsystem.retrieve_sam('cecmod')
-            self.sandia_module = self.sandia_modules[self.mymodule] # is "LG Electronics Inc. LG335E1C-A5" in sam-library-cec-modules-2019-03-05.csv
+            self.sandia_module = self.sandia_modules[self.mymodule]
             self.cec_inverters = pvlib.pvsystem.retrieve_sam('cecinverter')
             self.cec_inverter = self.cec_inverters[self.myinverter]
-            #self.cec_inverter = self.cec_inverters['SMA_America__SB10000TL_US__240V_']  # is "SMA America: SB10000TL-US [240V]" in sam-library-cec-inverters-2019-03-05.csv         
- 
+            # Database connection (comment out for portability)
             if (self.DBOutput ==1):
                 try:
-                    self.db = mysql.connector.connect(user=self.DBUser ,passwd=self.DBPassword, host=self.DBHost, port = self.DBPort, database=self.DBName,autocommit=True)           #Connect string to the database - we are setting
-                    self.cur = self.db.cursor() 
-                    print ("I have set my DB connection")
+                    import mysql.connector
+                    self.db = mysql.connector.connect(user=self.DBUser ,passwd=self.DBPassword, host=self.DBHost, port = self.DBPort, database=self.DBName,autocommit=True)
+                    self.cur = self.db.cursor()
+                    logging.info("I have set my DB connection")
                 except Exception as ErrorDBConnect:
-                    logging.error("%s %s",",Trying to connect to mariaDB failed:", ErrorDBConnect)
-                    print ("Unable to connect to database", ErrorDBConnect)
+                    logging.error("Unable to connect to database: %s", ErrorDBConnect)
         except Exception as ErrorConfigParse:
-            logging.error("%s %s",",GetURLForLatest Error getting data from the internet:", ErrorConfigParse)
-            print ("Hit error during configparse ", ErrorConfigParse)
-        self.mypvliblocation   = Location(latitude  = self.mylatitude, 
-                           longitude = self.mylongitude,
-                           tz        = self.mytimezone,
-                            altitude = self.myaltitude)
-        self.lasttimecheck = 1534800680.0                   # Dec 14th 2018 (pure initialization)
+            logging.error("Error getting data from the internet: %s", ErrorConfigParse)
+        self.mypvliblocation   = Location(latitude  = self.mylatitude, longitude = self.mylongitude, tz = self.mytimezone, altitude = self.myaltitude)
+        self.lasttimecheck = 1534800680.0
         self.myqueue = myqueue
         self.event = threading.Event()
-        self.ext = 'kmz' 
-        self.myinit = 0                                                                                     #So we can populate the queue initially / subsequently
+        self.ext = 'kmz'
+        self.myinit = 0
         threading.Thread.__init__ (self)
-
-        
-        self.mysolarsystem= PVSystem(      surface_tilt                             = self.mypv_elevation, 
-                                        surface_azimuth                             = self.mypv_azimuth,
-                                        module                                      = self.sandia_module,
-                                        inverter                                    = self.cec_inverter,
-                                        module_parameters                           = self.sandia_module,
-                                        inverter_parameters                         = self.cec_inverter,
-                                        albedo                                      = self.myalbedo,
-                                        modules_per_string                          = self.myNumPanels,
-                                        racking_model                               = "open_rack",
-                                        temperature_model_parameters                = self.mytemperature_model_parameters,
-                                        strings_per_inverter                        = self.myNumStrings)        
-                
-                
-        
-        print ("I am looking for data from DWD for the following station: ", self.mystation)
-        print ("I will be polling the following URL for the latest updates ", self.urlpath)
+        self.mysolarsystem= PVSystem(surface_tilt=self.mypv_elevation, surface_azimuth=self.mypv_azimuth, module=self.sandia_module, inverter=self.cec_inverter, module_parameters=self.sandia_module, inverter_parameters=self.cec_inverter, albedo=self.myalbedo, modules_per_string=self.myNumPanels, racking_model="open_rack", temperature_model_parameters=self.mytemperature_model_parameters, strings_per_inverter=self.myNumStrings)
+        logging.info("I am looking for data from DWD for the following station: %s", self.mystation)
+        logging.info("I will be polling the following URL for the latest updates: %s", self.urlpath)
 
     # Based on the user specified URL, find the latest file file with it´s timestamp 
     def GetURLForLatest(self,urlpath, ext=''):
@@ -811,5 +789,3 @@ if __name__ == "__main__":
         
  
  
-
-
