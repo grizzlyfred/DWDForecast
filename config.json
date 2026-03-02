@@ -1,0 +1,39 @@
+{
+  "DWD": {
+    "DWDStation": "P755",
+    "DWDStationURL": "http://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/P755/kml"
+  },
+  "SolarSystem": {
+    "Longitute": 11.6,
+    "Latitude": 48.2,
+    "Altitude": 400,
+    "Elevation": 35,
+    "Azimuth": 178,
+    "NumPanels": 14,
+    "NumStrings": 2,
+    "Albedo": 0.14,
+    "TEMPERATURE_MODEL": "open_rack_glass_polymer",
+    "InverterName": "SMA_America__SB10000TL_US__240V_",
+    "ModuleName": "LG_Electronics_Inc__LG335E1C_A5",
+    "MyTimezone": "UTC",
+    "SimpleMultiplicationFactor": 8.605184,
+    "TemperatureOffset": 0
+  },
+  "Processing": {
+    "Sleeptime": 15,
+    "ProcessingConfiguration": "Simple"
+  },
+  "Output": {
+    "PrintOutput": 1,
+    "CSVOutput": 1,
+    "CSVFile": "outputdwdforecast.csv",
+    "DBOutput": 0,
+    "DBUser": "YOURDBUSER",
+    "DBPassword": "YOURDBPASSWD",
+    "DBHost": "192.168.178.28",
+    "DBPort": 3306,
+    "DBName": "YOURDBNAME",
+    "DBTable": "dwd"
+  }
+}
+
