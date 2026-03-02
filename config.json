@@ -1,22 +1,22 @@
 {
   "DWD": {
-    "DWDStation": "P755",
-    "DWDStationURL": "http://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/P755/kml"
+    "DWDStation": "P148",
+    "DWDStationURL": "http://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/P148/kml/"
   },
   "SolarSystem": {
-    "Longitute": 11.6,
-    "Latitude": 48.2,
-    "Altitude": 400,
-    "Elevation": 35,
-    "Azimuth": 178,
-    "NumPanels": 14,
-    "NumStrings": 2,
+    "Longitute": 10.499,
+    "Latitude": 48.852,
+    "Altitude": 330,
+    "Elevation": 45,
+    "Azimuth": 190,
+    "NumPanels": 28,
+    "NumStrings": 3,
     "Albedo": 0.14,
-    "TEMPERATURE_MODEL": "open_rack_glass_polymer",
+    "TEMPERATURE_MODEL": "open_rack_glass_glass",
     "InverterName": "SMA_America__SB10000TL_US__240V_",
     "ModuleName": "LG_Electronics_Inc__LG335E1C_A5",
-    "MyTimezone": "UTC",
-    "SimpleMultiplicationFactor": 8.605184,
+    "MyTimezone": "Europe/Berlin",
+    "SimpleMultiplicationFactor": 24.384,
     "TemperatureOffset": 0
   },
   "Processing": {
@@ -24,9 +24,9 @@
     "ProcessingConfiguration": "Simple"
   },
   "Output": {
-    "PrintOutput": 1,
+    "PrintOutput": 0,
     "CSVOutput": 1,
-    "CSVFile": "outputdwdforecast.csv",
+    "CSVFile": "/home/witti/dwd.git/outputdwdforecast.csv",
     "DBOutput": 0,
     "DBUser": "YOURDBUSER",
     "DBPassword": "YOURDBPASSWD",
@@ -34,6 +34,51 @@
     "DBPort": 3306,
     "DBName": "YOURDBNAME",
     "DBTable": "dwd"
+  },
+  "Logging": {
+    "Level": "DEBUG",
+    "File": "dwd_debug.txt"
+  },
+  "_template": {
+    "DWD": {
+      "DWDStation": "P755",
+      "DWDStationURL": "http://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/P755/kml"
+    },
+    "SolarSystem": {
+      "Longitute": 11.6,
+      "Latitude": 48.2,
+      "Altitude": 400,
+      "Elevation": 35,
+      "Azimuth": 178,
+      "NumPanels": 14,
+      "NumStrings": 2,
+      "Albedo": 0.14,
+      "TEMPERATURE_MODEL": "open_rack_glass_polymer",
+      "InverterName": "SMA_America__SB10000TL_US__240V_",
+      "ModuleName": "LG_Electronics_Inc__LG335E1C_A5",
+      "MyTimezone": "UTC",
+      "SimpleMultiplicationFactor": 8.605184,
+      "TemperatureOffset": 0
+    },
+    "Processing": {
+      "Sleeptime": 15,
+      "ProcessingConfiguration": "Simple"
+    },
+    "Output": {
+      "PrintOutput": 1,
+      "CSVOutput": 1,
+      "CSVFile": "outputdwdforecast.csv",
+      "DBOutput": 0,
+      "DBUser": "YOURDBUSER",
+      "DBPassword": "YOURDBPASSWD",
+      "DBHost": "192.168.178.28",
+      "DBPort": 3306,
+      "DBName": "YOURDBNAME",
+      "DBTable": "dwd"
+    },
+    "Logging": {
+      "Level": "INFO",
+      "File": "dwd_debug.txt"
+    }
   }
 }
-
