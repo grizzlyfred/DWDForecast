@@ -823,12 +823,13 @@ if __name__ == "__main__":
     # -----------------------------------------------------------------
     # START Queue (To read dwd values and populate them to database):
     try:
+        logging.info("dwdforecast main thread started. All debug prints removed; see dwd_debug.txt for details.")
         myQueue1 = queue.Queue()
         myThread1 = dwdforecast(myQueue1)
         myThread1.start()
         while myQueue1.empty():
             logging.info(" Waiting on DWD dwdforecastdata Queue results to tell it is started...")
-            time.sleep(1)
+            time.sleep(10)
         # Queue End (To read values from DWD)
         # _________________________________________________________________
         i = 0
@@ -837,37 +838,34 @@ if __name__ == "__main__":
             while i < 1:
                 if not myQueue1.empty():  # Do something if we have queue entries
                     quelength = myQueue1.qsize()  # In case multiple values are in queue, take last one
-                    # print ("Length of Queue : ", quelength)
                     logging.info("%s %s ", ",Main :Queue length is : ", quelength)
-
                     for x in range(0, quelength):
                         LastDWDtimestamp = myQueue1.get()  # Get stuff from queue
                         mylasttimestamp = connvertINTtimestamptoDWD(LastDWDtimestamp)
-                    print("From Main : DWD File access I checked /  got uploaded by DWD was at :", LastDWDtimestamp,
-                          mylasttimestamp)
+                    # print("From Main : DWD File access I checked /  got uploaded by DWD was at :", LastDWDtimestamp, mylasttimestamp)
                 if (Interaction == 'Simple'):
-                    print("Interaction is Simple - processing once only")
+                    # print("Interaction is Simple - processing once only")
                     i = i + 1
                 else:
                     pass
                 time.sleep(1)
             time.sleep(60)
             myThread1.event.set()
-            print("Closing thread & exiting")
+            # print("Closing thread & exiting")
         except KeyboardInterrupt:
             # In case user hits CTRL-C
-            print(" Sub - User is trying to kill me ...  \n")
+            # print(" Sub - User is trying to kill me ...  \n")
             myThread1.event.set()
-            print("Thread from Sub ... stopped")
+            # print("Thread from Sub ... stopped")
         except Exception as OtherExceptionError:
-            print("hit some other error....    !", OtherExceptionError)
+            # print("hit some other error....    !", OtherExceptionError)
             myThread1.event.set()
 
 
     except KeyboardInterrupt:
         # In case user hits Ctrl-C
-        print("User hit Ctrl-C - and tries to kill me ...- starting to signal thread termination \n")
+        # print("User hit Ctrl-C - and tries to kill me ...- starting to signal thread termination \n")
         myThread1.event.set()
     except Exception as FinalExceptionError:
-        print("I am clueless ... Hit some other error ....    !", FinalExceptionError)
+        # print("I am clueless ... Hit some other error ....    !", FinalExceptionError)
         myThread1.event.set()
