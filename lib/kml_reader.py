@@ -104,3 +104,12 @@ def extract_mosmixdata(root, station):
         mosmixdata[4][idx] = PPPP[idx] if PPPP else 0
         mosmixdata[5][idx] = FF[idx] if FF else 0
     return mosmixdata
+
+
+def connvertINTtimestamptoDWD(inputstring):
+    """
+    Convert a UNIX timestamp (float/int) to DWD UTC string format: YYYY-MM-DDTHH:MM:SS.sssZ
+    """
+    import time
+    mysecondtime = (time.strftime('%Y-%m-%dT%H:%M:%S.%f', time.localtime(inputstring))[:-3]) + "Z"
+    return mysecondtime

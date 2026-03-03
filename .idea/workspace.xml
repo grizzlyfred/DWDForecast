@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51c9e996-9106-47b7-8559-015a291af299" name="Changes" comment="Add tracking for last KML filename to prevent redundant downloads" />
+    <list default="true" id="51c9e996-9106-47b7-8559-015a291af299" name="Changes" comment="Add configuration utility for loading and validating JSON config">
+      <change beforePath="$PROJECT_DIR$/dwdforecast.py" beforeDir="false" afterPath="$PROJECT_DIR$/dwdforecast.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/kml_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/kml_reader.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +30,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "grizzlyfred"
+  }
+}]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/grizzlyfred/DWDForecast.git",
@@ -116,7 +125,7 @@
       <updated>1772490776254</updated>
       <workItem from="1772490777296" duration="2097000" />
       <workItem from="1772492923893" duration="1485000" />
-      <workItem from="1772494417426" duration="5425000" />
+      <workItem from="1772494417426" duration="5859000" />
     </task>
     <task id="LOCAL-00001" summary="update project SDK to Python 3.14 and add Ask2Agent migration state">
       <option name="closed" value="true" />
@@ -302,7 +311,31 @@
       <option name="project" value="LOCAL" />
       <updated>1772499758816</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Add tracking for last KML filename to prevent redundant downloads">
+      <option name="closed" value="true" />
+      <created>1772500058692</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1772500058692</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Add tracking for last KML filename to prevent redundant downloads">
+      <option name="closed" value="true" />
+      <created>1772500156512</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1772500156512</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Add configuration utility for loading and validating JSON config">
+      <option name="closed" value="true" />
+      <created>1772500203082</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1772500203082</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +363,8 @@
     <MESSAGE value="Enhance logging and error handling in dwdforecast; improve KML timestamp parsing" />
     <MESSAGE value="Add cooldown feature to PollerThread for efficient data fetching" />
     <MESSAGE value="Add tracking for last KML filename to prevent redundant downloads" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add tracking for last KML filename to prevent redundant downloads" />
+    <MESSAGE value="Add configuration utility for loading and validating JSON config" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add configuration utility for loading and validating JSON config" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dwd_git$dwdforecast.coverage" NAME="dwdforecast Coverage Results" MODIFIED="1772499792981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

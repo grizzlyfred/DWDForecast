@@ -11,16 +11,12 @@ import json
 import time
 import sys
 from lib import kml_reader, data_processing, db, poller, data_output, config_utils
-from lib.kml_reader import extract_mosmixdata
+from lib.kml_reader import extract_mosmixdata, connvertINTtimestamptoDWD
 import pvlib
 from pvlib.pvsystem import PVSystem
 from pvlib.location import Location
 from pvlib.temperature import TEMPERATURE_MODEL_PARAMETERS
 
-
-def connvertINTtimestamptoDWD(inputstring):
-    mysecondtime = (time.strftime('%Y-%m-%dT%H:%M:%S.%f', time.localtime(inputstring))[:-3]) + "Z"
-    return mysecondtime
 
 
 def main():
