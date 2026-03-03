@@ -53,6 +53,7 @@ def extract_main_config(config):
 class ConfigAccessor:
     def __init__(self, config_dict):
         self._data = self._to_namespace(config_dict)
+        self._dict = config_dict  # Store original dict
     def _to_namespace(self, d):
         if isinstance(d, dict):
             return SimpleNamespace(**{k: self._to_namespace(v) for k, v in d.items()})
@@ -64,6 +65,9 @@ class ConfigAccessor:
         return getattr(self._data, item)
     def __getitem__(self, item):
         return getattr(self._data, item)
+    @property
+    def as_dict(self):
+        return self._dict
 
 def load_config_accessor(config_path='config.json'):
     config = load_config(config_path)
