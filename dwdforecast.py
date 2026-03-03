@@ -9,6 +9,7 @@ import logging
 import queue
 import json
 import time
+import sys
 from lib import kml_reader, data_processing, db, poller
 from lib.kml_reader import extract_mosmixdata
 import pvlib
@@ -23,10 +24,23 @@ def connvertINTtimestamptoDWD(inputstring):
 
 
 def main():
-    logging.basicConfig(filename="dwd_debug.txt", level=logging.DEBUG)
-    with open('config.json', 'r') as config_file:
-        config = json.load(config_file)
-
+    print("[dwdforecast] Starting up...")
+    # Improved logging format
+    logging.basicConfig(
+        filename="dwd_debug.txt",
+        level=logging.DEBUG,
+        format='%(asctime)s %(levelname)s [%(module)s]: %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+    # Validate JSON config
+    try:
+        with open('config.json', 'r') as config_file:
+            config = json.load(config_file)
+    except Exception as e:
+        print(f"[dwdforecast] ERROR: Invalid config.json: {e}")
+        logging.error("Invalid config.json: %s", e)
+        sys.exit(1)
+    print("[dwdforecast] Configuration loaded.")
     # Extract config values
     station = config['DWD']['DWDStation']
     urlpath = config['DWD']['DWDStationURL']
@@ -76,50 +90,67 @@ def main():
         temperature_model_parameters=temperature_model_parameters,
         strings_per_inverter=num_strings
     )
+    print("[dwdforecast] PVLIB system initialized.")
+    if db_output:
+        print("[dwdforecast] Database output enabled.")
+    last_kml_url = None
+    # Polling function
+    def poll_func():
+        nonlocal last_kml_url
+        print("[dwdforecast] Checking for new DWD forecast data...")
+        urls, newtime = kml_reader.get_url_for_latest(urlpath, ext='kmz')
+        if not urls:
+            print("[dwdforecast] No KML URLs found. Last known file:", last_kml_url)
+            logging.warning("No KML URLs found. Last known file: %s", last_kml_url)
+            return None
+        kml_zip_url = urls[-1]
+        last_kml_url = kml_zip_url
+        print(f"[dwdforecast] Downloading: {kml_zip_url}")
+        kml_path = kml_reader.extract_kml_from_zip(kml_zip_url)
+        if not kml_path:
+            print("[dwdforecast] Failed to extract KML file. Last known file:", last_kml_url)
+            logging.warning("Failed to extract KML file. Last known file: %s", last_kml_url)
+            return None
+        print(f"[dwdforecast] Parsing KML: {kml_path}")
+        tree, root = kml_reader.parse_kml_file(kml_path)
+        if not tree:
+            print("[dwdforecast] Failed to parse KML file. Last known file:", last_kml_url)
+            logging.warning("Failed to parse KML file. Last known file: %s", last_kml_url)
+            return None
+        print("[dwdforecast] Extracting weather data...")
+        mosmixdata = extract_mosmixdata(root, station)
+        print("[dwdforecast] Processing data with PVLIB...")
+        df = data_processing.build_dataframe(mosmixdata, temp_offset)
+        df, mc_weather, modelchain = data_processing.run_pvlib(df, pv_system, pv_location, simple_factor)
+        # Output
+        if csv_output:
+            print(f"[dwdforecast] Writing CSV: {csv_file}")
+            df.to_csv(csv_file)
+        if print_output:
+            print("[dwdforecast] Logging combined results to dwd_debug.txt.")
+            logging.info("Here are the combined results from DWD - as well as PVLIB:")
+            logging.info("%s", df)
+        if db_output and db_cur:
+            print("[dwdforecast] Writing results to database...")
+            for _, row in df.iterrows():
+                row_dict = row.to_dict()
+                if db.check_timestamp_existence(db_cur, db_table, int(row_dict['mytimestamp'])) == 0:
+                    db.addsingle_row(db_cur, db_table, row_dict)
+                else:
+                    db.update_row(db_cur, db_table, row_dict['TTT'], row_dict['Rad1h'], row_dict['FF'], row_dict['PPPP'], row_dict['mytimestamp'], row_dict['Rad1Energy'], row_dict['ACSim'], row_dict['DCSim'], row_dict['CellTempSim'], row_dict['Rad1wh'])
+        print("[dwdforecast] Cycle complete.")
+        return newtime
 
     # Setup DB connection if needed
     db_conn = db_cur = None
     if db_output:
         db_conn, db_cur = db.connect_db(db_user, db_password, db_host, db_port, db_name)
 
-    # Polling function
-    def poll_func():
-        urls, newtime = kml_reader.get_url_for_latest(urlpath, ext='kmz')
-        if not urls:
-            logging.warning("No KML URLs found.")
-            return None
-        kml_zip_url = urls[-1]
-        kml_path = kml_reader.extract_kml_from_zip(kml_zip_url)
-        if not kml_path:
-            logging.warning("Failed to extract KML file.")
-            return None
-        tree, root = kml_reader.parse_kml_file(kml_path)
-        if not tree:
-            logging.warning("Failed to parse KML file.")
-            return None
-        mosmixdata = extract_mosmixdata(root, station)
-        df = data_processing.build_dataframe(mosmixdata, temp_offset)
-        df, mc_weather, modelchain = data_processing.run_pvlib(df, pv_system, pv_location, simple_factor)
-        # Output
-        if csv_output:
-            df.to_csv(csv_file)
-        if print_output:
-            logging.info("Here are the combined results from DWD - as well as PVLIB:")
-            logging.info("%s", df)
-        if db_output and db_cur:
-            for _, row in df.iterrows():
-                # Prepare row dict as in original
-                row_dict = row.to_dict()
-                if db.check_timestamp_existence(db_cur, db_table, int(row_dict['mytimestamp'])) == 0:
-                    db.addsingle_row(db_cur, db_table, row_dict)
-                else:
-                    db.update_row(db_cur, db_table, row_dict['TTT'], row_dict['Rad1h'], row_dict['FF'], row_dict['PPPP'], row_dict['mytimestamp'], row_dict['Rad1Energy'], row_dict['ACSim'], row_dict['DCSim'], row_dict['CellTempSim'], row_dict['Rad1wh'])
-        return newtime
-
     # Start polling thread
     myQueue1 = queue.Queue()
     poll_thread = poller.PollerThread(myQueue1, poll_func, interval=sleeptime)
     poll_thread.start()
+    print("[dwdforecast] Waiting for forecast data...")
     while myQueue1.empty():
         time.sleep(1)
     i = 0
@@ -139,6 +170,7 @@ def main():
     except Exception as e:
         poll_thread.event.set()
         logging.error("Main loop error: %s", e)
+    print("[dwdforecast] Main loop complete. Exiting soon.")
 
 if __name__ == "__main__":
     main()

@@ -26,7 +26,15 @@ def get_url_for_latest(urlpath, ext=''):
             words = elements.split()
             mytime = words[0] + "-" + words[1]
             logging.debug("%s %s", ",GetURLForLatest :DWD Filetimestamp found :", mytime)
-            mynewtime = time.mktime(datetime.datetime.strptime(mytime, "%d-%b-%Y-%H:%M").timetuple())
+            # Try parsing with seconds, fallback to without seconds
+            try:
+                mynewtime = time.mktime(datetime.datetime.strptime(mytime, "%d-%b-%Y-%H:%M:%S").timetuple())
+            except ValueError:
+                try:
+                    mynewtime = time.mktime(datetime.datetime.strptime(mytime, "%d-%b-%Y-%H:%M").timetuple())
+                except Exception as e:
+                    logging.error("GetURLForLatest timestamp parse error: %s", e)
+                    mynewtime = 0
             logging.debug("%s %s", ",GetURLForLatest :DWD Filetimestamp found :", mynewtime)
         if (elements.find("LATEST") > 0):
             counter = 1
