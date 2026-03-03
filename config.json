@@ -1,0 +1,42 @@
+{
+  "DWD": {
+    "DWDStation": "P148",
+    "DWDStationURL": "http://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/P148/kml/"
+  },
+  "SolarSystem": {
+    "ModuleName": "...",
+    "InverterName": "...",
+    "Latitude": 48.1,
+    "Longitude": 11.6,
+    "Altitude": 500,
+    "Elevation": 30,
+    "Azimuth": 180,
+    "NumPanels": 10,
+    "NumStrings": 1,
+    "Albedo": 0.2,
+    "TEMPERATURE_MODEL": "open_rack_glass_glass",
+    "SimpleMultiplicationFactor": 1.0,
+    "TemperatureOffset": 0.0,
+    "MyTimezone": "Europe/Berlin"
+  },
+  "Output": {
+    "CSVOutput": 1,
+    "PrintOutput": 1,
+    "DBOutput": 0,
+    "CSVFile": "outputdwdforecast.csv",
+    "DBUser": "user",
+    "DBPassword": "password",
+    "DBHost": "localhost",
+    "DBName": "dwd",
+    "DBPort": 3306,
+    "DBTable": "dwdforecast"
+  },
+  "Logging": {
+    "File": "/tmp/dwd_kml.log",
+    "Level": "INFO"
+  },
+  "Processing": {
+    "Sleeptime": 300
+  }
+}
+
