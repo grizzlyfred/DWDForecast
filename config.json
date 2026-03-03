@@ -20,8 +20,7 @@
     "TemperatureOffset": 0
   },
   "Processing": {
-    "Sleeptime": 15,
-    "ProcessingConfiguration": "Simple"
+    "Sleeptime": 15
   },
   "Output": {
     "PrintOutput": 0,
@@ -39,6 +38,7 @@
     "Level": "DEBUG",
     "File": "dwd_debug.txt"
   },
+  "ProcessingConfiguration": "Simple",
   "_template": {
     "DWD": {
       "DWDStation": "P755",
@@ -61,8 +61,7 @@
       "TemperatureOffset": 0
     },
     "Processing": {
-      "Sleeptime": 15,
-      "ProcessingConfiguration": "Simple"
+      "Sleeptime": 15
     },
     "Output": {
       "PrintOutput": 1,

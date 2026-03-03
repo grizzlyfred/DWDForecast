@@ -89,6 +89,10 @@ python3 dwdforecast.py
 
 ## Configuration Reference (with Comments)
 
+- **ProcessingConfiguration**: Controls the main operation mode of the script. Possible values:
+  - `Simple`: The script pulls data from DWD once, performs calculations, creates the specified output, and then terminates.
+  - `Complex`: The script runs in an endless loop, looks for updates on the DWD site, performs calculations when updates are received, and creates the specified outputs. Use this for continuous/daemon operation.
+
 Below is a full reference for all configuration options, including detailed comments and explanations as found in the original INI file. Use this as a guide for what each option means and how to set it in your config.json.
 
 ```

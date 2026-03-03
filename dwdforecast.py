@@ -823,13 +823,13 @@ if __name__ == "__main__":
     # -----------------------------------------------------------------
     # START Queue (To read dwd values and populate them to database):
     try:
-        logging.info("dwdforecast main thread started. All debug prints removed; see dwd_debug.txt for details.")
+        logging.info("dwdforecast main thread started. See dwd_debug.txt for all further details.")
         myQueue1 = queue.Queue()
         myThread1 = dwdforecast(myQueue1)
         myThread1.start()
         while myQueue1.empty():
-            logging.info(" Waiting on DWD dwdforecastdata Queue results to tell it is started...")
-            time.sleep(10)
+            # logging.info(" Waiting on DWD dwdforecastdata Queue results to tell it is started...")
+            time.sleep(1)
         # Queue End (To read values from DWD)
         # _________________________________________________________________
         i = 0
@@ -838,7 +838,7 @@ if __name__ == "__main__":
             while i < 1:
                 if not myQueue1.empty():  # Do something if we have queue entries
                     quelength = myQueue1.qsize()  # In case multiple values are in queue, take last one
-                    logging.info("%s %s ", ",Main :Queue length is : ", quelength)
+                    # logging.info("%s %s ", ",Main :Queue length is : ", quelength)
                     for x in range(0, quelength):
                         LastDWDtimestamp = myQueue1.get()  # Get stuff from queue
                         mylasttimestamp = connvertINTtimestamptoDWD(LastDWDtimestamp)
