@@ -129,7 +129,7 @@ import queue
 import threading
 import logging
 import pprint
-import configparser
+import json
 
 import numpy as np
 import pandas as pd
@@ -165,38 +165,38 @@ class dwdforecast(threading.Thread):
     def __init__(self, myqueue):
         try:
             print("Starting dwdforecast init ...")
-            self.config = configparser.ConfigParser()
-            self.config.read('configuration.ini')
-            self.config.sections()
-            self.mystation = (self.config.get('DWD', 'DWDStation', raw=True))
-            self.urlpath = (self.config.get('DWD', 'DWDStationURL', raw=True))
-            self.mylongitude = (self.config.getfloat('SolarSystem', 'Longitute', raw=True))
-            self.mylatitude = (self.config.getfloat('SolarSystem', 'Latitude', raw=True))
-            self.myaltitude = (self.config.getfloat('SolarSystem', 'Altitude', raw=True))
-            self.mypv_elevation = (self.config.getfloat('SolarSystem', 'Elevation', raw=True))
-            self.mypv_azimuth = (self.config.getfloat('SolarSystem', 'Azimuth', raw=True))
-            self.myNumPanels = (self.config.getint('SolarSystem', 'NumPanels', raw=True))
-            self.myNumStrings = (self.config.getint('SolarSystem', 'NumStrings', raw=True))
-            self.myalbedo = (self.config.getfloat('SolarSystem', 'Albedo', raw=True))
-            self.mytemperature_model = (self.config.get('SolarSystem', 'TEMPERATURE_MODEL', raw=True))
-            self.myinverter = (self.config.get('SolarSystem', 'InverterName', raw=True))
-            self.mymodule = (self.config.get('SolarSystem', 'ModuleName', raw=True))
-            self.mysimplemultiplicationfactor = (
-                self.config.getfloat('SolarSystem', 'SimpleMultiplicationFactor', raw=True))
-            self.TemperatureOffset = (self.config.getfloat('SolarSystem', 'TemperatureOffset', raw=True))
-            self.mytimezone = (self.config.get('SolarSystem', 'MyTimezone', raw=True))
-            self.sleeptime = (self.config.getint('Processing', 'Sleeptime', raw=True))
+            with open('config.json', 'r') as config_file:
+                self.config = json.load(config_file)
 
-            self.PrintOutput = (self.config.getint('Output', 'PrintOutput', raw=True))
-            self.CSVOutput = (self.config.getint('Output', 'CSVOutput', raw=True))
-            self.DBOutput = (self.config.getint('Output', 'DBOutput', raw=True))
-            self.CSVFile = (self.config.get('Output', 'CSVFile', raw=True))
-            self.DBUser = (self.config.get('Output', 'DBUser', raw=True))
-            self.DBPassword = (self.config.get('Output', 'DBPassword', raw=True))
-            self.DBHost = (self.config.get('Output', 'DBHost', raw=True))
-            self.DBName = (self.config.get('Output', 'DBName', raw=True))
-            self.DBPort = (self.config.getint('Output', 'DBPort', raw=True))
-            self.DBTable = (self.config.get('Output', 'DBTable', raw=True))
+            self.mystation = self.config['DWD']['DWDStation']
+            self.urlpath = self.config['DWD']['DWDStationURL']
+            self.mylongitude = self.config['SolarSystem']['Longitute']
+            self.mylatitude = self.config['SolarSystem']['Latitude']
+            self.myaltitude = self.config['SolarSystem']['Altitude']
+            self.mypv_elevation = self.config['SolarSystem']['Elevation']
+            self.mypv_azimuth = self.config['SolarSystem']['Azimuth']
+            self.myNumPanels = self.config['SolarSystem']['NumPanels']
+            self.myNumStrings = self.config['SolarSystem']['NumStrings']
+            self.myalbedo = self.config['SolarSystem']['Albedo']
+            self.mytemperature_model = self.config['SolarSystem']['TEMPERATURE_MODEL']
+            self.myinverter = self.config['SolarSystem']['InverterName']
+            self.mymodule = self.config['SolarSystem']['ModuleName']
+            self.mysimplemultiplicationfactor = self.config['SolarSystem']['SimpleMultiplicationFactor']
+            self.TemperatureOffset = self.config['SolarSystem']['TemperatureOffset']
+            self.mytimezone = self.config['SolarSystem']['MyTimezone']
+            self.sleeptime = self.config['Processing']['Sleeptime']
+
+            self.PrintOutput = self.config['Output']['PrintOutput']
+            self.CSVOutput = self.config['Output']['CSVOutput']
+            self.DBOutput = self.config['Output']['DBOutput']
+            self.CSVFile = self.config['Output']['CSVFile']
+            self.DBUser = self.config['Output']['DBUser']
+            self.DBPassword = self.config['Output']['DBPassword']
+            self.DBHost = self.config['Output']['DBHost']
+            self.DBName = self.config['Output']['DBName']
+            self.DBPort = self.config['Output']['DBPort']
+            self.DBTable = self.config['Output']['DBTable']
+
 
             self.mytemperature_model_parameters = TEMPERATURE_MODEL_PARAMETERS['sapm'][self.mytemperature_model]
             self.sandia_modules = pvlib.pvsystem.retrieve_sam('cecmod')
@@ -862,7 +862,3 @@ if __name__ == "__main__":
     except Exception as FinalExceptionError:
         print("I am clueless ... Hit some other error ....    !", FinalExceptionError)
         myThread1.event.set()
-
-
-
-

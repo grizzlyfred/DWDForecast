@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51c9e996-9106-47b7-8559-015a291af299" name="Changes" comment="Refactor dwdforecast initialization and enhance logging setup in dwdforecast.py; update config.json for improved configuration handling">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="51c9e996-9106-47b7-8559-015a291af299" name="Changes" comment="Update .gitignore to exclude dwd_debug.txt file">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dwdforecast.py" beforeDir="false" afterPath="$PROJECT_DIR$/dwdforecast.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +20,8 @@
   </component>
   <component name="CopilotUserSelectedModel">
     <selectedModels>
-      <entry key="chat-panel" value="GPT-4o" />
-      <entry key="agent-panel" value="GPT-4o" />
+      <entry key="chat-panel" value="GPT-4.1" />
+      <entry key="agent-panel" value="GPT-4.1" />
     </selectedModels>
   </component>
   <component name="EmbeddingIndexingInfo">
@@ -86,7 +86,7 @@
       <updated>1772490776254</updated>
       <workItem from="1772490777296" duration="2097000" />
       <workItem from="1772492923893" duration="1485000" />
-      <workItem from="1772494417426" duration="1988000" />
+      <workItem from="1772494417426" duration="2431000" />
     </task>
     <task id="LOCAL-00001" summary="update project SDK to Python 3.14 and add Ask2Agent migration state">
       <option name="closed" value="true" />
@@ -136,7 +136,31 @@
       <option name="project" value="LOCAL" />
       <updated>1772495131017</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="reset, cheap ai fails utterl">
+      <option name="closed" value="true" />
+      <created>1772496428364</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1772496428364</updated>
+    </task>
+    <task id="LOCAL-00008" summary="reset, cheap ai fails utterl">
+      <option name="closed" value="true" />
+      <created>1772496504382</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1772496504382</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Update .gitignore to exclude dwd_debug.txt file">
+      <option name="closed" value="true" />
+      <created>1772496566023</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1772496566023</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,10 +173,12 @@
     <MESSAGE value="Add .gitignore and refactor dwdforecast initialization for improved configuration handling" />
     <MESSAGE value="Add JSON configuration file and refactor dwdforecast initialization for improved configuration handling" />
     <MESSAGE value="Refactor dwdforecast initialization and enhance logging setup in dwdforecast.py; update config.json for improved configuration handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor dwdforecast initialization and enhance logging setup in dwdforecast.py; update config.json for improved configuration handling" />
+    <MESSAGE value="reset, cheap ai fails utterl" />
+    <MESSAGE value="Update .gitignore to exclude dwd_debug.txt file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update .gitignore to exclude dwd_debug.txt file" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/dwd_git$dwdforecast.coverage" NAME="dwdforecast Coverage Results" MODIFIED="1772495231911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/dwd_git$dwdforecast.coverage" NAME="dwdforecast Coverage Results" MODIFIED="1772496760948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
