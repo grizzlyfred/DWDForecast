@@ -10,7 +10,7 @@ import queue
 import json
 import time
 import sys
-from lib import kml_reader, data_processing, db, poller, data_output
+from lib import kml_reader, data_processing, db, poller, data_output, config_utils
 from lib.kml_reader import extract_mosmixdata
 import pvlib
 from pvlib.pvsystem import PVSystem
@@ -32,15 +32,8 @@ def main():
         format='%(asctime)s %(levelname)s [%(module)s]: %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
-    # Validate JSON config
-    try:
-        with open('config.json', 'r') as config_file:
-            config = json.load(config_file)
-    except Exception as e:
-        print(f"[dwdforecast] ERROR: Invalid config.json: {e}")
-        logging.error("Invalid config.json: %s", e)
-        sys.exit(1)
-    print("[dwdforecast] Configuration loaded.")
+    # Load config using utility
+    config = config_utils.load_config('config.json')
     # Extract config values
     station = config['DWD']['DWDStation']
     urlpath = config['DWD']['DWDStationURL']
@@ -62,7 +55,6 @@ def main():
     print_output = config['Output']['PrintOutput']
     csv_output = config['Output']['CSVOutput']
     db_output = config['Output']['DBOutput']
-    csv_file = config['Output']['CSVFile']
     db_user = config['Output']['DBUser']
     db_password = config['Output']['DBPassword']
     db_host = config['Output']['DBHost']
@@ -70,12 +62,8 @@ def main():
     db_port = config['Output']['DBPort']
     db_table = config['Output']['DBTable']
 
-    # Support a list of CSV output paths for cross-platform compatibility
-    csv_file_config = config['Output']['CSVFile']
-    if isinstance(csv_file_config, list):
-        csv_file_candidates = csv_file_config
-    else:
-        csv_file_candidates = [csv_file_config]
+    # Get CSV output path candidates from config_utils
+    csv_file_candidates = config_utils.get_csv_file_candidates(config)
 
     # Setup PVLIB system
     temperature_model_parameters = TEMPERATURE_MODEL_PARAMETERS['sapm'][temperature_model]
