@@ -1,2 +1,0 @@
-ERROR:root:2025-04-21_21:57:55 , dwdforecast  : unconverted data remains: :49
-ERROR:root:2025-04-21_22:11:03 , dwdforecast  : unconverted data remains: :49
