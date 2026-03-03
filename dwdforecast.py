@@ -252,6 +252,9 @@ class dwdforecast(threading.Thread):
         logging.info("I am looking for data from DWD for the following station: %s", self.mystation)
         logging.info("I will be polling the following URL for the latest updates %s", self.urlpath)
 
+        self.mydownloadfiles = []  # Ensure attribute always exists
+        self.mynewtime = 0        # Ensure attribute always exists
+
     # Based on the user specified URL, find the latest file file with it´s timestamp
     def GetURLForLatest(self, urlpath, ext=''):
         try:
