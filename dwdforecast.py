@@ -7,15 +7,9 @@
 
 import logging
 import queue
-import json
-import time
 import sys
 from lib import kml_reader, data_processing, db, poller, data_output, config_utils
-from lib.kml_reader import extract_mosmixdata, connvertINTtimestamptoDWD
-import pvlib
-from pvlib.pvsystem import PVSystem
-from pvlib.location import Location
-from pvlib.temperature import TEMPERATURE_MODEL_PARAMETERS
+from lib.kml_reader import extract_mosmixdata
 
 
 
@@ -73,7 +67,7 @@ def main():
         df, mc_weather, modelchain = data_processing.process_with_pvlib(mosmixdata, config)
         # Output
         if config.Output.CSVOutput:
-            data_output.write_dataframe_to_csv(df, config_utils.get_csv_file_candidates(config._data))
+            data_output.write_dataframe_to_csv(df, config_utils.get_csv_file_candidates(config._data.__dict__))
         if config.Output.PrintOutput:
             print("[dwdforecast] Logging combined results to dwd_debug.txt.")
             logging.info("Here are the combined results from DWD - as well as PVLIB:")
@@ -92,8 +86,8 @@ def main():
         print("[dwdforecast] Finished polling attempt. Exiting.")
         return
     # Server mode: start poller thread if arguments are given
-    myQueue1 = queue.Queue()
-    poll_thread = poller.PollerThread(myQueue1, poll_func, interval=config.Processing.Sleeptime, cooldown=3600)
+    my_queue1 = queue.Queue()
+    poll_thread = poller.PollerThread(my_queue1, poll_func, interval=config.Processing.Sleeptime, cooldown=3600)
     poll_thread.start()
     print("[dwdforecast] Poller started. Exiting main thread.")
     # The poller module is now responsible for any waiting or server-like operation.
