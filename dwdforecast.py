@@ -67,7 +67,7 @@ def main():
         df, mc_weather, modelchain = data_processing.process_with_pvlib(mosmixdata, config)
         # Output
         if config.Output.CSVOutput:
-            data_output.write_dataframe_to_csv(df, config_utils.get_csv_file_candidates(config._data.__dict__))
+            data_output.write_dataframe_to_csv(df, config_utils.get_csv_file_candidates(vars(config)))
         if config.Output.PrintOutput:
             print("[dwdforecast] Logging combined results to dwd_debug.txt.")
             logging.info("Here are the combined results from DWD - as well as PVLIB:")
