@@ -1,3 +1,4 @@
 # Ignore adaptions folder and its contents
 adaptions/
 
+/dwd_debug.txt
