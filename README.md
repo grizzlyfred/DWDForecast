@@ -79,6 +79,12 @@ The codebase is now split into logical modules:
 
 Logging is fully configurable via `config.json`. By default, logs are written to `/tmp/dwd_kml.log`.
 
+## Output Formats
+
+Whenever the script writes a CSV file, it also writes a JSON file (with the same base name) containing the same data in records format. This ensures that both CSV and JSON are always available for downstream use or inspection.
+
+Example: If your output is `output.csv`, you will also get `output.json` in the same directory.
+
 ## License
 
 See `LICENSE.md` for details. Original copyright (C) 2020 Kilian Knoll. Modernization and modularization (C) 2026 Sven Witterstein.
