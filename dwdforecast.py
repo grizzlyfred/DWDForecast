@@ -164,7 +164,7 @@ def loggerdate():
 class dwdforecast(threading.Thread):
     def __init__(self, myqueue):
         try:
-            print("Starting dwdforecast init ...")
+            logging.info("Starting dwdforecast init ...")
             with open('config.json', 'r') as config_file:
                 self.config = json.load(config_file)
 
@@ -212,12 +212,12 @@ class dwdforecast(threading.Thread):
                                                       port=self.DBPort, database=self.DBName,
                                                       autocommit=True)  # Connect string to the database - we are setting
                     self.cur = self.db.cursor()
-                    print("I have set my DB connection")
+                    logging.info("I have set my DB connection")
                 except Exception as ErrorDBConnect:
-                    logging.error("%s %s", ",Trying to connect to mariaDB failed:", ErrorDBConnect)
+                    logging.error("Unable to connect to database %s", ErrorDBConnect)
                     print("Unable to connect to database", ErrorDBConnect)
         except Exception as ErrorConfigParse:
-            logging.error("%s %s", ",GetURLForLatest Error getting data from the internet:", ErrorConfigParse)
+            logging.error("Hit error during configparse %s", ErrorConfigParse)
             print("Hit error during configparse ", ErrorConfigParse)
         self.mypvliblocation = Location(latitude=self.mylatitude,
                                         longitude=self.mylongitude,
@@ -242,8 +242,8 @@ class dwdforecast(threading.Thread):
                                       temperature_model_parameters=self.mytemperature_model_parameters,
                                       strings_per_inverter=self.myNumStrings)
 
-        print("I am looking for data from DWD for the following station: ", self.mystation)
-        print("I will be polling the following URL for the latest updates ", self.urlpath)
+        logging.info("I am looking for data from DWD for the following station: %s", self.mystation)
+        logging.info("I will be polling the following URL for the latest updates %s", self.urlpath)
 
     # Based on the user specified URL, find the latest file file with it´s timestamp
     def GetURLForLatest(self, urlpath, ext=''):
@@ -374,7 +374,7 @@ class dwdforecast(threading.Thread):
             while not self.event.is_set():  # In case the main process wants to shut us down...
                 if (self.myinit == 0):  # We populate the first timestamp to signal to main that we are up & running
                     temptimestamp = time.time()
-                    print("From dwdforecast - initial queue population", temptimestamp)
+                    logging.info("From dwdforecast - initial queue population %s", temptimestamp)
                     self.myqueue.put(temptimestamp)
                     self.myinit = 1
                 time.sleep(1)
@@ -548,7 +548,7 @@ class dwdforecast(threading.Thread):
                             self.indexcounter_addrows = 1
                             self.MyWeathervalues = {}
 
-                            print("Here is the raw data  what we got from DWD :")
+                            logging.info("Here is the raw data  what we got from DWD :")
 
                             for j in range(self.rows):
                                 if (
@@ -562,11 +562,9 @@ class dwdforecast(threading.Thread):
                                     self.MyWeathervalues.update({'TTT': self.mosmixdata[3][j]})
                                     self.MyWeathervalues.update({'PPPP': self.mosmixdata[4][j]})
                                     self.MyWeathervalues.update({'FF': self.mosmixdata[5][j]})
-                                    print('mydatetime', self.mosmixdata[0][j], 'myTZtimestamp ', self.mosmixdata[1][j],
-                                          'Rad1h ', self.mosmixdata[2][j], 'TTT ', self.mosmixdata[3][j], 'PPPP',
-                                          self.mosmixdata[4][j], 'FF', self.mosmixdata[5][j])
+                                    logging.info('mydatetime %s myTZtimestamp %s Rad1h %s TTT %s PPPP %s FF %s', self.mosmixdata[0][j], self.mosmixdata[1][j], self.mosmixdata[2][j], self.mosmixdata[3][j], self.mosmixdata[4][j], self.mosmixdata[5][j])
                         except Exception as ErrorPrintOutput:
-                            print("Shit happened  ?", ErrorPrintOutput)
+                            logging.error("Shit happened? %s", ErrorPrintOutput)
                             logging.error("%s %s", ",subroutine dwdforecast final exception : ", ErrorPrintOutput)
                     # ------------------------------------------
                     # START Processing data for PVLIB
@@ -713,10 +711,10 @@ class dwdforecast(threading.Thread):
                         if (self.PrintOutput == 1):
                             try:
                                 logging.debug("%s", ",dwdforecast : -Starting print output from pvlib results ...")
-                                print("Here are the combined results from DWD - as well as PVLIB:")
-                                print(self.PandasDF)
+                                logging.info("Here are the combined results from DWD - as well as PVLIB:")
+                                logging.info("%s", self.PandasDF)
                             except Exception as ErrorPrintOutput:
-                                print("Error Creating Print Output", ErrorPrintOutput)
+                                logging.error("Error Creating Print Output %s", ErrorPrintOutput)
                                 logging.error("%s %s", ",subroutine dwdforecast  exception during CSVOutput : ",
                                               ErrorPrintOutput)
 
@@ -773,14 +771,14 @@ class dwdforecast(threading.Thread):
                                                                  row['Rad1Energy'], row['ACSim'], row['DCSim'],
                                                                  row['CellTempSim'], row['Rad1wh'])
                             except Exception as ErrorDBCommit:
-                                print("Error during database commit from dwdforecast :", ErrorDBCommit)
+                                logging.error("Error during database commit from dwdforecast : %s", ErrorDBCommit)
                         # =============================================================================
                         self.myTZtimestamp = connvertINTtimestamptoDWD(self.mynewtime)
                         logging.debug("%s %s %s %s", ",Subroutine dwdforecast -we have used DWD file from time : ",
                                       self.mynewtime, " ", self.myTZtimestamp)
                     except Exception as ErrorDWDArray:
                         logging.error("%s %s", ",subroutine dwdforecast final exception : ", ErrorDWDArray)
-                        print("Error processing DWDArray", ErrorDWDArray)
+                        logging.error("Error processing DWDArray %s", ErrorDWDArray)
                     logging.debug("%s %s",
                                   "From dwdforecast - we have found a true commit and have updated the database at the following dwd time :",
                                   self.mynewtime)
@@ -790,12 +788,14 @@ class dwdforecast(threading.Thread):
                     pass
                     # print("No new data.....")
                 time.sleep(self.sleeptime)  # We are pausing to not constantly cause internet traffic
-            print("Thread is going down ...")
+            logging.info("Thread is going down ...")
     except Exception as ExceptionError:
+        logging.error("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        logging.error("XXX-Aus Subroutine dwdforecast -verrant ? %s", ExceptionError)
+        logging.error("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         print("XXX-Aus Subroutine dwdforecast -verrant ? ", ExceptionError)
         print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-        logging.error("%s %s", ",subroutine dwdforecast final exception : ", ExceptionError)
 
 
 if __name__ == "__main__":
@@ -817,8 +817,7 @@ if __name__ == "__main__":
         myThread1 = dwdforecast(myQueue1)
         myThread1.start()
         while myQueue1.empty():
-            print(" Waiting on DWD dwdforecastdata Queue results to tell it is started...")
-            logging.info("%s " ",Main :Waiting on Queue results to be populated ...")
+            logging.info(" Waiting on DWD dwdforecastdata Queue results to tell it is started...")
             time.sleep(1)
         # Queue End (To read values from DWD)
         # _________________________________________________________________
