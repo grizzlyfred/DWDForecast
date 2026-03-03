@@ -168,35 +168,42 @@ class dwdforecast(threading.Thread):
             with open('config.json', 'r') as config_file:
                 self.config = json.load(config_file)
 
-            self.mystation = self.config['DWD']['DWDStation']
-            self.urlpath = self.config['DWD']['DWDStationURL']
-            self.mylongitude = self.config['SolarSystem']['Longitute']
-            self.mylatitude = self.config['SolarSystem']['Latitude']
-            self.myaltitude = self.config['SolarSystem']['Altitude']
-            self.mypv_elevation = self.config['SolarSystem']['Elevation']
-            self.mypv_azimuth = self.config['SolarSystem']['Azimuth']
-            self.myNumPanels = self.config['SolarSystem']['NumPanels']
-            self.myNumStrings = self.config['SolarSystem']['NumStrings']
-            self.myalbedo = self.config['SolarSystem']['Albedo']
-            self.mytemperature_model = self.config['SolarSystem']['TEMPERATURE_MODEL']
-            self.myinverter = self.config['SolarSystem']['InverterName']
-            self.mymodule = self.config['SolarSystem']['ModuleName']
-            self.mysimplemultiplicationfactor = self.config['SolarSystem']['SimpleMultiplicationFactor']
-            self.TemperatureOffset = self.config['SolarSystem']['TemperatureOffset']
-            self.mytimezone = self.config['SolarSystem']['MyTimezone']
-            self.sleeptime = self.config['Processing']['Sleeptime']
+            # Refactored: Assign config values to self attributes in a compact way
+            config_map = [
+                ("mystation", ["DWD", "DWDStation"]),
+                ("urlpath", ["DWD", "DWDStationURL"]),
+                ("mylongitude", ["SolarSystem", "Longitute"]),
+                ("mylatitude", ["SolarSystem", "Latitude"]),
+                ("myaltitude", ["SolarSystem", "Altitude"]),
+                ("mypv_elevation", ["SolarSystem", "Elevation"]),
+                ("mypv_azimuth", ["SolarSystem", "Azimuth"]),
+                ("myNumPanels", ["SolarSystem", "NumPanels"]),
+                ("myNumStrings", ["SolarSystem", "NumStrings"]),
+                ("myalbedo", ["SolarSystem", "Albedo"]),
+                ("mytemperature_model", ["SolarSystem", "TEMPERATURE_MODEL"]),
+                ("myinverter", ["SolarSystem", "InverterName"]),
+                ("mymodule", ["SolarSystem", "ModuleName"]),
+                ("mysimplemultiplicationfactor", ["SolarSystem", "SimpleMultiplicationFactor"]),
+                ("TemperatureOffset", ["SolarSystem", "TemperatureOffset"]),
+                ("mytimezone", ["SolarSystem", "MyTimezone"]),
+                ("sleeptime", ["Processing", "Sleeptime"]),
 
-            self.PrintOutput = self.config['Output']['PrintOutput']
-            self.CSVOutput = self.config['Output']['CSVOutput']
-            self.DBOutput = self.config['Output']['DBOutput']
-            self.CSVFile = self.config['Output']['CSVFile']
-            self.DBUser = self.config['Output']['DBUser']
-            self.DBPassword = self.config['Output']['DBPassword']
-            self.DBHost = self.config['Output']['DBHost']
-            self.DBName = self.config['Output']['DBName']
-            self.DBPort = self.config['Output']['DBPort']
-            self.DBTable = self.config['Output']['DBTable']
-
+                ("PrintOutput", ["Output", "PrintOutput"]),
+                ("CSVOutput", ["Output", "CSVOutput"]),
+                ("DBOutput", ["Output", "DBOutput"]),
+                ("CSVFile", ["Output", "CSVFile"]),
+                ("DBUser", ["Output", "DBUser"]),
+                ("DBPassword", ["Output", "DBPassword"]),
+                ("DBHost", ["Output", "DBHost"]),
+                ("DBName", ["Output", "DBName"]),
+                ("DBPort", ["Output", "DBPort"]),
+                ("DBTable", ["Output", "DBTable"]),
+            ]
+            for attr, path in config_map:
+                value = self.config
+                for key in path:
+                    value = value[key]
+                setattr(self, attr, value)
 
             self.mytemperature_model_parameters = TEMPERATURE_MODEL_PARAMETERS['sapm'][self.mytemperature_model]
             self.sandia_modules = pvlib.pvsystem.retrieve_sam('cecmod')
