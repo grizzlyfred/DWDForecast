@@ -94,9 +94,10 @@ def main():
     if db_output:
         print("[dwdforecast] Database output enabled.")
     last_kml_url = None
+    last_kml_filename = None
     # Polling function
     def poll_func():
-        nonlocal last_kml_url
+        nonlocal last_kml_url, last_kml_filename
         print("[dwdforecast] Checking for new DWD forecast data...")
         urls, newtime = kml_reader.get_url_for_latest(urlpath, ext='kmz')
         if not urls:
@@ -104,7 +105,13 @@ def main():
             logging.warning("No KML URLs found. Last known file: %s", last_kml_url)
             return None
         kml_zip_url = urls[-1]
+        kml_filename = kml_zip_url.split('/')[-1]
+        if kml_filename == last_kml_filename:
+            print(f"[dwdforecast] No new KML file on server. Last file: {kml_filename}")
+            logging.info("No new KML file on server. Last file: %s", kml_filename)
+            return None
         last_kml_url = kml_zip_url
+        last_kml_filename = kml_filename
         print(f"[dwdforecast] Downloading: {kml_zip_url}")
         kml_path = kml_reader.extract_kml_from_zip(kml_zip_url)
         if not kml_path:
