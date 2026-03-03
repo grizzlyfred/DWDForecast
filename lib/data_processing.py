@@ -54,3 +54,30 @@ def run_pvlib(df, pv_system, pv_location, simple_factor):
     df['DCSim'] = modelchain.results.dc.p_mp
     return df, mc_weather, modelchain
 
+
+def process_with_pvlib(mosmixdata, config):
+    pv = config.SolarSystem
+    # Setup PVLIB system using config
+    temperature_model_parameters = TEMPERATURE_MODEL_PARAMETERS['sapm'][pv.TEMPERATURE_MODEL]
+    sandia_modules = pvlib.pvsystem.retrieve_sam('cecmod')
+    sandia_module = sandia_modules[pv.ModuleName]
+    cec_inverters = pvlib.pvsystem.retrieve_sam('cecinverter')
+    cec_inverter = cec_inverters[pv.InverterName]
+    pv_location = Location(latitude=pv.Latitude, longitude=pv.Longitude, tz=pv.MyTimezone, altitude=pv.Altitude)
+    pv_system = PVSystem(
+        surface_tilt=pv.Elevation,
+        surface_azimuth=pv.Azimuth,
+        module=sandia_module,
+        inverter=cec_inverter,
+        module_parameters=sandia_module,
+        inverter_parameters=cec_inverter,
+        albedo=pv.Albedo,
+        modules_per_string=pv.NumPanels,
+        racking_model="open_rack",
+        temperature_model_parameters=temperature_model_parameters,
+        strings_per_inverter=pv.NumStrings
+    )
+    # Build DataFrame and run PVLIB
+    df = build_dataframe(mosmixdata, pv.TemperatureOffset)
+    df, mc_weather, modelchain = run_pvlib(df, pv_system, pv_location, pv.SimpleMultiplicationFactor)
+    return df, mc_weather, modelchain

@@ -21,68 +21,20 @@ from pvlib.temperature import TEMPERATURE_MODEL_PARAMETERS
 
 def main():
     print("[dwdforecast] Starting up...")
-    # Improved logging format
+    # Load config using utility (property-style access)
+    config = config_utils.load_config_accessor('config.json')
+    # Logging config from config file, with defaults
+    log_file = getattr(config.Logging, 'File', '/tmp/dwd_kml.log')
+    log_level_str = getattr(config.Logging, 'Level', 'INFO').upper()
+    log_level = getattr(logging, log_level_str, logging.INFO)
     logging.basicConfig(
-        filename="dwd_debug.txt",
-        level=logging.DEBUG,
+        filename=log_file,
+        level=log_level,
         format='%(asctime)s %(levelname)s [%(module)s]: %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
-    # Load config using utility
-    config = config_utils.load_config('config.json')
-    # Extract config values
-    station = config['DWD']['DWDStation']
-    urlpath = config['DWD']['DWDStationURL']
-    longitude = config['SolarSystem']['Longitude']
-    latitude = config['SolarSystem']['Latitude']
-    altitude = config['SolarSystem']['Altitude']
-    pv_elevation = config['SolarSystem']['Elevation']
-    pv_azimuth = config['SolarSystem']['Azimuth']
-    num_panels = config['SolarSystem']['NumPanels']
-    num_strings = config['SolarSystem']['NumStrings']
-    albedo = config['SolarSystem']['Albedo']
-    temperature_model = config['SolarSystem']['TEMPERATURE_MODEL']
-    inverter = config['SolarSystem']['InverterName']
-    module = config['SolarSystem']['ModuleName']
-    simple_factor = config['SolarSystem']['SimpleMultiplicationFactor']
-    temp_offset = config['SolarSystem']['TemperatureOffset']
-    timezone = config['SolarSystem']['MyTimezone']
-    sleeptime = config['Processing']['Sleeptime']
-    print_output = config['Output']['PrintOutput']
-    csv_output = config['Output']['CSVOutput']
-    db_output = config['Output']['DBOutput']
-    db_user = config['Output']['DBUser']
-    db_password = config['Output']['DBPassword']
-    db_host = config['Output']['DBHost']
-    db_name = config['Output']['DBName']
-    db_port = config['Output']['DBPort']
-    db_table = config['Output']['DBTable']
-
-    # Get CSV output path candidates from config_utils
-    csv_file_candidates = config_utils.get_csv_file_candidates(config)
-
-    # Setup PVLIB system
-    temperature_model_parameters = TEMPERATURE_MODEL_PARAMETERS['sapm'][temperature_model]
-    sandia_modules = pvlib.pvsystem.retrieve_sam('cecmod')
-    sandia_module = sandia_modules[module]
-    cec_inverters = pvlib.pvsystem.retrieve_sam('cecinverter')
-    cec_inverter = cec_inverters[inverter]
-    pv_location = Location(latitude=latitude, longitude=longitude, tz=timezone, altitude=altitude)
-    pv_system = PVSystem(
-        surface_tilt=pv_elevation,
-        surface_azimuth=pv_azimuth,
-        module=sandia_module,
-        inverter=cec_inverter,
-        module_parameters=sandia_module,
-        inverter_parameters=cec_inverter,
-        albedo=albedo,
-        modules_per_string=num_panels,
-        racking_model="open_rack",
-        temperature_model_parameters=temperature_model_parameters,
-        strings_per_inverter=num_strings
-    )
-    print("[dwdforecast] PVLIB system initialized.")
-    if db_output:
+    print("[dwdforecast] PVLIB system will be initialized in the PVLIB module.")
+    if config.Output.DBOutput:
         print("[dwdforecast] Database output enabled.")
     last_kml_url = None
     last_kml_filename = None
@@ -90,7 +42,7 @@ def main():
     def poll_func():
         nonlocal last_kml_url, last_kml_filename
         print("[dwdforecast] Checking for new DWD forecast data...")
-        urls, newtime = kml_reader.get_url_for_latest(urlpath, ext='kmz')
+        urls, newtime = kml_reader.get_url_for_latest(config.DWD.DWDStationURL, ext='kmz')
         if not urls:
             print("[dwdforecast] No KML URLs found. Last known file:", last_kml_url)
             logging.warning("No KML URLs found. Last known file: %s", last_kml_url)
@@ -116,37 +68,36 @@ def main():
             logging.warning("Failed to parse KML file. Last known file: %s", last_kml_url)
             return None
         print("[dwdforecast] Extracting weather data...")
-        mosmixdata = extract_mosmixdata(root, station)
+        mosmixdata = extract_mosmixdata(root, config.DWD.DWDStation)
         print("[dwdforecast] Processing data with PVLIB...")
-        df = data_processing.build_dataframe(mosmixdata, temp_offset)
-        df, mc_weather, modelchain = data_processing.run_pvlib(df, pv_system, pv_location, simple_factor)
+        df, mc_weather, modelchain = data_processing.process_with_pvlib(mosmixdata, config)
         # Output
-        if csv_output:
-            data_output.write_dataframe_to_csv(df, csv_file_candidates)
-        if print_output:
+        if config.Output.CSVOutput:
+            data_output.write_dataframe_to_csv(df, config_utils.get_csv_file_candidates(config._data))
+        if config.Output.PrintOutput:
             print("[dwdforecast] Logging combined results to dwd_debug.txt.")
             logging.info("Here are the combined results from DWD - as well as PVLIB:")
             logging.info("%s", df)
-        if db_output and db_cur:
+        if config.Output.DBOutput and db_cur:
             print("[dwdforecast] Writing results to database...")
             for _, row in df.iterrows():
                 row_dict = row.to_dict()
-                if db.check_timestamp_existence(db_cur, db_table, int(row_dict['mytimestamp'])) == 0:
-                    db.addsingle_row(db_cur, db_table, row_dict)
+                if db.check_timestamp_existence(db_cur, config.Output.DBTable, int(row_dict['mytimestamp'])) == 0:
+                    db.addsingle_row(db_cur, config.Output.DBTable, row_dict)
                 else:
-                    db.update_row(db_cur, db_table, row_dict['TTT'], row_dict['Rad1h'], row_dict['FF'], row_dict['PPPP'], row_dict['mytimestamp'], row_dict['Rad1Energy'], row_dict['ACSim'], row_dict['DCSim'], row_dict['CellTempSim'], row_dict['Rad1wh'])
+                    db.update_row(db_cur, config.Output.DBTable, row_dict['TTT'], row_dict['Rad1h'], row_dict['FF'], row_dict['PPPP'], row_dict['mytimestamp'], row_dict['Rad1Energy'], row_dict['ACSim'], row_dict['DCSim'], row_dict['CellTempSim'], row_dict['Rad1wh'])
         print("[dwdforecast] Cycle complete.")
         return newtime
 
     # Setup DB connection if needed
     db_conn = db_cur = None
-    if db_output:
-        db_conn, db_cur = db.connect_db(db_user, db_password, db_host, db_port, db_name)
+    if config.Output.DBOutput:
+        db_conn, db_cur = db.connect_db(config.Output.DBUser, config.Output.DBPassword, config.Output.DBHost, config.Output.DBPort, config.Output.DBName)
 
     # Start polling thread
     myQueue1 = queue.Queue()
     # Set cooldown to 1 hour (3600s) to avoid unnecessary downloads
-    poll_thread = poller.PollerThread(myQueue1, poll_func, interval=sleeptime, cooldown=3600)
+    poll_thread = poller.PollerThread(myQueue1, poll_func, interval=config.Processing.Sleeptime, cooldown=3600)
     poll_thread.start()
     print("[dwdforecast] Waiting for forecast data...")
     while myQueue1.empty():
