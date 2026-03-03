@@ -1,18 +1,8 @@
 #
 #  Copyright (C) 2020  Kilian Knoll kilian.knoll@gmx.de
-#  
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
+#  Modernized and modularized in 2026 by Sven Witterstein to investigate missing DWD station data.
 #
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#  License: See LICENSE.md for details (GPLv3+ and modernization notice).
 #
 
 import logging
@@ -20,6 +10,8 @@ import queue
 import json
 import time
 from lib import kml_reader, data_processing, db, poller
+from lib.kml_reader import extract_mosmixdata
+import pvlib
 from pvlib.pvsystem import PVSystem
 from pvlib.location import Location
 from pvlib.temperature import TEMPERATURE_MODEL_PARAMETERS
@@ -66,9 +58,9 @@ def main():
 
     # Setup PVLIB system
     temperature_model_parameters = TEMPERATURE_MODEL_PARAMETERS['sapm'][temperature_model]
-    sandia_modules = PVSystem.retrieve_sam('cecmod')
+    sandia_modules = pvlib.pvsystem.retrieve_sam('cecmod')
     sandia_module = sandia_modules[module]
-    cec_inverters = PVSystem.retrieve_sam('cecinverter')
+    cec_inverters = pvlib.pvsystem.retrieve_sam('cecinverter')
     cec_inverter = cec_inverters[inverter]
     pv_location = Location(latitude=latitude, longitude=longitude, tz=timezone, altitude=altitude)
     pv_system = PVSystem(
@@ -105,9 +97,7 @@ def main():
         if not tree:
             logging.warning("Failed to parse KML file.")
             return None
-        # ...extract timevalue, Rad1h, TTT, PPPP, FF as in original...
-        # For brevity, assume a helper function exists:
-        mosmixdata = extract_mosmixdata(root, station)  # You would implement this in kml_reader
+        mosmixdata = extract_mosmixdata(root, station)
         df = data_processing.build_dataframe(mosmixdata, temp_offset)
         df, mc_weather, modelchain = data_processing.run_pvlib(df, pv_system, pv_location, simple_factor)
         # Output

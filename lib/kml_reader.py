@@ -56,3 +56,43 @@ def parse_kml_file(kml_path):
         logging.error("Error parsing KML file: %s", e)
         return None, None
 
+
+def extract_mosmixdata(root, station):
+    # Extracts timevalue, Rad1h, TTT, PPPP, FF arrays for the given station from the KML root
+    ns = {'dwd': 'https://opendata.dwd.de/weather/lib/pointforecast_dwd_extension_V1_0.xsd',
+          'gx': 'http://www.google.com/kml/ext/2.2',
+          'kml': 'http://www.opengis.net/kml/2.2',
+          'atom': 'http://www.w3.org/2005/Atom',
+          'xal': 'urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'}
+    timestamps = root.findall('kml:Document/kml:ExtendedData/dwd:ProductDefinition/dwd:ForecastTimeSteps/dwd:TimeStep', ns)
+    timevalue = [child.text for child in timestamps]
+    Rad1h = TTT = PPPP = FF = None
+    for elem in root.findall('./kml:Document/kml:Placemark', ns):
+        mylocation = elem.find('kml:name', ns).text
+        if mylocation == station:
+            myforecastdata = elem.find('kml:ExtendedData', ns)
+            for subelem in myforecastdata:
+                attrib = str(subelem.attrib)
+                if ": 'FF'" in attrib:
+                    FF = list(subelem[0].text.split())
+                if ": 'Rad1h'" in attrib:
+                    Rad1h = list(subelem[0].text.split())
+                if ": 'TTT'" in attrib:
+                    TTT = list(subelem[0].text.split())
+                    for i in range(len(TTT)):
+                        TTT[i] = round(float(TTT[i]) - 273.13, 2)
+                if ": 'PPPP'" in attrib:
+                    PPPP = list(subelem[0].text.split())
+    # Compose the mosmixdata array as in the original
+    mosmixdata = []
+    for _ in range(6):
+        mosmixdata.append([0] * len(timevalue))
+    for idx in range(len(timevalue)):
+        # The second column is a human-readable timestamp, but we just copy the original string for now
+        mosmixdata[0][idx] = timevalue[idx]
+        mosmixdata[1][idx] = timevalue[idx].replace('T', ' ').replace('Z', '')
+        mosmixdata[2][idx] = Rad1h[idx] if Rad1h else 0
+        mosmixdata[3][idx] = TTT[idx] if TTT else 0
+        mosmixdata[4][idx] = PPPP[idx] if PPPP else 0
+        mosmixdata[5][idx] = FF[idx] if FF else 0
+    return mosmixdata
