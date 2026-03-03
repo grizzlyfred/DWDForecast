@@ -29,7 +29,7 @@
 # https://www.dwd.de/DE/leistungen/met_verfahren_mosmix/mosmix_stationskatalog.cfg?view=nasPublication&nn=495490
 #
 # How to use this ?
-# 1) Find the station close by your geographic location:
+# 1) Find the station close to your geographic location:
 #   Go to the website below, zoom to your location - and click on "Mosmix Stationen anzeigen"
 #   Once you found the closest station, please change the station number to  the station number
 #   https://wettwarn.de/mosmix/mosmix.html
@@ -172,7 +172,7 @@ class dwdforecast(threading.Thread):
             config_map = [
                 ("mystation", ["DWD", "DWDStation"]),
                 ("urlpath", ["DWD", "DWDStationURL"]),
-                ("mylongitude", ["SolarSystem", "Longitute"]),
+                ("mylongitude", ["SolarSystem", "Longitude"]),  # Fixed typo here
                 ("mylatitude", ["SolarSystem", "Latitude"]),
                 ("myaltitude", ["SolarSystem", "Altitude"]),
                 ("mypv_elevation", ["SolarSystem", "Elevation"]),

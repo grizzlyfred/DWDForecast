@@ -4,7 +4,7 @@
     "DWDStationURL": "http://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/P148/kml/"
   },
   "SolarSystem": {
-    "Longitute": 10.499,
+    "Longitude": 10.499,
     "Latitude": 48.852,
     "Altitude": 330,
     "Elevation": 45,
@@ -42,43 +42,43 @@
   "_template": {
     "DWD": {
       "DWDStation": "P755",
-      "DWDStationURL": "http://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/P755/kml"
+      "DWDStationURL": "http://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/P755/kml" // URL for the given station
     },
     "SolarSystem": {
-      "Longitute": 11.6,
-      "Latitude": 48.2,
-      "Altitude": 400,
-      "Elevation": 35,
-      "Azimuth": 178,
-      "NumPanels": 14,
-      "NumStrings": 2,
-      "Albedo": 0.14,
-      "TEMPERATURE_MODEL": "open_rack_glass_polymer",
-      "InverterName": "SMA_America__SB10000TL_US__240V_",
-      "ModuleName": "LG_Electronics_Inc__LG335E1C_A5",
-      "MyTimezone": "UTC",
-      "SimpleMultiplicationFactor": 8.605184,
-      "TemperatureOffset": 0
+      "Longitude": 11.6, // GPS Longitude of your solar system
+      "Latitude": 48.2, // GPS Latitude of your solar system
+      "Altitude": 400, // Altitude [m] of your solar system's location
+      "Elevation": 35, // Inclination angle of solar panels (0 degrees = horizontal)
+      "Azimuth": 178, // Azimuth [Degrees] of your panels: 270=West, 180=South, 90=East
+      "NumPanels": 14, // Number of panels per string
+      "NumStrings": 2, // Number of strings
+      "Albedo": 0.14, // Albedo of your environment (0-1)
+      "TEMPERATURE_MODEL": "open_rack_glass_polymer", // See pvlib documentation
+      "InverterName": "SMA_America__SB10000TL_US__240V_", // Inverter name (underscores for spaces/special chars)
+      "ModuleName": "LG_Electronics_Inc__LG335E1C_A5", // Module name (underscores for spaces/special chars)
+      "MyTimezone": "UTC", // Timezone of DWD data
+      "SimpleMultiplicationFactor": 8.605184, // Used for approximate calculation
+      "TemperatureOffset": 0 // Addition to temperature input from DWD
     },
     "Processing": {
-      "Sleeptime": 15,
-      "ProcessingConfiguration": "Simple"
+      "Sleeptime": 15, // Time in seconds to pause before checking DWD for updates
+      "ProcessingConfiguration": "Simple" // 'Simple' or 'Complex'
     },
     "Output": {
-      "PrintOutput": 1,
-      "CSVOutput": 1,
-      "CSVFile": "outputdwdforecast.csv",
-      "DBOutput": 0,
-      "DBUser": "YOURDBUSER",
-      "DBPassword": "YOURDBPASSWD",
-      "DBHost": "192.168.178.28",
-      "DBPort": 3306,
-      "DBName": "YOURDBNAME",
-      "DBTable": "dwd"
+      "PrintOutput": 1, // 0 = no, 1 = yes
+      "CSVOutput": 1, // 0 = no, 1 = yes
+      "CSVFile": "outputdwdforecast.csv", // Output CSV file path
+      "DBOutput": 0, // 0 = no, 1 = yes
+      "DBUser": "YOURDBUSER", // Database user
+      "DBPassword": "YOURDBPASSWD", // Database password
+      "DBHost": "192.168.178.28", // Database host
+      "DBPort": 3306, // Database port
+      "DBName": "YOURDBNAME", // Database name
+      "DBTable": "dwd" // Database table
     },
     "Logging": {
-      "Level": "INFO",
-      "File": "dwd_debug.txt"
+      "Level": "INFO", // Logging level
+      "File": "dwd_debug.txt" // Log file
     }
   }
 }
