@@ -11,6 +11,23 @@ def connect_db(user, password, host, port, database):
         logging.error("Unable to connect to database: %s", e)
         return None, None
 
+def connect_from_config(config):
+    try:
+        db_conn = mysql.connector.connect(
+            user=config.Output.DBUser,
+            passwd=config.Output.DBPassword,
+            host=config.Output.DBHost,
+            port=config.Output.DBPort,
+            database=config.Output.DBName,
+            autocommit=True
+        )
+        db_cur = db_conn.cursor()
+        logging.info("Database connection established.")
+        return db_conn, db_cur
+    except Exception as e:
+        logging.error("Unable to connect to database: %s", e)
+        return None, None
+
 def addsingle_row(cur, tablename, content):
     cur.execute("describe %s" % tablename)
     allowed_keys = set(row[0] for row in cur.fetchall())
@@ -53,3 +70,23 @@ def check_timestamp_existence(cur, mytable, timetocheck):
     rowcount = cur.rowcount
     return 0 if rowcount < 1 else 1
 
+def maybe_connect(config):
+    if hasattr(config.Output, 'DBOutput') and config.Output.DBOutput:
+        return connect_from_config(config)
+    return None, None
+
+def write_dataframe(df, config):
+    if not hasattr(config.Output, 'DBOutput') or not config.Output.DBOutput:
+        return
+    db_conn, db_cur = maybe_connect(config)
+    if db_cur is None:
+        logging.error("No database connection available for writing DataFrame.")
+        return
+    for _, row in df.iterrows():
+        row_dict = row.to_dict()
+        if check_timestamp_existence(db_cur, config.Output.DBTable, int(row_dict['mytimestamp'])) == 0:
+            addsingle_row(db_cur, config.Output.DBTable, row_dict)
+        else:
+            update_row(db_cur, config.Output.DBTable, row_dict['TTT'], row_dict['Rad1h'], row_dict['FF'], row_dict['PPPP'], row_dict['mytimestamp'], row_dict['Rad1Energy'], row_dict['ACSim'], row_dict['DCSim'], row_dict['CellTempSim'], row_dict['Rad1wh'])
+    db_cur.close()
+    db_conn.close()

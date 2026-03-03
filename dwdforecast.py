@@ -78,48 +78,21 @@ def main():
             print("[dwdforecast] Logging combined results to dwd_debug.txt.")
             logging.info("Here are the combined results from DWD - as well as PVLIB:")
             logging.info("%s", df)
-        if config.Output.DBOutput and db_cur:
+        if config.Output.DBOutput:
             print("[dwdforecast] Writing results to database...")
-            for _, row in df.iterrows():
-                row_dict = row.to_dict()
-                if db.check_timestamp_existence(db_cur, config.Output.DBTable, int(row_dict['mytimestamp'])) == 0:
-                    db.addsingle_row(db_cur, config.Output.DBTable, row_dict)
-                else:
-                    db.update_row(db_cur, config.Output.DBTable, row_dict['TTT'], row_dict['Rad1h'], row_dict['FF'], row_dict['PPPP'], row_dict['mytimestamp'], row_dict['Rad1Energy'], row_dict['ACSim'], row_dict['DCSim'], row_dict['CellTempSim'], row_dict['Rad1wh'])
+            db.write_dataframe(df, config)
         print("[dwdforecast] Cycle complete.")
         return newtime
 
-    # Setup DB connection if needed
-    db_conn = db_cur = None
-    if config.Output.DBOutput:
-        db_conn, db_cur = db.connect_db(config.Output.DBUser, config.Output.DBPassword, config.Output.DBHost, config.Output.DBPort, config.Output.DBName)
 
     # Start polling thread
     myQueue1 = queue.Queue()
     # Set cooldown to 1 hour (3600s) to avoid unnecessary downloads
     poll_thread = poller.PollerThread(myQueue1, poll_func, interval=config.Processing.Sleeptime, cooldown=3600)
     poll_thread.start()
-    print("[dwdforecast] Waiting for forecast data...")
-    while myQueue1.empty():
-        time.sleep(1)
-    i = 0
-    try:
-        while i < 1:
-            if not myQueue1.empty():
-                quelength = myQueue1.qsize()
-                for _ in range(quelength):
-                    LastDWDtimestamp = myQueue1.get()
-                    mylasttimestamp = connvertINTtimestamptoDWD(LastDWDtimestamp)
-            i += 1
-            time.sleep(1)
-        time.sleep(60)
-        poll_thread.event.set()
-    except KeyboardInterrupt:
-        poll_thread.event.set()
-    except Exception as e:
-        poll_thread.event.set()
-        logging.error("Main loop error: %s", e)
-    print("[dwdforecast] Main loop complete. Exiting soon.")
+    print("[dwdforecast] Poller started. Exiting main thread.")
+    # The poller module is now responsible for any waiting or server-like operation.
+
 
 if __name__ == "__main__":
     main()
