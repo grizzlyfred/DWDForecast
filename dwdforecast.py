@@ -14,108 +14,6 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#
-# Purpose 
-# Extract weather forecast data from DWD Mosmix for a given Station ID
-# 
-#
-#
-# Background information:
-# DWD provides 10 day forecast weather - and radiation data at an hourly resolution for over 5000 Stations worldwide (focus is on Germany/Europe though...)
-# Description of kml file:
-# https://www.dwd.de/DE/leistungen/opendata/help/schluessel_datenformate/kml/mosmix_elemente_pdf.pdf?__blob=publicationFile&v=3
-#
-# List of available stations:
-# https://www.dwd.de/DE/leistungen/met_verfahren_mosmix/mosmix_stationskatalog.cfg?view=nasPublication&nn=495490
-#
-# How to use this ?
-# 1) Find the station close to your geographic location:
-#   Go to the website below, zoom to your location - and click on "Mosmix Stationen anzeigen"
-#   Once you found the closest station, please change the station number to  the station number
-#   https://wettwarn.de/mosmix/mosmix.html
-#   In my case, I picked Station P755 (which is close to Munich)
-# 2) Make changes in code below to reflect your station number - and the corresponding URL
-#   change
-#       self.mystation = P755
-#   below to the one you identified during step 1
-#   change the URL further down below to reflect the station:
-# self.urlpath = 'https://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/P755/kml'
-# Your one time setup is done...
-#
-# Implementation
-# DWD provides two types of kml files
-# single station kml files. These get updated approx every 6 hours
-# all stations. These get updated hourly. However the file is pretty large. On embedded systems such as raspberry pi, I ran out of memory trying to parse XML files that size (exceeded 1GB of memory). Hence the decision to use the single station files
-# The maiin routine creates a subthread. That subthread  constantly polls the DWD webserver and checks for updates. If an update is found, the file gets downloaded, unzipped and the kml file (which is sort of an XML file gets parsed)
-# we are only looking for a couple of key parameters that are relevant
-# Currently the following Parameters get extracted from the kml file and put into a twodimensional array:
-# myTZtimestamp : Timestamp of the forecast  data
-# Rad1h       : Radiation Energy [kj/m²]
-# TTT         : Temperature 2 m above surface [°C]
-# PPPP        : Presssure Values (Surface Pressure reduced)
-# FF          : Wind speed [m/s]
-#
-#
-# Update July 30 2020
-# Added Option to perform 'Simple' or 'Complex' mode of operation:
-# Simple : Try to get weather data once only - then terminate
-# Complex : Start a seperate queue that continuously polls the DWD server on the internet to get updated data
-#
-# Update August 9 2020
-# Added the following capabilities and options
-#
-# Use PVLIB for more precise prediction of power generation: AC data, DC data, Celltemperature of Panels
-# Please see : https://pvlib-python.readthedocs.io/en/stable/
-# This provides the following benefits
-#   Leverage the other parameters TTT, PPPP, FF from DWD  in predicting power generation
-#   Leverage actual solar generation parameters such as
-#       Location of the solar system, inclination & orientation
-#       Use of inverter- and solar panel characteristics
-#
-# Added the options to output resulting information of the prediction to -print-output -output-tocsv -output into mariaDB
-#
-# Installation dependencies & requirements
-# see import modules below
-# some hints on import modules (modules that may not be straight forward to identify from the actual import list below:
-# sudo pip3 install mysql
-# sudo pip3 install mysql.connector
-# sudo pip3 install pvlib
-# also requires scipy - easiest way on e.g. raspberry is:
-# sudo apt-get install python3-numpy python3-scipy
-#
-# Update 2 August 9
-# Extracted all configuration parameters into an external file "configuration.ini" so users do not need to mess around in the actual python script
-#
-# Update August 12 2020
-# Fix screw up of Rad1Energy calculation
-# Update September 5 2020
-# Adjust Timezones to reflect DWD data (GMT timestamp), Change to ERBS simulation model
-# Update September 10 2020
-# Improved Error Messaging as well as Parameters for PV Systems with East/West orientation
-#
-# Update October 10 2020
-# Updated documentation of configuration.ini
-# Updated treatment of inconsisitencies of different API calls for different pvlib versions (pvlib version 0.7.2 vs. 0.8.0):
-# for 0.8.0:
-# self.myModelChain.run_model(self.mc_weather)
-# for 0.7.2:
-# self.myModelChain.run_model(times=self.mc_weather.index, weather=self.mc_weather)
-#
-# Update October 12
-# Updated to be able to specify the port for the database connection
-#
-# Update October 18 2020
-# Remove support for pvlib version older than 0.8.0
-# Added additional configuration parameter: TEMPERATURE_MODEL_PARAMETERS for proper pvlib 0.8 support
-#
-# Update October 24 2020
-# Changed Field for mydatetime from "2020-11-03T16:00:00.000Z" to "2020-11-03 16:00:00.000" to work around issues during database commits for some DB-types
-# Added some more debugging statements to be able to trace potential inconsistencies in Pandas Dataframe length
-#
-# Update Feb 12 2023
-# Updates to work wiwth pvlib 0.9.4 and prepare for upcoming pvlib deprecations
-#
-
 
 import urllib.request
 import shutil
@@ -333,7 +231,7 @@ class dwdforecast(threading.Thread):
             # print ("Nothing found in Database")
             timestamp = 0
         else:
-            # print ("In unterroutine checkTimestampExistence", myresult)
+            # print ("In subroutine checkTimestampExistence", myresult)
             timestamp = 1
         return (timestamp)
 
