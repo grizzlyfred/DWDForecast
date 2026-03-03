@@ -85,6 +85,13 @@ Whenever the script writes a CSV file, it also writes a JSON file (with the same
 
 Example: If your output is `output.csv`, you will also get `output.json` in the same directory.
 
+## Notes on Dependencies and Workarounds
+
+### SciPy Chandrupatla Algorithm
+If you encounter issues related to `scipy.optimize._chandrupatla` (used internally by SciPy for root-finding and optimization), be aware that some workarounds or patches may be required for certain edge cases or division-by-zero errors. If you experience unexpected errors or warnings from this module, consult the SciPy documentation or consider updating your SciPy installation to the latest version.
+
+If a workaround or patch is applied to your local `scipy.optimize._chandrupatla.py`, please document the change and keep a backup of the original file.
+
 ## License
 
 See `LICENSE.md` for details. Original copyright (C) 2020 Kilian Knoll. Modernization and modularization (C) 2026 Sven Witterstein.
