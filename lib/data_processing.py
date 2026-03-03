@@ -7,6 +7,7 @@ from pvlib.location import Location
 from pvlib.modelchain import ModelChain
 from pvlib.temperature import TEMPERATURE_MODEL_PARAMETERS
 import logging
+import time  # Added to fix NameError in run_pvlib
 
 def build_dataframe(mosmixdata, TemperatureOffset):
     mycolumns = {'mydatetime': np.array(mosmixdata[1]),
