@@ -70,6 +70,13 @@ def main():
     db_port = config['Output']['DBPort']
     db_table = config['Output']['DBTable']
 
+    # Support a list of CSV output paths for cross-platform compatibility
+    csv_file_config = config['Output']['CSVFile']
+    if isinstance(csv_file_config, list):
+        csv_file_candidates = csv_file_config
+    else:
+        csv_file_candidates = [csv_file_config]
+
     # Setup PVLIB system
     temperature_model_parameters = TEMPERATURE_MODEL_PARAMETERS['sapm'][temperature_model]
     sandia_modules = pvlib.pvsystem.retrieve_sam('cecmod')
@@ -131,8 +138,20 @@ def main():
         df, mc_weather, modelchain = data_processing.run_pvlib(df, pv_system, pv_location, simple_factor)
         # Output
         if csv_output:
-            print(f"[dwdforecast] Writing CSV: {csv_file}")
-            df.to_csv(csv_file)
+            csv_written = False
+            for candidate_path in csv_file_candidates:
+                try:
+                    print(f"[dwdforecast] Attempting to write CSV: {candidate_path}")
+                    df.to_csv(candidate_path)
+                    print(f"[dwdforecast] CSV written successfully: {candidate_path}")
+                    csv_written = True
+                    break
+                except Exception as e:
+                    print(f"[dwdforecast] ERROR: Could not write CSV to {candidate_path}: {e}")
+                    logging.error("Could not write CSV to %s: %s", candidate_path, e)
+            if not csv_written:
+                print("[dwdforecast] ERROR: Could not write CSV to any configured path.")
+                logging.error("Could not write CSV to any configured path.")
         if print_output:
             print("[dwdforecast] Logging combined results to dwd_debug.txt.")
             logging.info("Here are the combined results from DWD - as well as PVLIB:")

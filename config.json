@@ -25,7 +25,11 @@
   "Output": {
     "PrintOutput": 0,
     "CSVOutput": 1,
-    "CSVFile": "/home/witti/dwd.git/outputdwdforecast.csv",
+    "CSVFile": [
+      "/home/witti/dwd.git/outputdwdforecast.csv",
+      "/Users/witti/dwd.git/outputdwdforecast.csv",
+      "outputdwdforecast.csv"
+    ],
     "DBOutput": 0,
     "DBUser": "YOURDBUSER",
     "DBPassword": "YOURDBPASSWD",
@@ -66,7 +70,9 @@
     "Output": {
       "PrintOutput": 1,
       "CSVOutput": 1,
-      "CSVFile": "outputdwdforecast.csv",
+      "CSVFile": [
+        "outputdwdforecast.csv"
+      ],
       "DBOutput": 0,
       "DBUser": "YOURDBUSER",
       "DBPassword": "YOURDBPASSWD",
