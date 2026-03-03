@@ -85,9 +85,14 @@ def main():
         return newtime
 
 
-    # Start polling thread
+    # Standard mode: 1 polling attempt if no arguments
+    if len(sys.argv) == 1:
+        print("[dwdforecast] Standard mode: single polling attempt.")
+        poll_func()
+        print("[dwdforecast] Finished polling attempt. Exiting.")
+        return
+    # Server mode: start poller thread if arguments are given
     myQueue1 = queue.Queue()
-    # Set cooldown to 1 hour (3600s) to avoid unnecessary downloads
     poll_thread = poller.PollerThread(myQueue1, poll_func, interval=config.Processing.Sleeptime, cooldown=3600)
     poll_thread.start()
     print("[dwdforecast] Poller started. Exiting main thread.")
