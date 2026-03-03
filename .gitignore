@@ -2,3 +2,5 @@
 adaptions/
 
 /dwd_debug.txt
+/KML/*.kml
+/*.gz

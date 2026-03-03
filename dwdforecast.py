@@ -148,7 +148,8 @@ def main():
 
     # Start polling thread
     myQueue1 = queue.Queue()
-    poll_thread = poller.PollerThread(myQueue1, poll_func, interval=sleeptime)
+    # Set cooldown to 1 hour (3600s) to avoid unnecessary downloads
+    poll_thread = poller.PollerThread(myQueue1, poll_func, interval=sleeptime, cooldown=3600)
     poll_thread.start()
     print("[dwdforecast] Waiting for forecast data...")
     while myQueue1.empty():
