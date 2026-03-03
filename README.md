@@ -64,6 +64,31 @@ All configuration is now in `config.json`. See the template and comments in this
 - Write to CSV
 - Write to MariaDB/MySQL database (table must exist)
 
+## Output Configuration and Paths
+
+The output CSV file path is configured in `config.json` under the `Output` section. You can specify a single path or a list of candidate paths for cross-platform compatibility. The script will attempt to write the output to each path in order and use the first one that works.
+
+Example:
+
+```
+"Output": {
+  "CSVFile": [
+    "/home/witti/dwd.git/outputdwdforecast.csv",
+    "/Users/witti/dwd.git/outputdwdforecast.csv",
+    "outputdwdforecast.csv"
+  ],
+  ...
+}
+```
+
+If you specify a list, the script will try each path in order. This is useful for running the script on different operating systems (Linux, macOS, Windows) without changing the config each time.
+
+If none of the paths are writable, you will see an error in the terminal and in the log file (`dwd_debug.txt`).
+
+## Modularized Output Logic
+
+The output logic is now handled in `lib/data_output.py`. This module provides a function to write the DataFrame to the first available path from the list, improving maintainability and clarity.
+
 ## Example Table Definition
 ```
 describe dwd;
