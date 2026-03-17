@@ -42,18 +42,45 @@ def get_url_for_latest(urlpath, ext=''):
     return myurl, mynewtime
 
 
-def extract_kml_from_zip(url, file_name="temp1.gz", targetdir="./KML"):
-    try:
-        with urllib.request.urlopen(url) as response, open(file_name, 'wb') as out_file:
-            shutil.copyfileobj(response, out_file)
-        with zipfile.ZipFile(file_name, "r") as zip_ref:
-            Myzipfilename = str(zip_ref.namelist()[0])
-            zip_ref.extractall(targetdir)
-        return targetdir + "/" + Myzipfilename
-    except Exception as e:
-        logging.error("Error extracting KML from zip: %s", e)
-        return None
+def extract_kml_from_zip(url, file_name="temp1.gz", target_subdir="KML"):
+    # Define absolute paths based on the script location
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    archive_path = os.path.join(base_dir, file_name)
+    target_dir = os.path.join(base_dir, target_subdir)
 
+    try:
+        # 1. Ensure target directory exists
+        os.makedirs(target_dir, exist_ok=True)
+        logging.info("Target directory verified: %s", target_dir)
+
+        # 2. Download with explicit stream handling
+        logging.info("Downloading from %s", url)
+        with urllib.request.urlopen(url) as response:
+            with open(archive_path, 'wb') as out_file:
+                shutil.copyfileobj(response, out_file)
+
+        # 3. Extract logic
+        with zipfile.ZipFile(archive_path, "r") as zip_ref:
+            first_file = zip_ref.namelist()[0]
+            zip_ref.extractall(target_dir)
+            logging.info("Extracted %s to %s", first_file, target_dir)
+        return os.path.join(target_dir, first_file)
+
+    except urllib.error.URLError as e:
+        logging.error("Network error: %s", e.reason)
+    except PermissionError as e:
+        logging.error("Permission Denied: Ensure write access to %s. Error: %s", base_dir, e)
+    except zipfile.BadZipFile:
+        logging.error("Downloaded file is not a valid zip: %s", archive_path)
+    except Exception as e:
+        logging.error("Unexpected error during KML extraction: %s", e)
+    finally:
+        # Cleanup the temp zip to prevent lock issues on next run
+        if os.path.exists(archive_path):
+            os.remove(archive_path)
+            logging.debug("Cleaned up temporary file: %s", archive_path)
+
+    return None
 
 def parse_kml_file(kml_path):
     try:
