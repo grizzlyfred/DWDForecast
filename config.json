@@ -1,33 +1,30 @@
 {
   "DWD": {
-    "DWDStation": "P148",
-    "DWDStationURL": "http://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/P148/kml/"
+    "DWDStation": "P755"
   },
   "SolarSystem": {
-    "Longitude": 10.499,
-    "Latitude": 48.852,
-    "Altitude": 330,
-    "Elevation": 45,
-    "Azimuth": 190,
-    "NumPanels": 28,
-    "NumStrings": 3,
+    "Longitude": 11.6,
+    "Latitude": 48.2,
+    "Altitude": 400,
+    "Elevation": 35,
+    "Azimuth": 178,
+    "NumPanels": 14,
+    "NumStrings": 2,
     "Albedo": 0.14,
-    "TEMPERATURE_MODEL": "open_rack_glass_glass",
+    "TEMPERATURE_MODEL": "open_rack_glass_polymer",
     "InverterName": "SMA_America__SB10000TL_US__240V_",
     "ModuleName": "LG_Electronics_Inc__LG335E1C_A5",
-    "MyTimezone": "Europe/Berlin",
-    "SimpleMultiplicationFactor": 24.384,
+    "MyTimezone": "UTC",
+    "SimpleMultiplicationFactor": 8.605184,
     "TemperatureOffset": 0
   },
   "Processing": {
     "Sleeptime": 15
   },
   "Output": {
-    "PrintOutput": 0,
+    "PrintOutput": 1,
     "CSVOutput": 1,
     "CSVFile": [
-      "/home/witti/dwd.git/outputdwdforecast.csv",
-      "/Users/witti/dwd.git/outputdwdforecast.csv",
       "outputdwdforecast.csv"
     ],
     "DBOutput": 0,
@@ -39,14 +36,13 @@
     "DBTable": "dwd"
   },
   "Logging": {
-    "Level": "DEBUG",
+    "Level": "INFO",
     "File": "dwd_debug.txt"
   },
   "ProcessingConfiguration": "Simple",
   "_template": {
     "DWD": {
-      "DWDStation": "P755",
-      "DWDStationURL": "http://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/P755/kml"
+      "DWDStation": "P755"
     },
     "SolarSystem": {
       "Longitude": 11.6,
@@ -84,6 +80,7 @@
     "Logging": {
       "Level": "INFO",
       "File": "dwd_debug.txt"
-    }
+    },
+    "ProcessingConfiguration": "Simple"
   }
 }
