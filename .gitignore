@@ -4,3 +4,8 @@ adaptions/
 /dwd_debug.txt
 /KML/*.kml
 /*.gz
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
