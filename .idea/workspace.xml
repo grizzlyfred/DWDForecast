@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="51c9e996-9106-47b7-8559-015a291af299" name="Changes" comment="Add configuration utility for loading and validating JSON config">
+      <change beforePath="$PROJECT_DIR$/dwdforecast.py" beforeDir="false" afterPath="$PROJECT_DIR$/dwdforecast.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/kml_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/kml_reader.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/Users/witti/dwd.git" value="3APOWtgc8R6ROnlHsKnVfQhf6XC" />
+    </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedModel">
+    <selectedModels>
+      <entry key="chat-panel" value="GPT-4.1" />
+      <entry key="agent-panel" value="GPT-4.1" />
+    </selectedModels>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="260" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;grizzlyfred&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/grizzlyfred/DWDForecast.git&quot;,
+    &quot;accountId&quot;: &quot;92c47bc0-0ae4-4467-806d-981dddf450ea&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="3APOWtgc8R6ROnlHsKnVfQhf6XC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.dwdforecast.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dwdpro2flux.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/witti/dwd.git&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="dwdforecast" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="dwd.git" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.14 (code)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dwdforecast.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.31033.139" />
+        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="51c9e996-9106-47b7-8559-015a291af299" name="Changes" comment="" />
+      <created>1772490776254</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772490776254</updated>
+      <workItem from="1772490777296" duration="2097000" />
+      <workItem from="1772492923893" duration="1485000" />
+      <workItem from="1772494417426" duration="5859000" />
+    </task>
+    <task id="LOCAL-00001" summary="update project SDK to Python 3.14 and add Ask2Agent migration state">
+      <option name="closed" value="true" />
+      <created>1772491149464</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1772491149464</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update shebang to use python3 and fix syntax error in my_dwdforecast.py">
+      <option name="closed" value="true" />
+      <created>1772491428686</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1772491428686</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add XML configuration files for project settings and migration state">
+      <option name="closed" value="true" />
+      <created>1772493351627</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1772493351627</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add .gitignore and refactor dwdforecast initialization for improved configuration handling">
+      <option name="closed" value="true" />
+      <created>1772493413955</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1772493413955</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add JSON configuration file and refactor dwdforecast initialization for improved configuration handling">
+      <option name="closed" value="true" />
+      <created>1772493534258</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1772493534258</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Refactor dwdforecast initialization and enhance logging setup in dwdforecast.py; update config.json for improved configuration handling">
+      <option name="closed" value="true" />
+      <created>1772495131017</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1772495131017</updated>
+    </task>
+    <task id="LOCAL-00007" summary="reset, cheap ai fails utterl">
+      <option name="closed" value="true" />
+      <created>1772496428364</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1772496428364</updated>
+    </task>
+    <task id="LOCAL-00008" summary="reset, cheap ai fails utterl">
+      <option name="closed" value="true" />
+      <created>1772496504382</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1772496504382</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Update .gitignore to exclude dwd_debug.txt file">
+      <option name="closed" value="true" />
+      <created>1772496566023</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1772496566023</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Refactor dwdforecast initialization to use JSON configuration file for improved handling and update README with configuration details">
+      <option name="closed" value="true" />
+      <created>1772496901746</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1772496901746</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Refactor logging in dwdforecast.py to replace print statements with logging calls for improved error tracking and debugging">
+      <option name="closed" value="true" />
+      <created>1772497019125</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1772497019125</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Refactor dwdforecast.py to streamline configuration attribute assignments using a mapping approach for improved readability and maintainability">
+      <option name="closed" value="true" />
+      <created>1772497134069</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1772497134069</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Ensure attributes mydownloadfiles and mynewtime always exist in dwdforecast.py for improved stability">
+      <option name="closed" value="true" />
+      <created>1772497332729</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1772497332729</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fix typo in config.json and update dwdforecast.py for improved clarity and accuracy">
+      <option name="closed" value="true" />
+      <created>1772497622859</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1772497622859</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Update config.json with improved formatting and add detailed configuration reference in README.md for better clarity and usability">
+      <option name="closed" value="true" />
+      <created>1772497993886</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1772497993886</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Add RunManager configuration for dwdforecast and enhance logging for better debugging">
+      <option name="closed" value="true" />
+      <created>1772498259399</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1772498259399</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Update dwdforecast.py logging messages for clarity and enhance README.md with ProcessingConfiguration details">
+      <option name="closed" value="true" />
+      <created>1772498372517</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1772498372517</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Refactor README.md for clarity and update dwdforecast.py comments for consistency">
+      <option name="closed" value="true" />
+      <created>1772498690647</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1772498690647</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Add data processing and polling modules for DWD forecast; refactor main logic">
+      <option name="closed" value="true" />
+      <created>1772498855942</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1772498855942</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Add data processing and polling modules for DWD forecast; refactor main logic">
+      <option name="closed" value="true" />
+      <created>1772499106904</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1772499106904</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Enhance logging and error handling in dwdforecast; improve KML timestamp parsing">
+      <option name="closed" value="true" />
+      <created>1772499528792</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1772499528792</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Add cooldown feature to PollerThread for efficient data fetching">
+      <option name="closed" value="true" />
+      <created>1772499636383</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1772499636383</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Add tracking for last KML filename to prevent redundant downloads">
+      <option name="closed" value="true" />
+      <created>1772499758816</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1772499758816</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Add tracking for last KML filename to prevent redundant downloads">
+      <option name="closed" value="true" />
+      <created>1772500058692</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1772500058692</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Add tracking for last KML filename to prevent redundant downloads">
+      <option name="closed" value="true" />
+      <created>1772500156512</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1772500156512</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Add configuration utility for loading and validating JSON config">
+      <option name="closed" value="true" />
+      <created>1772500203082</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1772500203082</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update project SDK to Python 3.14 and add Ask2Agent migration state" />
+    <MESSAGE value="update shebang to use python3 and fix syntax error in my_dwdforecast.py" />
+    <MESSAGE value="Add XML configuration files for project settings and migration state" />
+    <MESSAGE value="Add .gitignore and refactor dwdforecast initialization for improved configuration handling" />
+    <MESSAGE value="Add JSON configuration file and refactor dwdforecast initialization for improved configuration handling" />
+    <MESSAGE value="Refactor dwdforecast initialization and enhance logging setup in dwdforecast.py; update config.json for improved configuration handling" />
+    <MESSAGE value="reset, cheap ai fails utterl" />
+    <MESSAGE value="Update .gitignore to exclude dwd_debug.txt file" />
+    <MESSAGE value="Refactor dwdforecast initialization to use JSON configuration file for improved handling and update README with configuration details" />
+    <MESSAGE value="Refactor logging in dwdforecast.py to replace print statements with logging calls for improved error tracking and debugging" />
+    <MESSAGE value="Refactor dwdforecast.py to streamline configuration attribute assignments using a mapping approach for improved readability and maintainability" />
+    <MESSAGE value="Ensure attributes mydownloadfiles and mynewtime always exist in dwdforecast.py for improved stability" />
+    <MESSAGE value="Fix typo in config.json and update dwdforecast.py for improved clarity and accuracy" />
+    <MESSAGE value="Update config.json with improved formatting and add detailed configuration reference in README.md for better clarity and usability" />
+    <MESSAGE value="Add RunManager configuration for dwdforecast and enhance logging for better debugging" />
+    <MESSAGE value="Update dwdforecast.py logging messages for clarity and enhance README.md with ProcessingConfiguration details" />
+    <MESSAGE value="Refactor README.md for clarity and update dwdforecast.py comments for consistency" />
+    <MESSAGE value="Add data processing and polling modules for DWD forecast; refactor main logic" />
+    <MESSAGE value="Enhance logging and error handling in dwdforecast; improve KML timestamp parsing" />
+    <MESSAGE value="Add cooldown feature to PollerThread for efficient data fetching" />
+    <MESSAGE value="Add tracking for last KML filename to prevent redundant downloads" />
+    <MESSAGE value="Add configuration utility for loading and validating JSON config" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add configuration utility for loading and validating JSON config" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/dwd_git$dwdforecast.coverage" NAME="dwdforecast Coverage Results" MODIFIED="1772499792981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>
