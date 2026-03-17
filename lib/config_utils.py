@@ -3,6 +3,12 @@ import logging
 import sys
 from types import SimpleNamespace
 
+DWD_STATION_BASE_URL = "http://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/{station}/kml/"
+
+def build_station_url(station):
+    """Build the DWD station URL dynamically from the station ID."""
+    return DWD_STATION_BASE_URL.format(station=station)
+
 def load_config(config_path='config.json'):
     """
     Load and validate the JSON config file. Exit on error.
@@ -11,6 +17,9 @@ def load_config(config_path='config.json'):
     try:
         with open(config_path, 'r') as config_file:
             config = json.load(config_file)
+        # Build DWDStationURL dynamically from DWDStation if not explicitly provided
+        if 'DWD' in config and 'DWDStationURL' not in config['DWD'] and 'DWDStation' in config['DWD']:
+            config['DWD']['DWDStationURL'] = build_station_url(config['DWD']['DWDStation'])
         return config
     except Exception as e:
         print(f"[dwdforecast] ERROR: Invalid {config_path}: {e}")
