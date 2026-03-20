@@ -134,6 +134,24 @@ def extract_mosmixdata(root, station):
     return mosmixdata
 
 
+def merge_mosmixdata(mosmix_s, mosmix_l):
+    """Merge MOSMIX_S and MOSMIX_L data arrays.
+
+    MOSMIX_S (updated hourly) takes priority for overlapping timestamps.
+    MOSMIX_L fills in the extended forecast window (up to 240 h) beyond MOSMIX_S.
+    Returns a merged mosmixdata list sorted by ISO-8601 timestamp (column 0).
+    """
+    s_timestamps = set(mosmix_s[0])
+    merged = [list(col) for col in mosmix_s]
+    for idx, ts in enumerate(mosmix_l[0]):
+        if ts not in s_timestamps:
+            for col in range(len(merged)):
+                merged[col].append(mosmix_l[col][idx])
+    # ISO-8601 strings sort lexicographically, so a plain sort is correct
+    rows = sorted(zip(*merged), key=lambda r: r[0])
+    return [list(col) for col in zip(*rows)]
+
+
 def connvertINTtimestamptoDWD(inputstring):
     """
     Convert a UNIX timestamp (float/int) to DWD UTC string format: YYYY-MM-DDTHH:MM:SS.sssZ

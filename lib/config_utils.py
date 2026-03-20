@@ -3,11 +3,14 @@ import logging
 import sys
 from types import SimpleNamespace
 
-DWD_STATION_BASE_URL = "https://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/{station}/kml/"
+MOSMIX_L_BASE_URL = "https://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/{station}/kml/"
+MOSMIX_S_BASE_URL = "https://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_S/single_stations/{station}/kml/"
 
-def build_station_url(station):
-    """Build the DWD station URL dynamically from the station ID."""
-    return DWD_STATION_BASE_URL.format(station=station)
+def build_station_url(station, mosmix_type="L"):
+    """Build the DWD station URL dynamically from the station ID and MOSMIX type (L or S)."""
+    if mosmix_type.upper() == "S":
+        return MOSMIX_S_BASE_URL.format(station=station)
+    return MOSMIX_L_BASE_URL.format(station=station)
 
 def load_config(config_path='config.json'):
     """
@@ -17,9 +20,14 @@ def load_config(config_path='config.json'):
     try:
         with open(config_path, 'r') as config_file:
             config = json.load(config_file)
-        # Build DWDStationURL dynamically from DWDStation if not explicitly provided
-        if 'DWD' in config and 'DWDStationURL' not in config['DWD'] and 'DWDStation' in config['DWD']:
-            config['DWD']['DWDStationURL'] = build_station_url(config['DWD']['DWDStation'])
+        # Build DWDStationURL(s) dynamically from DWDStation if not explicitly provided
+        if 'DWD' in config and 'DWDStation' in config['DWD']:
+            station = config['DWD']['DWDStation']
+            mosmix_type = config['DWD'].get('MOSMIXType', 'L').upper()
+            if 'DWDStationURL' not in config['DWD']:
+                config['DWD']['DWDStationURL'] = build_station_url(station, 'L')
+            if mosmix_type == 'BOTH' and 'DWDStationURL_S' not in config['DWD']:
+                config['DWD']['DWDStationURL_S'] = build_station_url(station, 'S')
         return config
     except Exception as e:
         print(f"[dwdforecast] ERROR: Invalid {config_path}: {e}")
