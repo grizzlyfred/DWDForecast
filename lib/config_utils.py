@@ -3,7 +3,7 @@ import logging
 import sys
 from types import SimpleNamespace
 
-DWD_STATION_BASE_URL = "http://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/{station}/kml/"
+DWD_STATION_BASE_URL = "https://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/{station}/kml/"
 
 def build_station_url(station):
     """Build the DWD station URL dynamically from the station ID."""

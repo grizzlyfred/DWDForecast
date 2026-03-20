@@ -1,4 +1,5 @@
 # KML reading and parsing utilities for DWD forecast
+import os
 import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 import requests
