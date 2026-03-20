@@ -8,6 +8,8 @@
 import logging
 import queue
 import sys
+import datetime
+import os
 from lib import kml_reader, data_processing, db, poller, data_output, config_utils
 from lib.kml_reader import extract_mosmixdata
 
@@ -31,9 +33,11 @@ def main():
     if config.Output.DBOutput:
         print("[dwdforecast] Database output enabled.")
     mosmix_type = getattr(config.DWD, 'MOSMIXType', 'L').upper()
+    raw_data_dir = getattr(config.Output, 'RawDataDir', 'raw_data')
     last_kml_url = {}       # {label: url}
     last_kml_filename = {}  # {label: filename}
     last_mosmixdata = {}    # {label: mosmixdata} – cache for cross-source merging
+    schema_logged = False   # log schema references only once per run
 
     def _fetch_mosmix(url, label, station):
         """Download, extract and parse a single MOSMIX KMZ file.
@@ -41,6 +45,7 @@ def main():
         Returns (mosmixdata, is_new, newtime).
         On failure or no new file, mosmixdata falls back to the cached value and is_new is False.
         """
+        nonlocal schema_logged
         urls, newtime = kml_reader.get_url_for_latest(url, ext='kmz')
         if not urls:
             print(f"[dwdforecast] No KML URLs found for MOSMIX_{label}.")
@@ -62,6 +67,12 @@ def main():
             return last_mosmixdata.get(label), False, 0
         last_kml_url[label] = kml_zip_url
         last_kml_filename[label] = kml_filename
+
+        # Log schema references from the KML root (once per run)
+        if not schema_logged:
+            kml_reader.extract_schema_references(root)
+            schema_logged = True
+
         mosmixdata, coordinates = extract_mosmixdata(root, station)
         if coordinates:
             print(f"[dwdforecast] MOSMIX_{label} station {station} coordinates: "
@@ -69,6 +80,15 @@ def main():
                   f"alt={coordinates['alt']:.1f} m")
         else:
             logging.warning("No coordinates found in KML for MOSMIX_%s station %s", label, station)
+
+        # Save a complete reference copy of all MOSMIX fields for this station
+        all_fields = kml_reader.extract_all_station_fields(root, station)
+        if all_fields:
+            ts_tag = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+            ref_filename = f"MOSMIX_{label}_{station}_{ts_tag}.json"
+            ref_path = os.path.join(raw_data_dir, ref_filename)
+            kml_reader.save_raw_station_data(all_fields, ref_path)
+
         last_mosmixdata[label] = mosmixdata
         return mosmixdata, True, newtime
 

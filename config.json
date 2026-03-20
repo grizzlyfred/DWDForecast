@@ -35,7 +35,8 @@
     "DBHost": "192.168.178.28",
     "DBPort": 3306,
     "DBName": "YOURDBNAME",
-    "DBTable": "dwd"
+    "DBTable": "dwd",
+    "RawDataDir": "raw_data"
   },
   "Logging": {
     "Level": "INFO",
@@ -79,7 +80,8 @@
       "DBHost": "192.168.178.28",
       "DBPort": 3306,
       "DBName": "YOURDBNAME",
-      "DBTable": "dwd"
+      "DBTable": "dwd",
+      "RawDataDir": "raw_data"
     },
     "Logging": {
       "Level": "INFO",

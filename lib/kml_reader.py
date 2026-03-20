@@ -1,4 +1,5 @@
 # KML reading and parsing utilities for DWD forecast
+import json
 import os
 import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
@@ -209,6 +210,150 @@ def extract_mosmixdata(root, station):
         mosmixdata[4][idx] = PPPP[idx] if PPPP else 0
         mosmixdata[5][idx] = FF[idx] if FF else 0
     return mosmixdata, coordinates
+
+
+def extract_schema_references(root):
+    """Return schema URLs declared in the MOSMIX KML root element.
+
+    DWD MOSMIX KML files identify their extension schema via the ``dwd:``
+    namespace URI, which is itself the XSD URL:
+
+        https://opendata.dwd.de/weather/lib/pointforecast_dwd_extension_V1_0.xsd
+
+    That XSD defines the ``dwd:Forecast`` element and the
+    ``dwd:elementName`` attribute.  Physical units for each field are
+    documented in the DWD MOSMIX format description:
+
+        https://www.dwd.de/DE/leistungen/met_verfahren_mosmix_snow/mosmix_kml_formatbeschreibung.pdf
+
+    The function also reads any ``xsi:schemaLocation`` attribute on the
+    root element in case DWD ever adds an explicit mapping.
+
+    Returns
+    -------
+    dict
+        ``{"dwd_extension_xsd": <url>, "xsi_schema_location": <value or None>}``
+    """
+    dwd_xsd = 'https://opendata.dwd.de/weather/lib/pointforecast_dwd_extension_V1_0.xsd'
+    xsi_sl = root.get('{http://www.w3.org/2001/XMLSchema-instance}schemaLocation')
+    if xsi_sl:
+        logging.info("KML xsi:schemaLocation: %s", xsi_sl)
+    logging.info(
+        "DWD MOSMIX extension schema: %s — "
+        "defines dwd:Forecast/dwd:elementName; physical units documented at "
+        "https://www.dwd.de/DE/leistungen/met_verfahren_mosmix_snow/mosmix_kml_formatbeschreibung.pdf",
+        dwd_xsd,
+    )
+    return {"dwd_extension_xsd": dwd_xsd, "xsi_schema_location": xsi_sl}
+
+
+def extract_all_station_fields(root, station):
+    """Extract *every* ``dwd:Forecast`` field for *station* from a parsed MOSMIX KML root.
+
+    Unlike :func:`extract_mosmixdata` (which only reads the four fields needed
+    for PV simulation), this function captures **all** forecast elements so the
+    complete dataset can be saved as a reference file.
+
+    Values are stored as raw strings exactly as delivered by DWD — no unit
+    conversion is applied.  See :data:`MOSMIX_ELEMENT_INFO` for the meaning
+    and units of the fields that are used for PV modelling.
+
+    Returns
+    -------
+    dict
+        ``{"station": str, "timestamps": list[str], "coordinates": dict or None,
+           "fields": dict[str, list[str]]}``
+        where each value in ``fields`` is a list of raw string values aligned
+        with ``timestamps``.  Returns ``None`` if *station* is not found.
+    """
+    ns = {'dwd': 'https://opendata.dwd.de/weather/lib/pointforecast_dwd_extension_V1_0.xsd',
+          'gx': 'http://www.google.com/kml/ext/2.2',
+          'kml': 'http://www.opengis.net/kml/2.2',
+          'atom': 'http://www.w3.org/2005/Atom',
+          'xal': 'urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'}
+    dwd_element_name_attr = (
+        '{https://opendata.dwd.de/weather/lib/pointforecast_dwd_extension_V1_0.xsd}elementName'
+    )
+
+    timestamps = root.findall(
+        'kml:Document/kml:ExtendedData/dwd:ProductDefinition/dwd:ForecastTimeSteps/dwd:TimeStep', ns)
+    timevalue = [child.text for child in timestamps]
+
+    for elem in root.findall('./kml:Document/kml:Placemark', ns):
+        name_elem = elem.find('kml:name', ns)
+        if name_elem is None or name_elem.text != station:
+            continue
+
+        coordinates = None
+        point_elem = elem.find('kml:Point/kml:coordinates', ns)
+        if point_elem is not None and point_elem.text:
+            parts = point_elem.text.strip().split(',')
+            try:
+                coordinates = {
+                    'lon': float(parts[0]),
+                    'lat': float(parts[1]),
+                    'alt': float(parts[2]) if len(parts) > 2 else 0.0,
+                }
+            except (ValueError, IndexError) as e:
+                logging.warning("Could not parse coordinates for station %s: %s", station, e)
+
+        fields = {}
+        myforecastdata = elem.find('kml:ExtendedData', ns)
+        if myforecastdata is not None:
+            for subelem in myforecastdata:
+                element_name = subelem.get(dwd_element_name_attr)
+                if element_name is None:
+                    continue
+                value_text = subelem[0].text if len(subelem) > 0 else None
+                if value_text:
+                    fields[element_name] = value_text.split()
+
+        logging.info(
+            "Extracted %d raw fields for station %s (%d timestamps)",
+            len(fields), station, len(timevalue),
+        )
+        return {
+            "station": station,
+            "timestamps": timevalue,
+            "coordinates": coordinates,
+            "fields": fields,
+        }
+
+    logging.warning("Station %s not found in KML; no raw data extracted.", station)
+    return None
+
+
+def save_raw_station_data(data, dest_path):
+    """Serialise *data* (from :func:`extract_all_station_fields`) to *dest_path* as JSON.
+
+    The parent directory is created if it does not exist.
+
+    Returns
+    -------
+    str or None
+        *dest_path* on success, ``None`` on failure.
+    """
+    if data is None:
+        logging.warning("save_raw_station_data: nothing to save (station not found in KML).")
+        return None
+    try:
+        dest_dir = os.path.dirname(dest_path)
+        if dest_dir:
+            os.makedirs(dest_dir, exist_ok=True)
+        with open(dest_path, 'w', encoding='utf-8') as fh:
+            json.dump(data, fh, ensure_ascii=False, indent=2)
+        logging.info(
+            "Raw station data saved: %s  (%d fields, %d timestamps)",
+            dest_path, len(data.get("fields", {})), len(data.get("timestamps", [])),
+        )
+        print(
+            f"[dwdforecast] Raw MOSMIX data reference saved: {dest_path} "
+            f"({len(data.get('fields', {}))} fields, {len(data.get('timestamps', []))} timestamps)"
+        )
+        return dest_path
+    except Exception as e:
+        logging.error("Could not save raw station data to %s: %s", dest_path, e)
+        return None
 
 
 def merge_mosmixdata(mosmix_s, mosmix_l):

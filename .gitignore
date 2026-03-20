@@ -13,8 +13,9 @@ flux-test/
 temp1.gz
 old/
 .DS_Store
+raw_data/
+lib/KML/
 
 # Ignore IDE and system files
 .idea/
 *.swp
-
