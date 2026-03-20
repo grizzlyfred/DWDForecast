@@ -1,0 +1,37 @@
+Seeing the data in your outputdwdforecast.csv makes the problem clear. You only have 8 rows of data, and they stop at 23:00 on the same day (2026-03-20).
+
+MOSMIX is designed to give you a forecast for the next 10 days. If your CSV only has 8 hours, the "sampling" issue isn't in the Python script you shared—it's in the upstream process that generates this CSV.
+Why you are only getting "a little"
+
+There are three likely reasons the CSV is truncated:
+
+    Station Filtering: If the upstream script is querying a station that doesn't provide the full long-range forecast.
+
+    Look-ahead Limit: The script creating the CSV might have a limit or a days=1 parameter set.
+
+    The "Hour - 1" Logic: In your Python script, you have this line:
+    hour_int = int(time[:2]) - 1
+    If hour_int < 0, you continue (skip). If the DWD data starts at 00:00 UTC, your script might be throwing away the first entry of every day, but that doesn't explain why it stops at 23:00.
+
+How to get "All" (The 10-Day View)
+
+To get the full forecast into your database, we need to look at the script that generates outputdwdforecast.csv.
+
+    MOSMIX-L (Large): Updates every 6 hours (03, 09, 15, 21 UTC) and covers 240 hours.
+
+    MOSMIX-S (Small): Updates every hour but only covers a shorter window.
+
+If you are using a tool like dwd-mosmix-knmi or a custom parser to make that CSV, it's currently only extracting the current day.
+Quick Diagnostic
+
+To see if your Python script is at least processing everything it can see, I can write a tiny script to count the lines in that CSV and compare it to what your FluxForeCastGetter actually saves.
+
+Requirement Check: * Goal: Verify why the CSV is short and ensure the parser sees every row.
+
+    Method: Simple check script.
+
+    Venv: /Users/witti/docs.git/bank/code/venv/bin/python.
+
+    Wrap: cat << 'EOF' for zsh + direct run.
+
+Shall I generate a script to check if the parser is accidentally dropping rows from your CSV, or do you want to dig into the script that creates the CSV first?
