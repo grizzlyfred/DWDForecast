@@ -1,8 +1,7 @@
 {
   "DWD": {
-    "DWDStation": "P755",
-    "DWDStationL": "K4058",
-    "DWDStationS": "P1107",
+    "DWDStationPrimary": "P148",
+    "DWDStationSecondary": "K4058",
     "MOSMIXType": "BOTH"
   },
   "SolarSystem": {
@@ -45,9 +44,8 @@
   "ProcessingConfiguration": "Simple",
   "_template": {
     "DWD": {
-      "DWDStation": "P755",
-      "DWDStationL": "K4058",
-      "DWDStationS": "P1107",
+      "DWDStationPrimary": "P148",
+      "DWDStationSecondary": "K4058",
       "MOSMIXType": "BOTH"
     },
     "SolarSystem": {

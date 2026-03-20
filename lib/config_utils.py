@@ -20,16 +20,19 @@ def load_config(config_path='config.json'):
     try:
         with open(config_path, 'r') as config_file:
             config = json.load(config_file)
-        # Build DWDStationURL(s) dynamically from DWDStation if not explicitly provided
-        if 'DWD' in config and 'DWDStation' in config['DWD']:
-            station = config['DWD']['DWDStation']
-            station_l = config['DWD'].get('DWDStationL', station)
-            station_s = config['DWD'].get('DWDStationS', station)
-            mosmix_type = config['DWD'].get('MOSMIXType', 'L').upper()
-            if 'DWDStationURL' not in config['DWD']:
-                config['DWD']['DWDStationURL'] = build_station_url(station_l, 'L')
-            if mosmix_type == 'BOTH' and 'DWDStationURL_S' not in config['DWD']:
-                config['DWD']['DWDStationURL_S'] = build_station_url(station_s, 'S')
+        # Build DWDStationURL(s) dynamically from station keys if not explicitly provided.
+        # DWDStationPrimary is used for MOSMIX_S (short-term); DWDStationSecondary for MOSMIX_L (extended).
+        # Legacy key DWDStation is accepted as a fallback for backward compatibility.
+        if 'DWD' in config:
+            dwd = config['DWD']
+            fallback = dwd.get('DWDStation', '')
+            station_primary = dwd.get('DWDStationPrimary', fallback)
+            station_secondary = dwd.get('DWDStationSecondary', station_primary or fallback)
+            mosmix_type = dwd.get('MOSMIXType', 'L').upper()
+            if 'DWDStationURL' not in dwd and station_secondary:
+                dwd['DWDStationURL'] = build_station_url(station_secondary, 'L')
+            if mosmix_type == 'BOTH' and 'DWDStationURL_S' not in dwd and station_primary:
+                dwd['DWDStationURL_S'] = build_station_url(station_primary, 'S')
         return config
     except Exception as e:
         print(f"[dwdforecast] ERROR: Invalid {config_path}: {e}")

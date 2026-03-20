@@ -70,10 +70,11 @@ def main():
     def poll_func():
         print("[dwdforecast] Checking for new DWD forecast data...")
         if mosmix_type == 'BOTH':
-            station_l = getattr(config.DWD, 'DWDStationL', config.DWD.DWDStation)
-            station_s = getattr(config.DWD, 'DWDStationS', config.DWD.DWDStation)
-            data_l, new_l, newtime_l = _fetch_mosmix(config.DWD.DWDStationURL, 'L', station_l)
-            data_s, new_s, newtime_s = _fetch_mosmix(config.DWD.DWDStationURL_S, 'S', station_s)
+            station_primary = getattr(config.DWD, 'DWDStationPrimary',
+                                      getattr(config.DWD, 'DWDStation', ''))
+            station_secondary = getattr(config.DWD, 'DWDStationSecondary', station_primary)
+            data_l, new_l, newtime_l = _fetch_mosmix(config.DWD.DWDStationURL, 'L', station_secondary)
+            data_s, new_s, newtime_s = _fetch_mosmix(config.DWD.DWDStationURL_S, 'S', station_primary)
             if not new_l and not new_s:
                 print("[dwdforecast] No new KML files on server. Skipping cycle.")
                 return None
@@ -87,13 +88,20 @@ def main():
                 mosmixdata = data_l if data_l is not None else data_s
             newtime = newtime_s or newtime_l
         else:
-            if mosmix_type == 'L':
-                station = getattr(config.DWD, 'DWDStationL', config.DWD.DWDStation)
-            elif mosmix_type == 'S':
-                station = getattr(config.DWD, 'DWDStationS', config.DWD.DWDStation)
+            station_primary = getattr(config.DWD, 'DWDStationPrimary',
+                                      getattr(config.DWD, 'DWDStation', ''))
+            station_secondary = getattr(config.DWD, 'DWDStationSecondary', station_primary)
+            if mosmix_type == 'S':
+                station = station_primary
+            elif mosmix_type == 'L':
+                station = station_secondary
             else:
-                logging.error("Unknown MOSMIXType '%s'; must be L, S, or BOTH. Defaulting to DWDStation.", mosmix_type)
-                station = config.DWD.DWDStation
+                logging.error(
+                    "Unknown MOSMIXType '%s'; must be L, S, or BOTH. "
+                    "Using primary station but this configuration is invalid and will likely fail.",
+                    mosmix_type
+                )
+                station = station_primary
             mosmixdata, is_new, newtime = _fetch_mosmix(config.DWD.DWDStationURL, mosmix_type, station)
             if not is_new:
                 print(f"[dwdforecast] No new MOSMIX_{mosmix_type} data. Skipping cycle.")
