@@ -137,9 +137,17 @@ def extract_mosmixdata(root, station):
 def merge_mosmixdata(mosmix_s, mosmix_l):
     """Merge MOSMIX_S and MOSMIX_L data arrays.
 
+    Both arguments are lists of 6 equal-length lists (columns):
+        [0] ISO-8601 UTC timestamp strings (e.g. '2026-03-20T15:00:00.000Z')
+        [1] human-readable timestamp strings
+        [2] Rad1h values
+        [3] TTT (temperature, °C) values
+        [4] PPPP (pressure) values
+        [5] FF (wind speed) values
+
     MOSMIX_S (updated hourly) takes priority for overlapping timestamps.
     MOSMIX_L fills in the extended forecast window (up to 240 h) beyond MOSMIX_S.
-    Returns a merged mosmixdata list sorted by ISO-8601 timestamp (column 0).
+    Returns a merged list of the same structure, sorted by ISO-8601 timestamp (column 0).
     """
     s_timestamps = set(mosmix_s[0])
     merged = [list(col) for col in mosmix_s]

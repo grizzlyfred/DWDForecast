@@ -23,11 +23,13 @@ def load_config(config_path='config.json'):
         # Build DWDStationURL(s) dynamically from DWDStation if not explicitly provided
         if 'DWD' in config and 'DWDStation' in config['DWD']:
             station = config['DWD']['DWDStation']
+            station_l = config['DWD'].get('DWDStationL', station)
+            station_s = config['DWD'].get('DWDStationS', station)
             mosmix_type = config['DWD'].get('MOSMIXType', 'L').upper()
             if 'DWDStationURL' not in config['DWD']:
-                config['DWD']['DWDStationURL'] = build_station_url(station, 'L')
+                config['DWD']['DWDStationURL'] = build_station_url(station_l, 'L')
             if mosmix_type == 'BOTH' and 'DWDStationURL_S' not in config['DWD']:
-                config['DWD']['DWDStationURL_S'] = build_station_url(station, 'S')
+                config['DWD']['DWDStationURL_S'] = build_station_url(station_s, 'S')
         return config
     except Exception as e:
         print(f"[dwdforecast] ERROR: Invalid {config_path}: {e}")

@@ -1,7 +1,9 @@
 {
   "DWD": {
     "DWDStation": "P755",
-    "MOSMIXType": "both"
+    "DWDStationL": "K4058",
+    "DWDStationS": "P1107",
+    "MOSMIXType": "BOTH"
   },
   "SolarSystem": {
     "Longitude": 11.6,
@@ -44,7 +46,9 @@
   "_template": {
     "DWD": {
       "DWDStation": "P755",
-      "MOSMIXType": "both"
+      "DWDStationL": "K4058",
+      "DWDStationS": "P1107",
+      "MOSMIXType": "BOTH"
     },
     "SolarSystem": {
       "Longitude": 11.6,
