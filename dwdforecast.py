@@ -62,7 +62,13 @@ def main():
             return last_mosmixdata.get(label), False, 0
         last_kml_url[label] = kml_zip_url
         last_kml_filename[label] = kml_filename
-        mosmixdata = extract_mosmixdata(root, station)
+        mosmixdata, coordinates = extract_mosmixdata(root, station)
+        if coordinates:
+            print(f"[dwdforecast] MOSMIX_{label} station {station} coordinates: "
+                  f"lon={coordinates['lon']:.4f}, lat={coordinates['lat']:.4f}, "
+                  f"alt={coordinates['alt']:.1f} m")
+        else:
+            logging.warning("No coordinates found in KML for MOSMIX_%s station %s", label, station)
         last_mosmixdata[label] = mosmixdata
         return mosmixdata, True, newtime
 
@@ -82,9 +88,9 @@ def main():
                 print("[dwdforecast] Merging MOSMIX_S (near-term) and MOSMIX_L (extended) data...")
                 mosmixdata = kml_reader.merge_mosmixdata(data_s, data_l)
             else:
-                fallback = 'L' if data_l is not None else 'S'
-                print(f"[dwdforecast] Only MOSMIX_{fallback} data available; skipping merge.")
-                logging.warning("Only MOSMIX_%s data available for this cycle; merge skipped.", fallback)
+                available_type = 'L' if data_l is not None else 'S'
+                print(f"[dwdforecast] Only MOSMIX_{available_type} data available; skipping merge.")
+                logging.warning("Only MOSMIX_%s data available for this cycle; merge skipped.", available_type)
                 mosmixdata = data_l if data_l is not None else data_s
             newtime = newtime_s or newtime_l
         else:

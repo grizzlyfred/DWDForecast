@@ -10,6 +10,29 @@ import time
 import datetime
 import logging
 
+# ---------------------------------------------------------------------------
+# DWD MOSMIX element reference
+# Maps raw dwd:elementName values (as they appear in the KML) to a
+# (description, unit) tuple.  Source: DWD MOSMIX KML format description.
+# https://www.dwd.de/DE/leistungen/met_verfahren_mosmix_snow/mosmix_kml_formatbeschreibung.pdf
+# ---------------------------------------------------------------------------
+MOSMIX_ELEMENT_INFO = {
+    # --- fields currently extracted by this module ---
+    "TTT":    ("Air temperature 2 m above ground",          "K (converted to °C on read)"),
+    "FF":     ("Wind speed 10 m above ground",              "m/s"),
+    "PPPP":   ("Surface pressure reduced to sea level",     "Pa"),
+    "Rad1h":  ("Global radiation, last hour",               "kJ/m²"),
+    # --- additional forecast elements of interest ---
+    "DD":     ("Wind direction 10 m above ground",          "degrees (0–360)"),
+    "FX1":    ("Maximum wind gust within last hour",        "m/s"),
+    "N":      ("Total cloud cover",                         "% (0–100)"),
+    "RR1c":   ("Total precipitation last hour",             "kg/m²"),
+    "SunD1":  ("Sunshine duration last hour",               "s"),
+    "VV":     ("Visibility",                                "m"),
+    "Td2":    ("Dew point temperature 2 m above ground",    "K"),
+    "RRSF":   ("Snow fraction of total precipitation",      "1 (fraction 0–1)"),
+}
+
 
 def get_url_for_latest(urlpath, ext=''):
     try:
@@ -94,44 +117,98 @@ def parse_kml_file(kml_path):
 
 
 def extract_mosmixdata(root, station):
-    # Extracts timevalue, Rad1h, TTT, PPPP, FF arrays for the given station from the KML root
+    """Extract forecast data and station coordinates for *station* from a parsed MOSMIX KML root.
+
+    The DWD ``dwd:elementName`` attribute in each ``dwd:Forecast`` element holds
+    the raw field code (e.g. ``TTT``, ``FF``).  We read those directly so every
+    extracted value is traceable to the DWD MOSMIX specification
+    (see :data:`MOSMIX_ELEMENT_INFO` for the full reference).
+
+    Returns
+    -------
+    mosmixdata : list[list]
+        Six parallel lists (columns):
+        [0] ISO-8601 UTC timestamp strings
+        [1] Human-readable timestamp strings (space-separated, Z stripped)
+        [2] Rad1h – global radiation last hour (kJ/m²)
+        [3] TTT   – air temperature 2 m above ground, converted to °C
+        [4] PPPP  – sea-level pressure (Pa)
+        [5] FF    – wind speed 10 m above ground (m/s)
+    coordinates : dict or None
+        ``{"lon": float, "lat": float, "alt": float}`` extracted from the KML
+        ``<kml:Point><kml:coordinates>`` element, or ``None`` if not found.
+    """
     ns = {'dwd': 'https://opendata.dwd.de/weather/lib/pointforecast_dwd_extension_V1_0.xsd',
           'gx': 'http://www.google.com/kml/ext/2.2',
           'kml': 'http://www.opengis.net/kml/2.2',
           'atom': 'http://www.w3.org/2005/Atom',
           'xal': 'urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'}
-    timestamps = root.findall('kml:Document/kml:ExtendedData/dwd:ProductDefinition/dwd:ForecastTimeSteps/dwd:TimeStep', ns)
+    # dwd:elementName attribute in the dwd namespace
+    dwd_element_name_attr = '{https://opendata.dwd.de/weather/lib/pointforecast_dwd_extension_V1_0.xsd}elementName'
+
+    timestamps = root.findall(
+        'kml:Document/kml:ExtendedData/dwd:ProductDefinition/dwd:ForecastTimeSteps/dwd:TimeStep', ns)
     timevalue = [child.text for child in timestamps]
     Rad1h = TTT = PPPP = FF = None
+    coordinates = None
+
     for elem in root.findall('./kml:Document/kml:Placemark', ns):
-        mylocation = elem.find('kml:name', ns).text
-        if mylocation == station:
-            myforecastdata = elem.find('kml:ExtendedData', ns)
-            for subelem in myforecastdata:
-                attrib = str(subelem.attrib)
-                if ": 'FF'" in attrib:
-                    FF = list(subelem[0].text.split())
-                if ": 'Rad1h'" in attrib:
-                    Rad1h = list(subelem[0].text.split())
-                if ": 'TTT'" in attrib:
-                    TTT = list(subelem[0].text.split())
-                    for i in range(len(TTT)):
-                        TTT[i] = round(float(TTT[i]) - 273.13, 2)
-                if ": 'PPPP'" in attrib:
-                    PPPP = list(subelem[0].text.split())
-    # Compose the mosmixdata array as in the original
-    mosmixdata = []
-    for _ in range(6):
-        mosmixdata.append([0] * len(timevalue))
-    for idx in range(len(timevalue)):
-        # The second column is a human-readable timestamp, but we just copy the original string for now
-        mosmixdata[0][idx] = timevalue[idx]
-        mosmixdata[1][idx] = timevalue[idx].replace('T', ' ').replace('Z', '')
+        name_elem = elem.find('kml:name', ns)
+        if name_elem is None or name_elem.text != station:
+            continue
+
+        # --- extract geographic coordinates ---
+        point_elem = elem.find('kml:Point/kml:coordinates', ns)
+        if point_elem is not None and point_elem.text:
+            parts = point_elem.text.strip().split(',')
+            try:
+                coordinates = {
+                    'lon': float(parts[0]),
+                    'lat': float(parts[1]),
+                    'alt': float(parts[2]) if len(parts) > 2 else 0.0,
+                }
+                logging.info(
+                    "Station %s coordinates from KML: lon=%.4f lat=%.4f alt=%.1f m",
+                    station, coordinates['lon'], coordinates['lat'], coordinates['alt']
+                )
+            except (ValueError, IndexError) as e:
+                logging.warning("Could not parse coordinates for station %s: %s", station, e)
+
+        # --- extract forecast values ---
+        myforecastdata = elem.find('kml:ExtendedData', ns)
+        if myforecastdata is None:
+            continue
+        for subelem in myforecastdata:
+            # Use the proper XML attribute, not fragile string-on-dict hacking
+            element_name = subelem.get(dwd_element_name_attr)
+            if element_name is None:
+                continue
+            value_text = subelem[0].text if len(subelem) > 0 else None
+            if not value_text:
+                continue
+            if element_name == 'FF':
+                FF = list(value_text.split())
+            elif element_name == 'Rad1h':
+                Rad1h = list(value_text.split())
+            elif element_name == 'TTT':
+                # TTT is in Kelvin; convert to °C (DWD offset is 273.15 K, but
+                # the original code used 273.13 — keep the same value for
+                # backward-compatibility with existing output)
+                TTT = [round(float(v) - 273.13, 2) for v in value_text.split()]
+            elif element_name == 'PPPP':
+                PPPP = list(value_text.split())
+        break  # stop scanning once the target station is found
+
+    # Compose the mosmixdata columns
+    mosmixdata = [[0] * len(timevalue) for _ in range(6)]
+    for idx, ts in enumerate(timevalue):
+        mosmixdata[0][idx] = ts
+        mosmixdata[1][idx] = ts.replace('T', ' ').replace('Z', '')
         mosmixdata[2][idx] = Rad1h[idx] if Rad1h else 0
         mosmixdata[3][idx] = TTT[idx] if TTT else 0
         mosmixdata[4][idx] = PPPP[idx] if PPPP else 0
         mosmixdata[5][idx] = FF[idx] if FF else 0
-    return mosmixdata
+    return mosmixdata, coordinates
 
 
 def merge_mosmixdata(mosmix_s, mosmix_l):
