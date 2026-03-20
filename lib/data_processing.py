@@ -28,8 +28,7 @@ def build_dataframe(mosmixdata, TemperatureOffset):
 
 def run_pvlib(df, pv_system, pv_location, simple_factor):
     first = df.myTZtimestamp.iloc[0]
-    last = df.myTZtimestamp.index[-1]
-    last = df.myTZtimestamp.iloc[last]
+    last = df.myTZtimestamp.iloc[-1]
     local_timestamp = pd.date_range(start=first, end=last, freq='1h', tz="UTC")
     df['Rad1Energy'] = simple_factor * df.Rad1wh
     df.index = local_timestamp

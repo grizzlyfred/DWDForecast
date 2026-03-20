@@ -1,6 +1,8 @@
 {
   "DWD": {
-    "DWDStation": "P755"
+    "DWDStationPrimary": "P148",
+    "DWDStationSecondary": "K4058",
+    "MOSMIXType": "BOTH"
   },
   "SolarSystem": {
     "Longitude": 11.6,
@@ -33,7 +35,8 @@
     "DBHost": "192.168.178.28",
     "DBPort": 3306,
     "DBName": "YOURDBNAME",
-    "DBTable": "dwd"
+    "DBTable": "dwd",
+    "RawDataDir": "raw_data"
   },
   "Logging": {
     "Level": "INFO",
@@ -42,7 +45,9 @@
   "ProcessingConfiguration": "Simple",
   "_template": {
     "DWD": {
-      "DWDStation": "P755"
+      "DWDStationPrimary": "P148",
+      "DWDStationSecondary": "K4058",
+      "MOSMIXType": "BOTH"
     },
     "SolarSystem": {
       "Longitude": 11.6,
@@ -75,7 +80,8 @@
       "DBHost": "192.168.178.28",
       "DBPort": 3306,
       "DBName": "YOURDBNAME",
-      "DBTable": "dwd"
+      "DBTable": "dwd",
+      "RawDataDir": "raw_data"
     },
     "Logging": {
       "Level": "INFO",

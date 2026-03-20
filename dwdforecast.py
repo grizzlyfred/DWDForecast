@@ -8,6 +8,8 @@
 import logging
 import queue
 import sys
+import datetime
+import os
 from lib import kml_reader, data_processing, db, poller, data_output, config_utils
 from lib.kml_reader import extract_mosmixdata
 
@@ -30,39 +32,106 @@ def main():
     print("[dwdforecast] PVLIB system will be initialized in the PVLIB module.")
     if config.Output.DBOutput:
         print("[dwdforecast] Database output enabled.")
-    last_kml_url = None
-    last_kml_filename = None
-    # Polling function
-    def poll_func():
-        nonlocal last_kml_url, last_kml_filename
-        print("[dwdforecast] Checking for new DWD forecast data...")
-        urls, newtime = kml_reader.get_url_for_latest(config.DWD.DWDStationURL, ext='kmz')
+    mosmix_type = getattr(config.DWD, 'MOSMIXType', 'L').upper()
+    raw_data_dir = getattr(config.Output, 'RawDataDir', 'raw_data')
+    last_kml_url = {}       # {label: url}
+    last_kml_filename = {}  # {label: filename}
+    last_mosmixdata = {}    # {label: mosmixdata} – cache for cross-source merging
+    schema_logged = False   # log schema references only once per run
+
+    def _fetch_mosmix(url, label, station):
+        """Download, extract and parse a single MOSMIX KMZ file.
+
+        Returns (mosmixdata, is_new, newtime).
+        On failure or no new file, mosmixdata falls back to the cached value and is_new is False.
+        """
+        nonlocal schema_logged
+        urls, newtime = kml_reader.get_url_for_latest(url, ext='kmz')
         if not urls:
-            print("[dwdforecast] No KML URLs found. Last known file:", last_kml_url)
-            logging.warning("No KML URLs found. Last known file: %s", last_kml_url)
-            return None
+            print(f"[dwdforecast] No KML URLs found for MOSMIX_{label}.")
+            logging.warning("No KML URLs found for MOSMIX_%s at %s", label, url)
+            return last_mosmixdata.get(label), False, 0
         kml_zip_url = urls[-1]
         kml_filename = kml_zip_url.split('/')[-1]
-        if kml_filename == last_kml_filename:
-            print(f"[dwdforecast] No new KML file on server. Last file: {kml_filename}")
-            logging.info("No new KML file on server. Last file: %s", kml_filename)
-            return None
-        last_kml_url = kml_zip_url
-        last_kml_filename = kml_filename
-        print(f"[dwdforecast] Downloading: {kml_zip_url}")
+        if kml_filename == last_kml_filename.get(label):
+            logging.info("No new KML file for MOSMIX_%s. Last: %s", label, kml_filename)
+            return last_mosmixdata.get(label), False, 0
+        print(f"[dwdforecast] Downloading MOSMIX_{label}: {kml_zip_url}")
         kml_path = kml_reader.extract_kml_from_zip(kml_zip_url)
         if not kml_path:
-            print("[dwdforecast] Failed to extract KML file. Last known file:", last_kml_url)
-            logging.warning("Failed to extract KML file. Last known file: %s", last_kml_url)
-            return None
-        print(f"[dwdforecast] Parsing KML: {kml_path}")
+            logging.warning("Failed to extract KML for MOSMIX_%s", label)
+            return last_mosmixdata.get(label), False, 0
         tree, root = kml_reader.parse_kml_file(kml_path)
         if not tree:
-            print("[dwdforecast] Failed to parse KML file. Last known file:", last_kml_url)
-            logging.warning("Failed to parse KML file. Last known file: %s", last_kml_url)
-            return None
-        print("[dwdforecast] Extracting weather data...")
-        mosmixdata = extract_mosmixdata(root, config.DWD.DWDStation)
+            logging.warning("Failed to parse KML for MOSMIX_%s", label)
+            return last_mosmixdata.get(label), False, 0
+        last_kml_url[label] = kml_zip_url
+        last_kml_filename[label] = kml_filename
+
+        # Log schema references from the KML root (once per run)
+        if not schema_logged:
+            kml_reader.extract_schema_references(root)
+            schema_logged = True
+
+        mosmixdata, coordinates = extract_mosmixdata(root, station)
+        if coordinates:
+            print(f"[dwdforecast] MOSMIX_{label} station {station} coordinates: "
+                  f"lon={coordinates['lon']:.4f}, lat={coordinates['lat']:.4f}, "
+                  f"alt={coordinates['alt']:.1f} m")
+        else:
+            logging.warning("No coordinates found in KML for MOSMIX_%s station %s", label, station)
+
+        # Save a complete reference copy of all MOSMIX fields for this station
+        all_fields = kml_reader.extract_all_station_fields(root, station)
+        if all_fields:
+            ts_tag = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+            ref_filename = f"MOSMIX_{label}_{station}_{ts_tag}.json"
+            ref_path = os.path.join(raw_data_dir, ref_filename)
+            kml_reader.save_raw_station_data(all_fields, ref_path)
+
+        last_mosmixdata[label] = mosmixdata
+        return mosmixdata, True, newtime
+
+    # Polling function
+    def poll_func():
+        print("[dwdforecast] Checking for new DWD forecast data...")
+        if mosmix_type == 'BOTH':
+            station_primary = getattr(config.DWD, 'DWDStationPrimary',
+                                      getattr(config.DWD, 'DWDStation', ''))
+            station_secondary = getattr(config.DWD, 'DWDStationSecondary', station_primary)
+            data_l, new_l, newtime_l = _fetch_mosmix(config.DWD.DWDStationURL, 'L', station_secondary)
+            data_s, new_s, newtime_s = _fetch_mosmix(config.DWD.DWDStationURL_S, 'S', station_primary)
+            if not new_l and not new_s:
+                print("[dwdforecast] No new KML files on server. Skipping cycle.")
+                return None
+            if data_l is not None and data_s is not None:
+                print("[dwdforecast] Merging MOSMIX_S (near-term) and MOSMIX_L (extended) data...")
+                mosmixdata = kml_reader.merge_mosmixdata(data_s, data_l)
+            else:
+                available_type = 'L' if data_l is not None else 'S'
+                print(f"[dwdforecast] Only MOSMIX_{available_type} data available; skipping merge.")
+                logging.warning("Only MOSMIX_%s data available for this cycle; merge skipped.", available_type)
+                mosmixdata = data_l if data_l is not None else data_s
+            newtime = newtime_s or newtime_l
+        else:
+            station_primary = getattr(config.DWD, 'DWDStationPrimary',
+                                      getattr(config.DWD, 'DWDStation', ''))
+            station_secondary = getattr(config.DWD, 'DWDStationSecondary', station_primary)
+            if mosmix_type == 'S':
+                station = station_primary
+            elif mosmix_type == 'L':
+                station = station_secondary
+            else:
+                logging.error(
+                    "Unknown MOSMIXType '%s'; must be L, S, or BOTH. "
+                    "Using primary station but this configuration is invalid and will likely fail.",
+                    mosmix_type
+                )
+                station = station_primary
+            mosmixdata, is_new, newtime = _fetch_mosmix(config.DWD.DWDStationURL, mosmix_type, station)
+            if not is_new:
+                print(f"[dwdforecast] No new MOSMIX_{mosmix_type} data. Skipping cycle.")
+                return None
         print("[dwdforecast] Processing data with PVLIB...")
         df, mc_weather, modelchain = data_processing.process_with_pvlib(mosmixdata, config)
         # Output
